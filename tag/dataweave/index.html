@@ -133,54 +133,22 @@
 </script>
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<style>
-    .fa {
-  padding: 0.5em;
-  font-size: 30px;
-  width: 60px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-}
+<script>
+    function updateCoverImage(){
+        let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
+        for(let image of images){
+            if(!image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+        }
 
-.fa:hover {
-    opacity: 0.7;
-}
-
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-.fa-twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-.fa-google {
-  background: #dd4b39;
-  color: white;
-}
-
-.fa-linkedin {
-  background: #007bb5;
-  color: white;
-}
-
-.fa-youtube {
-  background: #bb0000;
-  color: white;
-}
-
-.fa-instagram {
-  background: #125688;
-  color: white;
-} 
-.fa-whatsapp{
-  background: #00b489;
-  color: white;
-}
-</style><style>:root {--ghost-accent-color: #15171A;}</style>
+        let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
+        if(image != null && !image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+	}
+    document.addEventListener('DOMContentLoaded', function() {
+   		updateCoverImage();
+	}, false);
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 
 <body class="tag-template tag-dataweave">
@@ -331,20 +299,7 @@
 
     
 
-    <script>
-    function updateCoverImage(){
-        let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
-        for(let image of images){
-            if(!image.srcset.includes("images.unsplash.com"))
-                image.srcset = ''
-        }
-
-        let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
-        if(image != null && !image.srcset.includes("images.unsplash.com"))
-                image.srcset = ''
-	}
-    updateCoverImage();
-</script>
+    
 </body>
 
 </html>
