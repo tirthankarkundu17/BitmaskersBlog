@@ -528,18 +528,18 @@
     
 
     <script>
-    function shareOnFB(){
-        let url="https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
-        window.open(url);
-    }
-    function shareOnLinkedIn(){
-        let url="https://www.linkedin.com/sharing/share-offsite/?url=" + window.location.href;
-        window.open(url);
-    }
-    function shareOnWhatsapp(){
-        let url="whatsapp://send?text=" + window.location.href;
-        window.open(url);
-    }
+    function updateCoverImage(){
+        let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
+        for(let image of images){
+            if(!image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+        }
+
+        let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
+        if(image != null && !image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+	}
+    updateCoverImage();
 </script>
 </body>
 
