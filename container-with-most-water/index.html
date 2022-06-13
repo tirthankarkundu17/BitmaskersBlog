@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Container with most water</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=234b454b87">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <meta name="description" content="Algorithm to find Container with most water" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://bitmaskers.in/container-with-most-water/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://bitmaskers.in/container-with-most-water/amp/" />
+    
+    <meta property="og:site_name" content="The Bitmaskers" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Container with most water" />
+    <meta property="og:description" content="Algorithm to find Container with most water" />
+    <meta property="og:url" content="https://bitmaskers.in/container-with-most-water/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta property="article:published_time" content="2021-02-18T04:15:02.000Z" />
+    <meta property="article:modified_time" content="2022-06-13T01:20:38.000Z" />
+    <meta property="article:tag" content="algorithm" />
+    <meta property="article:tag" content="java" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/bitmaskers" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Container with most water" />
+    <meta name="twitter:description" content="Algorithm to find Container with most water" />
+    <meta name="twitter:url" content="https://bitmaskers.in/container-with-most-water/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Tirthankar Kundu" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="algorithm, java" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1333" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Bitmaskers",
+        "url": "https://bitmaskers.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2021/06/Logos-1.svg"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tirthankar Kundu",
+        "url": "https://bitmaskers.in/author/tirthankar/",
+        "sameAs": []
+    },
+    "headline": "Container with most water",
+    "url": "https://bitmaskers.in/container-with-most-water/",
+    "datePublished": "2021-02-18T04:15:02.000Z",
+    "dateModified": "2022-06-13T01:20:38.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&ixlib=rb-1.2.1&q=80&w=2000",
+        "width": 2000,
+        "height": 1333
+    },
+    "keywords": "algorithm, java",
+    "description": "Algorithm to find Container with most water",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://bitmaskers.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.48" />
+    <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.22.0/umd/portal.min.js" data-ghost="https://bitmaskers.in/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="/public/cards.min.js?v=234b454b87"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=234b454b87">
+    <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DFHKPW99Q');
+</script>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .fa {
+  padding: 0.5em;
+  font-size: 30px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+} 
+.fa-whatsapp{
+  background: #00b489;
+  color: white;
+}
+</style><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template tag-algorithm tag-java">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2021/06/Logos-1.svg" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+</ul>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post tag-algorithm tag-java single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">Container with most water</h1>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-02-18">
+                            Feb 18, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-algorithm" href="/404/"
+                                title="algorithm">algorithm</a><a class="post-tag post-tag-java" href="/404/"
+                                title="java">java</a>
+                    </span>
+            </div>
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/container-with-most-water/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1560871401-6f0f987a5102?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDU5fHx3YXRlciUyMGp1Z3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Container with most water">
+            </a>
+        </div>
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <blockquote>Question</blockquote><p>Given <code>n</code> non-negative integers <code>a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub></code>, where each represents a point at coordinate <code>(i, a<sub>i</sub>)</code>. <code>n</code> vertical lines are drawn such that the two endpoints of the line <code>i</code> is at <code>(i, a<sub>i</sub>)</code> and <code>(i, 0)</code>. Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2021/02/1.jpg" class="kg-image" alt loading="lazy" width="801" height="383" srcset="https://bitmaskers.in/content/images/size/w600/2021/02/1.jpg 600w, https://bitmaskers.in/content/images/2021/02/1.jpg 801w" sizes="(min-width: 720px) 720px"></figure><p><strong>Input:</strong> height = [1,8,6,2,5,4,8,3,7] </p><p><strong>Output:</strong> 49 </p><p><strong>Explanation:</strong> The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.</p><p>Now, let's see how can we solve this problem.</p><h2 id="solution">Solution</h2><blockquote>Brute Force Approach</blockquote><p>Here, we will try all the combination starting from first index to the last one.</p><p>So we will try combinations like : (1, 1), (1, 2).. (1, n) to (n, 1).. (n, n)</p><p>and we will keep a value to check the max area we are getting each time. By the end of the iteration we will get the max area which will be the answer.</p><p>Time complexity : O(n ^ 2)</p><p>Code:</p><p>Here, a JAVA implementation by the Brute Force approach.</p><!--kg-card-begin: markdown--><pre><code>public int maxAreaBruteForce(int[] height) {
+        int maxArea = 0;
+        for (int i = 0; i &lt; height.length; i++) {
+            for (int j = i + 1; j &lt; height.length; j++) {
+                int temp = Math.min(height[i], height[j]) * (j - i);
+                maxArea = Math.max(maxArea, temp);
+            }
+        }
+        return maxArea;
+    }</code></pre>
+<!--kg-card-end: markdown--><hr><p>Now let us check if we can bring down the time complexity to Linear time</p><blockquote>Enhanced solution</blockquote><p>We will try to find an intuition over here:</p><p>The max area for any rectangle would be one where width is max. So, considering that both the ends have max height, the highest area we will get is considering the first and last values.</p><p>Therefore, we will initiate two pointers, left and right like below:</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2021/02/3-2.png" class="kg-image" alt loading="lazy" width="926" height="546" srcset="https://bitmaskers.in/content/images/size/w600/2021/02/3-2.png 600w, https://bitmaskers.in/content/images/2021/02/3-2.png 926w" sizes="(min-width: 720px) 720px"></figure><p>Now, we will calculate the area as length X width. Here length is the min height between two i.e, 1 and width is distance between two pointer i.e, 8. So total area is 8.</p><p>Next, we will see among the two heights, left and right, which is lower.</p><p>We will then update the pointer for the pointer whose value is lower.</p><p>Here, left has lower value, so we will update the left as left + 1 and keep right as it is.</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2021/02/4.png" class="kg-image" alt loading="lazy" width="906" height="541" srcset="https://bitmaskers.in/content/images/size/w600/2021/02/4.png 600w, https://bitmaskers.in/content/images/2021/02/4.png 906w" sizes="(min-width: 720px) 720px"></figure><p>Here again we will calculate the area. This time L = 7 and width = 7. Hence area is 7X7 = 49</p><p>Comparing this to previous value of 8, since 49 is higher we will consider this as answer.</p><p>Now among the two pointers, here right has lower value so, we will update the rigth pointer as below:</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2021/02/5.png" class="kg-image" alt loading="lazy" width="915" height="553" srcset="https://bitmaskers.in/content/images/size/w600/2021/02/5.png 600w, https://bitmaskers.in/content/images/2021/02/5.png 915w" sizes="(min-width: 720px) 720px"></figure><p>Here, area = 3 X 6 = 18 which is lower than max we got till now. Hence we will ignore and move forward as below:</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2021/02/6.png" class="kg-image" alt loading="lazy" width="902" height="537" srcset="https://bitmaskers.in/content/images/size/w600/2021/02/6.png 600w, https://bitmaskers.in/content/images/2021/02/6.png 902w" sizes="(min-width: 720px) 720px"></figure><p>We will carry on this process, calculating area each time and updating the pointers till left is less than right pointer.</p><p>As soon as left &gt; right, we will break (Similar to Binary Search 🔍)</p><p>At the end we will be able to find the max area which will be 49 in this case.</p><p>Let's see the JAVA implementation:</p><!--kg-card-begin: markdown--><pre><code>public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int maxArea = 0;
+
+        while (left &lt; right) {
+            maxArea = Math.max(maxArea, Math.min(height[left], height[right]) * (right - left));
+            if (height[left] &lt; height[right]) {
+                left = left + 1;
+            } else {
+                right = right - 1;
+            }
+        }
+        return maxArea;
+    }</code></pre>
+<!--kg-card-end: markdown--><p>Thus we were able to enhance the solution to a time complexity of O(n) which is way better than the Brute force.</p><hr><p>Hope you liked it ! I would love to know if you have any other better approach in mind.</p>
+            </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/container-with-most-water/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/container-with-most-water/&text=Container%20with%20most%20water" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/container-with-most-water/&media=&description=Container%20with%20most%20water"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/container-with-most-water/&title=Container%20with%20most%20water"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/container-with-most-water/&title=Container%20with%20most%20water" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/container-with-most-water/&title=Container%20with%20most%20water"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/container-with-most-water/&title=Container%20with%20most%20water" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/container-with-most-water/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/container-with-most-water/&text=Container%20with%20most%20water" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
+        <div class="author-image-placeholder u-placeholder">
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
+        </div>
+        <div class="author-wrapper">
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
+                    </div>
+                </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
+            </div>
+        </article>
+
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/the-new-engineers/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
+
+        <div class="navigation-item navigation-next">
+            <a class="navigation-item-link button-arrow button-arrow-right" href="/mulesoft-chat-phone-web-and-mule/">
+                Next Post <i class="button-arrow-icon icon icon-arrow-right"></i>
+            </a>
+        </div>
+</div>                <section class="related-posts container medium">
+            <h3 class="related-title"><span class="text">You might also like...</span></h3>
+            <div class="row">
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-algorithm tag-application tag-bitmaksers">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/designing-your-own-hash-map-with-numbers/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1526925539332-aa3b66e35444?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDI4fHxwcm9ncmFtbWluZ3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1526925539332-aa3b66e35444?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDI4fHxwcm9ncmFtbWluZ3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1526925539332-aa3b66e35444?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDI4fHxwcm9ncmFtbWluZ3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1526925539332-aa3b66e35444?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDI4fHxwcm9ncmFtbWluZ3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1526925539332-aa3b66e35444?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDI4fHxwcm9ncmFtbWluZ3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1526925539332-aa3b66e35444?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDI4fHxwcm9ncmFtbWluZ3xlbnwwfHx8&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Designing your own Hash Map with Positive Numbers!">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/designing-your-own-hash-map-with-numbers/">Designing your own Hash Map with Positive Numbers!</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-03-07">
+                            Mar 7, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-algorithm" href="/404/"
+                                title="algorithm">algorithm</a><a class="post-tag post-tag-application" href="/404/"
+                                title="application">application</a><a class="post-tag post-tag-bitmaksers" href="/404/"
+                                title="bitmaksers">bitmaksers</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-algorithm tag-linkedlist tag-python tag-code">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/finding-if-a-cycle-exists-in-a-linkedlist/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1603634015199-048d25ed26a1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDEyNXx8Y3ljbGV8ZW58MHx8fA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1603634015199-048d25ed26a1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDEyNXx8Y3ljbGV8ZW58MHx8fA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1603634015199-048d25ed26a1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDEyNXx8Y3ljbGV8ZW58MHx8fA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1603634015199-048d25ed26a1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDEyNXx8Y3ljbGV8ZW58MHx8fA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1603634015199-048d25ed26a1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDEyNXx8Y3ljbGV8ZW58MHx8fA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1603634015199-048d25ed26a1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MXwxMTc3M3wwfDF8c2VhcmNofDEyNXx8Y3ljbGV8ZW58MHx8fA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Finding if a cycle exists in a Linked List">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/finding-if-a-cycle-exists-in-a-linkedlist/">Finding if a cycle exists in a Linked List</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-02-06">
+                            Feb 6, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-algorithm" href="/404/"
+                                title="algorithm">algorithm</a><a class="post-tag post-tag-linkedlist" href="/404/"
+                                title="linkedlist">linkedlist</a><a class="post-tag post-tag-python" href="/404/"
+                                title="python">python</a><a class="post-tag post-tag-code" href="/404/"
+                                title="code">code</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-introduction tag-algorithm tag-bits tag-bit-masking tag-bitmaksers">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/why-is-the-page-called-bitmaskers/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="/content/images/size/w400/2021/02/Logofile-2.svg 400w, /content/images/size/w750/2021/02/Logofile-2.svg 750w, /content/images/size/w960/2021/02/Logofile-2.svg 960w, /content/images/size/w1140/2021/02/Logofile-2.svg 1140w, /content/images/size/w1920/2021/02/Logofile-2.svg 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2021/02/Logofile-2.svg"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Why Bitmaskers ?">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/why-is-the-page-called-bitmaskers/">Why Bitmaskers ?</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-01-03">
+                            Jan 3, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-introduction" href="/404/"
+                                title="introduction">introduction</a><a class="post-tag post-tag-algorithm" href="/404/"
+                                title="algorithm">algorithm</a><a class="post-tag post-tag-bits" href="/404/"
+                                title="bits">bits</a><a class="post-tag post-tag-bit-masking" href="/404/"
+                                title="bit-masking">bit-masking</a><a class="post-tag post-tag-bitmaksers" href="/404/"
+                                title="bitmaksers">bitmaksers</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+            </div>
+        </section>
+            </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2021 |
+    </div>
+
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2021/06/Logos-1.svg" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-facebook"
+            href="https://www.instagram.com/bitmaskers/" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <i class="icon icon-instagram"></i>
+        </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=234b454b87"></script>
+
+    
+
+    <script>
+    function shareOnFB(){
+        let url="https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
+        window.open(url);
+    }
+    function shareOnLinkedIn(){
+        let url="https://www.linkedin.com/sharing/share-offsite/?url=" + window.location.href;
+        window.open(url);
+    }
+    function shareOnWhatsapp(){
+        let url="whatsapp://send?text=" + window.location.href;
+        window.open(url);
+    }
+</script>
+</body>
+
+</html>

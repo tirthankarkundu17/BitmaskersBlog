@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AMQ vs SQS vs SNS vs Google Pub-Sub</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=234b454b87">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <meta name="description" content="Find out the difference between AMQ, SQS, SNS, and Google Pub Sub." />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://bitmaskers.in/amq-vs-sqs-vs-sns/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://bitmaskers.in/amq-vs-sqs-vs-sns/amp/" />
+    
+    <meta property="og:site_name" content="The Bitmaskers" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AMQ vs SQS vs SNS vs Google Pub-Sub" />
+    <meta property="og:description" content="Comparison among AMQ, SQS, SNS, and Google Pub-Sub" />
+    <meta property="og:url" content="https://bitmaskers.in/amq-vs-sqs-vs-sns/" />
+    <meta property="og:image" content="https://bitmaskers.in/content/images/2021/08/background.png" />
+    <meta property="article:published_time" content="2021-08-21T16:05:00.000Z" />
+    <meta property="article:modified_time" content="2021-08-21T16:05:00.000Z" />
+    <meta property="article:tag" content="messaging-queue" />
+    <meta property="article:tag" content="aws" />
+    <meta property="article:tag" content="gcp" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/bitmaskers" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AMQ vs SQS vs SNS vs Google Pub-Sub" />
+    <meta name="twitter:description" content="Comparison among AMQ, SQS, SNS, and Google Pub-Sub" />
+    <meta name="twitter:url" content="https://bitmaskers.in/amq-vs-sqs-vs-sns/" />
+    <meta name="twitter:image" content="https://bitmaskers.in/content/images/2021/08/background.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Tirthankar Kundu" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="messaging-queue, aws, gcp" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Bitmaskers",
+        "url": "https://bitmaskers.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2021/06/Logos-1.svg"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tirthankar Kundu",
+        "url": "https://bitmaskers.in/author/tirthankar/",
+        "sameAs": []
+    },
+    "headline": "AMQ vs SQS vs SNS vs Google Pub-Sub",
+    "url": "https://bitmaskers.in/amq-vs-sqs-vs-sns/",
+    "datePublished": "2021-08-21T16:05:00.000Z",
+    "dateModified": "2021-08-21T16:05:00.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://bitmaskers.in/content/images/2021/08/background.png"
+    },
+    "keywords": "messaging-queue, aws, gcp",
+    "description": "Comparison among AMQ, SQS, SNS, and Google Pub-Sub",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://bitmaskers.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.48" />
+    <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.22.0/umd/portal.min.js" data-ghost="https://bitmaskers.in/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="/public/cards.min.js?v=234b454b87"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=234b454b87">
+    <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DFHKPW99Q');
+</script>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .fa {
+  padding: 0.5em;
+  font-size: 30px;
+  width: 60px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+} 
+.fa-whatsapp{
+  background: #00b489;
+  color: white;
+}
+</style><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template tag-messaging-queue tag-aws tag-gcp">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2021/06/Logos-1.svg" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+</ul>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post tag-messaging-queue tag-aws tag-gcp single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">AMQ vs SQS vs SNS vs Google Pub-Sub</h1>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-08-21">
+                            Aug 21, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/404/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-aws" href="/404/"
+                                title="aws">aws</a><a class="post-tag post-tag-gcp" href="/404/"
+                                title="gcp">gcp</a>
+                    </span>
+            </div>
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/amq-vs-sqs-vs-sns/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="/content/images/size/w400/2021/08/background.png 400w, /content/images/size/w750/2021/08/background.png 750w, /content/images/size/w960/2021/08/background.png 960w, /content/images/size/w1140/2021/08/background.png 1140w, /content/images/size/w1920/2021/08/background.png 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2021/08/background.png"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="AMQ vs SQS vs SNS vs Google Pub-Sub">
+            </a>
+        </div>
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <blockquote>Messaging Queues</blockquote><p>Asynchronous communication is enabled via message queue software, which allows machines to communicate remotely, which acts as a backbone of any distributed system. A single application cannot be responsible for the entire operation in advanced systems. Rather, numerous apps are linked together to complete their respective sets of tasks and meet the system's overall requirement. Each system need to communicate among themselves and this is where the need for queues arises!</p><p>Currently, market has to offer a bunch of options when it comes to Queue. You have Apache Kafka, Apache Active MQ,  AWS SQS, AWS SNS, Google Pub/Sub, Rabbit MQ etc.</p><p>Let's make a comparison which can help us choosing the right tool for our project.</p><hr><p>I already did a series on Kafka vs RabbitMQ which can be found below:</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/kafka-vs-rabbitmq/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Kafka vs RabbitMQ</div><div class="kg-bookmark-description">Are RabbitMQ and Kafka same ?</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://bitmaskers.in/favicon.png" alt=""><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" alt=""></div></a></figure><hr><blockquote>ActiveMQ</blockquote><p>Apache ActiveMQ is a prominent Java-based open source messaging server. It acts as a bridge between numerous apps that are hosted on different servers or developed in different languages. It supports numerous messaging protocols, including AMQP and MQTT, and implements JMS (Java Message Service).</p><p><strong>Features - </strong></p><ol><li>Multiple connection protocols are supported</li><li>Along with vertical scaling, built-in functionality for horizontal scaling, called Network of Brokers, is also supported.</li><li>Schedule delayed deliveries</li><li>Offers an API for custom authentication plug-ins</li></ol><p><strong>When to use?</strong></p><p>ActiveMQ is preferably used where small amounts of data is involved. Messages can be transmitted as part of a queue or as a topic with ActiveMQ. One or more consumers are connected to the queue through point to point messaging, and the broker utilizes a <strong>round robin</strong> strategy to direct messages to specific consumers. Brokers send communications to all consumers who have <strong>subscribed</strong> to the topic via subscription-based messaging.</p><p>For enterprises, which don’t have use for big data processing, ActiveMQ is a good option.</p><hr><blockquote>AWS SNS</blockquote><p>Amazon SNS, or Amazon Simple Notification Service, is a push notification service offered by Amazon.  It is is a fully managed messaging service for both application-to-application (A2A) and application-to-person (A2P) communication.</p><p>Features-</p><ol><li>Provides High Throughput</li><li>Fully managed and uses AWS cloud to automatically scale the workload.</li><li>Through Amazon Cloudwatch, it allows you to view the system metrics and resolve issues quickly.</li><li>The A2P functionality enables you to send messages to users at scale via SMS, mobile push, and email.</li><li>Push based system</li></ol><p>When to use ?</p><p>It’s a low-cost infrastructure, primarily used by companies to send pub/sub messages to their customers. This web service makes it easier for publishers to create and push notifications from the cloud. It’s ideal for developers who are looking for a message notification system that integrates with minimal effort, requires minimum maintenance and works on pay-as-you-go pricing. Unless your application requires a conventional queuing system, Amazon SNS offers a cheaper solution to push subscribed messages to customers.</p><hr><blockquote>AWS SQS</blockquote><p>Amazon SQS is a fully managed distributed message queuing service offered by Amazon. It’s a cost-effective and simple technique to manage communication between components of software systems running in the cloud(even on prem if required). SQS eliminates the complexity and overhead associated with managing and operating message-oriented middleware, and empowers developers to focus on differentiating work.</p><p>Features</p><ol><li>The SQS queues automatically scale to the size of the workload.</li><li>No additional infrastructure is needed for using Amazon SQS.</li><li>Unprocessed messages can be maintained in a “dead letter” queue.</li><li>Gets benefitted with the large scale of AWS Infrastructure</li><li>FIFO queues guarantee <strong>exactly-once delivery</strong></li><li>Standard queues guarantee <strong>atleast-once delivery</strong></li></ol><p>When to use?</p><p>Amazon SQS is of prime value to a serverless architecture where you want different services to function independently. It offers a lightweight and fast approach to establish communication between these decoupled services. </p><p>It’s a good option in applications where multiple independent systems need to be integrated without the overhead of maintaining own queue infrastructure. If your systems uses serverless stack with Lambdas then this is definitely a good option. </p><p>The FIFO queues are good for an ordered delivery of message but comes at a price of limited throughput. So, we need to choose wisely!</p><hr><blockquote>Google Pub/Sub</blockquote><p>Google Cloud Pub/Sub is an asynchronous messaging service that allows you to send and receive messages between different apps. It provides dependable message storage and low-latency real-time message delivery, making it a popular choice among developers that need to send out event notifications, stream data from many devices, or build asynchronous workflows.</p><p>Features</p><ol><li>It offers low latency and high throughput.</li><li>Both push and pull message deliveries are supported.</li><li>It’s highly scalable, with support for 10,000 messages per second for all customers by default.</li><li>The first 10 gigabytes of data are free.</li><li>It has a lite version which costs even less.</li><li>It has <strong>no exactly-once delivery</strong></li></ol><p>When to use? </p><p>Google Pub/Sub offers reliable messaging and data streaming across applications hosted anywhere on the internet, including Google Cloud Platform. Many advanced features are included to make communication easier to manage. Auto-scaling, dead-letter delivery and filtering makes your applications simpler. Many developers prefer it for the flexible pricing. Google Pub/Sub charges you on the volume transmitted after you have used your free 10 gigabytes.</p><p>Those who already have their applications running on Google Cloud Platform should go for Google Pub/Sub.</p><hr><p>Hope this article helps. Cheers 🍻</p>
+            </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/amq-vs-sqs-vs-sns/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/amq-vs-sqs-vs-sns/&text=AMQ%20vs%20SQS%20vs%20SNS%20vs%20Google%20Pub-Sub" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/amq-vs-sqs-vs-sns/&media=&description=AMQ%20vs%20SQS%20vs%20SNS%20vs%20Google%20Pub-Sub"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/amq-vs-sqs-vs-sns/&title=AMQ%20vs%20SQS%20vs%20SNS%20vs%20Google%20Pub-Sub"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/amq-vs-sqs-vs-sns/&title=AMQ%20vs%20SQS%20vs%20SNS%20vs%20Google%20Pub-Sub" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/amq-vs-sqs-vs-sns/&title=AMQ%20vs%20SQS%20vs%20SNS%20vs%20Google%20Pub-Sub"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/amq-vs-sqs-vs-sns/&title=AMQ%20vs%20SQS%20vs%20SNS%20vs%20Google%20Pub-Sub" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/amq-vs-sqs-vs-sns/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/amq-vs-sqs-vs-sns/&text=AMQ%20vs%20SQS%20vs%20SNS%20vs%20Google%20Pub-Sub" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
+        <div class="author-image-placeholder u-placeholder">
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
+        </div>
+        <div class="author-wrapper">
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
+                    </div>
+                </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
+            </div>
+        </article>
+
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/soa-vs-microservices/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
+
+        <div class="navigation-item navigation-next">
+            <a class="navigation-item-link button-arrow button-arrow-right" href="/docker-cheat-sheet/">
+                Next Post <i class="button-arrow-icon icon icon-arrow-right"></i>
+            </a>
+        </div>
+</div>                <section class="related-posts container medium">
+            <h3 class="related-title"><span class="text">You might also like...</span></h3>
+            <div class="row">
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-messaging-queue tag-rabbitmq tag-kafka">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/kafka-vs-rabbitmq-3/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Kafka vs RabbitMQ">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/kafka-vs-rabbitmq-3/">Kafka vs RabbitMQ</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-03-31">
+                            Mar 31, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/404/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-rabbitmq" href="/404/"
+                                title="rabbitmq">rabbitmq</a><a class="post-tag post-tag-kafka" href="/404/"
+                                title="kafka">kafka</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-messaging-queue tag-rabbitmq tag-kafka featured">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/kafka-vs-rabbitmq-2/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Kafka vs RabbitMQ">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/kafka-vs-rabbitmq-2/">Kafka vs RabbitMQ</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-03-27">
+                            Mar 27, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/404/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-rabbitmq" href="/404/"
+                                title="rabbitmq">rabbitmq</a><a class="post-tag post-tag-kafka" href="/404/"
+                                title="kafka">kafka</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-messaging-queue tag-kafka tag-rabbitmq tag-architecture">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/kafka-vs-rabbitmq/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Kafka vs RabbitMQ">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/kafka-vs-rabbitmq/">Kafka vs RabbitMQ</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-03-21">
+                            Mar 21, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/404/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-kafka" href="/404/"
+                                title="kafka">kafka</a><a class="post-tag post-tag-rabbitmq" href="/404/"
+                                title="rabbitmq">rabbitmq</a><a class="post-tag post-tag-architecture" href="/404/"
+                                title="architecture">architecture</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+            </div>
+        </section>
+            </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2021 |
+    </div>
+
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2021/06/Logos-1.svg" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-facebook"
+            href="https://www.instagram.com/bitmaskers/" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <i class="icon icon-instagram"></i>
+        </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=234b454b87"></script>
+
+    
+
+    <script>
+    function shareOnFB(){
+        let url="https://www.facebook.com/sharer/sharer.php?u=" + window.location.href;
+        window.open(url);
+    }
+    function shareOnLinkedIn(){
+        let url="https://www.linkedin.com/sharing/share-offsite/?url=" + window.location.href;
+        window.open(url);
+    }
+    function shareOnWhatsapp(){
+        let url="whatsapp://send?text=" + window.location.href;
+        window.open(url);
+    }
+</script>
+</body>
+
+</html>

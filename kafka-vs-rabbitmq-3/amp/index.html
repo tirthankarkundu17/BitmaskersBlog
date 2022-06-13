@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html ⚡>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+
+    </script>
+    <title>Kafka vs RabbitMQ</title>
+
+    <meta name="description" content="What are the use cases related to Kafka and RabbitMQ?" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://bitmaskers.in/kafka-vs-rabbitmq-3/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="The Bitmaskers" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Kafka vs RabbitMQ" />
+    <meta property="og:description" content="What are the use cases related to Kafka and RabbitMQ?" />
+    <meta property="og:url" content="https://bitmaskers.in/kafka-vs-rabbitmq-3/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta property="article:published_time" content="2021-03-31T18:40:54.000Z" />
+    <meta property="article:modified_time" content="2021-04-29T18:41:56.000Z" />
+    <meta property="article:tag" content="messaging-queue" />
+    <meta property="article:tag" content="rabbitmq" />
+    <meta property="article:tag" content="kafka" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/bitmaskers" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kafka vs RabbitMQ" />
+    <meta name="twitter:description" content="What are the use cases related to Kafka and RabbitMQ?" />
+    <meta name="twitter:url" content="https://bitmaskers.in/kafka-vs-rabbitmq-3/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Tirthankar Kundu" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="messaging-queue, rabbitmq, kafka" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1333" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Bitmaskers",
+        "url": "https://bitmaskers.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2021/06/Logos-1.svg"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tirthankar Kundu",
+        "url": "https://bitmaskers.in/author/tirthankar/",
+        "sameAs": []
+    },
+    "headline": "Kafka vs RabbitMQ",
+    "url": "https://bitmaskers.in/kafka-vs-rabbitmq-3/",
+    "datePublished": "2021-03-31T18:40:54.000Z",
+    "dateModified": "2021-04-29T18:41:56.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1550439062-609e1531270e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&ixlib=rb-1.2.1&q=80&w=2000",
+        "width": 2000,
+        "height": 1333
+    },
+    "keywords": "messaging-queue, rabbitmq, kafka",
+    "description": "What are the use cases related to Kafka and RabbitMQ?",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://bitmaskers.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.48" />
+    <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/" />
+
+    <style amp-custom>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            font-size: 62.5%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #3a4145;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+            font-size: 1.7rem;
+            line-height: 1.55em;
+            font-weight: 400;
+            font-style: normal;
+            background: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        p,
+        ul,
+        ol,
+        li,
+        dl,
+        dd,
+        hr,
+        pre,
+        form,
+        table,
+        video,
+        figure,
+        figcaption,
+        blockquote {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul[class],
+        ol[class] {
+            padding: 0;
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        input,
+        button,
+        select,
+        textarea {
+            font: inherit;
+            -webkit-appearance: none;
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        hr {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid currentcolor;
+            opacity: 0.1;
+        }
+
+        ::selection {
+            text-shadow: none;
+            background: #cbeafb;
+        }
+
+        mark {
+            background-color: #fdffb6;
+        }
+
+        small {
+            font-size: 80%;
+        }
+
+        sub,
+        sup {
+            position: relative;
+            font-size: 75%;
+            line-height: 0;
+            vertical-align: baseline;
+        }
+
+        sup {
+            top: -0.5em;
+        }
+
+        sub {
+            bottom: -0.25em;
+        }
+
+        ul li+li {
+            margin-top: 0.6em;
+        }
+
+        a {
+            color: #1292EE;
+            text-decoration-skip-ink: auto;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+            font-weight: 700;
+            color: #121212;
+            line-height: 1.4em;
+        }
+
+        h1 {
+            font-size: 3.4rem;
+            line-height: 1.1em;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            line-height: 1.2em;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        h4 {
+            font-size: 1.7rem;
+        }
+
+        h5 {
+            font-size: 1.6rem;
+        }
+
+        h6 {
+            font-size: 1.6rem;
+        }
+
+        amp-img {
+            height: 100%;
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        amp-img img {
+            object-fit: cover;
+        }
+
+        .page-header {
+            padding: 50px 5vmin 30px;
+            text-align: center;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .page-header a {
+            color: #121212;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.6rem;
+            letter-spacing: -0.1px;
+        }
+
+        .post {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .post-header {
+            margin: 0 5vmin 5vmin;
+            text-align: center;
+        }
+
+        .post-meta {
+            margin: 1rem 0 0 0;
+            text-transform: uppercase;
+            color: #738a94;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+
+        .post-image {
+            margin: 0 0 5vmin;
+        }
+
+        .post-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .post-content {
+            padding: 0 5vmin;
+        }
+
+        .post-content>*+* {
+            margin-top: 1.5em;
+        }
+
+        .post-content [id]:not(:first-child) {
+            margin: 2em 0 0;
+        }
+
+        .post-content>[id]+* {
+            margin-top: 1rem;
+        }
+
+        .post-content [id]+.kg-card,
+        .post-content blockquote+.kg-card {
+            margin-top: 40px;
+        }
+
+        .post-content>ul,
+        .post-content>ol,
+        .post-content>dl {
+            padding-left: 1.9em;
+        }
+
+        .post-content hr {
+            margin-top: 40px;
+        }
+
+        .post .post-content hr+* {
+            margin-top: 40px;
+        }
+
+        .post-content amp-img {
+            background-color: #f8f8f8;
+        }
+
+        .post-content blockquote {
+            position: relative;
+            font-style: italic;
+        }
+
+        .post-content blockquote::before {
+            content: "";
+            position: absolute;
+            left: -1.5em;
+            top: 0;
+            bottom: 0;
+            width: 0.3rem;
+            background: #000;
+        }
+
+        .post-content :not(.kg-card):not([id])+.kg-card {
+            margin-top: 40px;
+        }
+
+        .post-content .kg-card+ :not(.kg-card) {
+            margin-top: 40px;
+        }
+
+        .kg-card figcaption {
+            padding: 1.5rem 1.5rem 0;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.3rem;
+            line-height: 1.4em;
+            opacity: 0.6;
+        }
+
+        .kg-card figcaption strong {
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .post-content :not(pre) code {
+            vertical-align: middle;
+            padding: 0.15em 0.4em 0.15em;
+            border: #e1eaef 1px solid;
+            font-weight: 400;
+            font-size: 0.9em;
+            line-height: 1em;
+            color: #dc0050;
+            background: #f0f6f9;
+            border-radius: 0.25em;
+        }
+
+        .post-content>pre {
+            overflow: scroll;
+            padding: 16px 20px;
+            color: #fff;
+            background: #1F2428;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px -2px rgba(0, 0, 0, .1), 0 0 1px rgba(0, 0, 0, .4);
+        }
+
+        .kg-embed-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .kg-image-card img {
+            margin: auto;
+        }
+
+        .kg-gallery-card+.kg-gallery-card {
+            margin-top: 0.75em;
+        }
+
+        .kg-gallery-container {
+            position: relative;
+        }
+
+        .kg-gallery-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .kg-gallery-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .kg-gallery-row:not(:first-of-type) {
+            margin: 0.75em 0 0 0;
+        }
+
+        .kg-gallery-image:not(:first-of-type) {
+            margin: 0 0 0 0.75em;
+        }
+
+        .kg-bookmark-card,
+        .kg-bookmark-publisher {
+            position: relative;
+        }
+
+        .kg-bookmark-container,
+        .kg-bookmark-container:hover {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row-reverse;
+            color: currentColor;
+            background: rgba(255, 255, 255, 0.6);
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .kg-bookmark-content {
+            flex-basis: 0;
+            flex-grow: 999;
+            padding: 20px;
+            order: 1;
+        }
+
+        .kg-bookmark-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+            line-height: 1.3em;
+        }
+
+        .kg-bookmark-description {
+            display: -webkit-box;
+            max-height: 45px;
+            margin: 0.5em 0 0 0;
+            font-size: 1.4rem;
+            line-height: 1.55em;
+            overflow: hidden;
+            opacity: 0.8;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .kg-bookmark-metadata {
+            margin-top: 20px;
+        }
+
+        .kg-bookmark-metadata {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.3rem;
+            line-height: 1.3em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .kg-bookmark-description {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .kg-bookmark-metadata amp-img {
+            width: 18px;
+            height: 18px;
+            max-width: 18px;
+            max-height: 18px;
+            margin-right: 10px;
+        }
+
+        .kg-bookmark-thumbnail {
+            display: flex;
+            flex-basis: 20rem;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+
+        .kg-bookmark-thumbnail amp-img {
+            max-height: 200px;
+        }
+
+        .kg-bookmark-author {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .kg-bookmark-publisher::before {
+            content: "•";
+            margin: 0 .5em;
+        }
+
+        .kg-width-full.kg-card-hascaption {
+            display: grid;
+            grid-template-columns: inherit;
+        }
+
+        .post-content table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .post-content th {
+            padding: 0.5em 0.8em;
+            text-align: left;
+            font-size: .75em;
+            text-transform: uppercase;
+        }
+
+        .post-content td {
+            padding: 0.4em 0.7em;
+        }
+
+        .post-content tbody tr:nth-child(2n + 1) {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 1px;
+        }
+
+        .post-content tbody tr:nth-child(2n + 2) td:last-child {
+            box-shadow:
+                inset 1px 0 rgba(0, 0, 0, 0.1),
+                inset -1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content tbody tr:nth-child(2n + 2) td {
+            box-shadow: inset 1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content tbody tr:last-child {
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+        }
+
+        .page-footer {
+            padding: 60px 5vmin;
+            margin: 60px auto 0;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+
+        .page-footer h3 {
+            margin: 0.5rem 0 0 0;
+        }
+
+        .page-footer p {
+            max-width: 500px;
+            margin: 1rem auto 1.5rem;
+            font-size: 1.7rem;
+            line-height: 1.5em;
+            color: rgba(0, 0, 0, 0.6)
+        }
+
+        .powered {
+            display: inline-flex;
+            align-items: center;
+            margin: 30px 0 0;
+            padding: 6px 9px 6px 6px;
+            border: rgba(0, 0, 0, 0.1) 1px solid;
+            font-size: 12px;
+            line-height: 12px;
+            letter-spacing: -0.2px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            font-weight: 500;
+            color: #222;
+            text-decoration: none;
+            background: #fff;
+            border-radius: 6px;
+        }
+
+        .powered svg {
+            height: 16px;
+            width: 16px;
+            margin: 0 6px 0 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 1.6rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 2.6rem;
+                line-height: 1.15em;
+            }
+
+            h2 {
+                font-size: 2rem;
+                line-height: 1.2em;
+            }
+
+            h3 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style><noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7990894864273181">
+    </amp-auto-ads>
+    <header class="page-header">
+        <a href="https://bitmaskers.in">
+            <amp-img class="site-icon" src="https://bitmaskers.in/content/images/2021/02/iconfav.png" width="50" height="50"
+                layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Kafka vs RabbitMQ</h1>
+                <section class="post-meta">
+                    Tirthankar Kundu -
+                    <time class="post-date" datetime=" 2021-03-31">31 Mar                        2021</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" width="600" height="340" layout="responsive">
+                </amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>This is third part to the already published Part I  and II which can be found below</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/kafka-vs-rabbitmq/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Kafka vs RabbitMQ</div><div class="kg-bookmark-description">Are RabbitMQ and Kafka same ?</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt width="5472" height="3648" layout="responsive"></amp-img></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/kafka-vs-rabbitmq-2/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Kafka vs RabbitMQ</div><div class="kg-bookmark-description">What is the difference between Kafka and RabbitMQ?</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=2000" alt width="5184" height="3456" layout="responsive"></amp-img></div></a></figure><hr></hr><p>We have seen how RabbitMQ and Kafka are two different things which are often confused.</p><p>Now let us see the common use cases associated with them.</p><blockquote>RabbitMQ</blockquote><p>RabbitMQ can be used when web servers need to quickly respond to requests. This eliminates the need to perform resource-intensive activities while the user waits for a result. RabbitMQ is also used to convey a message to various recipients for consumption or to share loads between workers under high load (20K+ messages/second).</p><p>Scenarios that RabbitMQ can be used for:</p><ul><li>Applications that need to support legacy protocols, such as STOMP, MQTT, AMQP, 0-9-1.</li><li>Granular control over consistency/set of guarantees on a per-message basis</li><li>Complex routing to consumers</li><li>Applications that need a variety of publish/subscribe, point-to-point request/reply messaging capabilities.</li></ul><p>RabbitMQ is the obvious option if you want a simple/traditional pub-sub message broker. If my requirements were easy enough to deal with device communication across channels/queues and retention and streaming were not a requirement, I would have preferred RabbitMQ.</p><p>There are two main situations where we would choose RabbitMQ; For long-running tasks, when we need to run reliable background jobs. And for communication and integration between microservices/applications, where a system simply needs to notify another part of the system to start to work on a task, like ordering handling in a e-commerce (order placed, update order status, send order, payment, etc.).</p><h4 id="long-running-tasks"><strong>LONG-RUNNING TASKS</strong></h4><p>Message queues enable asynchronous processing, meaning that they allow you to put a message in a queue without processing it immediately. RabbitMQ is ideal for long-running tasks.</p><p>An example can be where users upload details and the application generates PDF and sends email. This can be resource intensive and time consuming. So we can use the asynchronous processing using RabbitMQ.</p><p>Many a times RabbitMQ queues serve as event buses allowing web servers to respond quickly to requests instead of being forced to perform computationally intensive tasks on the spot.</p><h4 id="middleman-in-a-microservice-architectures"><strong>MIDDLEMAN IN A MICROSERVICE ARCHITECTURES</strong></h4><p>RabbitMQ is also used for microservice architecture, where it serves as a means of communicating between applications, avoiding bottlenecks passing messages.</p><p>An example can be e-commerce apps where different microservices are orchestrated using queues likes RabbitMQ.</p><hr></hr><blockquote>Apache Kafka</blockquote><p>Supports use cases such as metrics, activity tracking, log aggregation, stream processing, commit logs and event sourcing.</p><p>The following messaging scenarios are especially suited for Kafka:</p><ul><li>Streams with complex routing, throughput of 100K/sec events or more, with <strong>at least once</strong> partitioned ordering</li><li>Applications requiring a stream history, delivered in <strong>at least once</strong> partitioned ordering. Clients can see a <strong>replay</strong> of the event stream.</li><li>Event sourcing, modeling changes to a system as a sequence of events.</li><li>Stream processing data in multi-stage pipelines. The pipelines generate graphs of real-time data flows</li></ul><p>In general, if you want a framework for storing, reading (re-reading), and analyzing streaming data, use Apache Kafka. It's perfect for audited systems or those who need to keep messages for a long time. This can also be divided into two categories: data analysis (tracking, ingestion, logging, security, and so on) and real-time processing.</p><h4 id="data-analysis-tracking-ingestion-logging-security"><strong>DATA ANALYSIS: TRACKING, INGESTION, LOGGING, SECURITY</strong></h4><p>In all these cases, large amounts of data need to be collected, stored, and handled. Companies that need to gain insights into data, provide search features, auditing or analysis of tons of data justify the use of Kafka.</p><p>According to the creators of Apache Kafka, the original use case for Kafka was to track website activity including page views, searches, uploads or other actions users may take. This kind of activity tracking often requires a very high volume of throughput, since messages are generated for each action and for each user. Many of these activities - in fact, all of the system activities - can be stored in Kafka and handled as needed.</p><p>Producers of data only need to send their data to a single place while a host of backend services can consume the data as required. Major analytics, search and storage systems have integrations with Kafka.</p><h4 id="real-time-processing"><strong>REAL-TIME PROCESSING</strong></h4><p>Kafka acts as a high-throughput distributed system; source services push streams of data into the target services that pull them in real-time.</p><p>Kafka could be used in systems handling many producers in real-time with a small number of consumers; i.e. financial IT systems monitoring stock data.</p><p>Streaming services like Spotify publish information in real-time over Kafka. The ability to handle high-throughput in real-time empowers applications., making these applications more powerful than ever before.</p><hr></hr><p>Hope you liked this series on RabbitMQ vs Kafka.</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <amp-img class="site-icon" src="https://bitmaskers.in/content/images/2021/02/iconfav.png" width="50" height="50" layout="fixed">
+        </amp-img>
+        <h3>The Bitmaskers</h3>
+        <p>One stop shelter for Software Development Tools, News and Business!</p>
+        <p><a href="https://bitmaskers.in">Read more posts →</a></p>
+    </footer>
+    
+</body>
+
+</html>
