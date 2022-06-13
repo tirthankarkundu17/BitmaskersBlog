@@ -21,7 +21,7 @@
     <meta property="og:url" content="https://bitmaskers.in/create-shareable-link-to-s3-files-using-mulesoft/" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1599153066743-08810dc8a419?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDJ8fGF3c3xlbnwwfHx8fDE2NTUwODM5NDU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" />
     <meta property="article:published_time" content="2021-10-29T10:18:00.000Z" />
-    <meta property="article:modified_time" content="2022-06-13T01:32:46.000Z" />
+    <meta property="article:modified_time" content="2022-06-13T08:26:25.000Z" />
     <meta property="article:tag" content="mulesoft" />
     <meta property="article:tag" content="aws" />
     
@@ -60,7 +60,7 @@
     "headline": "Create Shareable link to private S3 Files using MuleSoft",
     "url": "https://bitmaskers.in/create-shareable-link-to-s3-files-using-mulesoft/",
     "datePublished": "2021-10-29T10:18:00.000Z",
-    "dateModified": "2022-06-13T01:32:46.000Z",
+    "dateModified": "2022-06-13T08:26:25.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1599153066743-08810dc8a419?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDJ8fGF3c3xlbnwwfHx8fDE2NTUwODM5NDU&ixlib=rb-1.2.1&q=80&w=2000",
@@ -742,11 +742,11 @@
             </figure>
             <section class="post-content">
 
-                <p>AWS is one of the most popular Cloud platform. Check a detailed post on AWS S3 here:</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/integrating-aws-s3-with-mulesoft/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Integrating AWS S3 with MuleSoft</div><div class="kg-bookmark-description">AWS is one of the most popular Cloud platform. Check a detailed post on AWShere: AWS Cloud ComputingAWS and its use.The BitmaskersTirthankar Kundu [/aws/]&gt; AWS S3Amazon Simple Storage Service (Amazon S3) is an object storage service thatoffers industry-leading scalability, data availability, sec…</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"></div></a></figure><hr></hr><blockquote>The Problem</blockquote><p>Now let us talk about the use case we are trying to solve.</p><p>We want to share some of the private files in AWS S3 to external users for a limited period.</p><blockquote>The Solution</blockquote><p>AWS S3 allows us to solve this problem using Presigned URLs.</p><p>All objects by default are private. Only the object owner has permission to access these objects. However, the object owner can optionally share objects with others by creating a presigned URL, using their own security credentials, to grant time-limited permission to download the objects.</p><hr></hr><h3 id="now-let-us-create-the-integration-using-mulesoft">Now let us create the integration using MuleSoft</h3><blockquote>Connector Configuration</blockquote><ul><li>First import the AWS S3 connector from Exchange</li></ul><figure class="kg-card kg-image-card"></figure><ul><li>Create a Connector configuration as below</li></ul><figure class="kg-card kg-image-card"></figure><hr></hr><blockquote>Create a private flow or a sub flow to generate presigned url</blockquote><figure class="kg-card kg-image-card"></figure><p></p><ol>
+                <p>AWS is one of the most popular cloud platforms. Check a detailed post on AWS S3 here:</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/integrating-aws-s3-with-mulesoft/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Integrating AWS S3 with MuleSoft</div><div class="kg-bookmark-description">Learn how to integrate AWS S3 with MuleSoft</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"></div></a></figure><hr></hr><blockquote>The Problem</blockquote><p>Now let us talk about the use case we are trying to solve.</p><p>We want to share some of the private files in AWS S3 with external users for a limited period.</p><blockquote>The Solution</blockquote><p>AWS S3 allows us to solve this problem using Presigned URLs.</p><p>All objects by default are private. Only the object owner has permission to access these objects. However, the object owner can optionally share objects with others by creating a presigned URL, using their security credentials, to grant time-limited permission to download the objects.</p><hr></hr><h3 id="now-let-us-create-the-integration-using-mulesoft">Now let us create the integration using MuleSoft</h3><blockquote>Connector Configuration</blockquote><ul><li>First import the AWS S3 connector from Exchange</li></ul><figure class="kg-card kg-image-card"></figure><ul><li>Create a Connector configuration as below</li></ul><figure class="kg-card kg-image-card"></figure><hr></hr><blockquote>Create a private flow or a sub flow to generate presigned url</blockquote><figure class="kg-card kg-image-card"></figure><p></p><ol>
 <li>We set the bucket name</li>
 <li>We set the key of the object/file we want to share</li>
-<li>We set the time till which the url is suppose to be active</li>
-<li>We use the S3 Create object presigned uri operation to generate shareable url<br />
+<li>We set the time till which the URL is suppose to be active</li>
+<li>We use the S3 Create object presigned URI operation to generate shareable URL<br />
 </li>
 <li>We Transform the message to show output<br />
 </li>
