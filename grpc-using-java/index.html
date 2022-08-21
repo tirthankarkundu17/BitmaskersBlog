@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gRPC using Java</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=89304d157a">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://bitmaskers.in/introduction-to-grpc-using-java/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://bitmaskers.in/introduction-to-grpc-using-java/amp/" />
+    
+    <meta property="og:site_name" content="The Bitmaskers" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="gRPC using Java" />
+    <meta property="og:description" content="What is gRPCAs per the official site -  gRPC is a modern open-source high-performance Remote Procedure Call (RPC) framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking, and authentication. It is also applicable" />
+    <meta property="og:url" content="https://bitmaskers.in/introduction-to-grpc-using-java/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta property="article:published_time" content="2022-08-21T12:00:28.000Z" />
+    <meta property="article:modified_time" content="2022-08-21T12:08:04.000Z" />
+    <meta property="article:publisher" content="https://www.facebook.com/bitmaskers" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="gRPC using Java" />
+    <meta name="twitter:description" content="What is gRPCAs per the official site -  gRPC is a modern open-source high-performance Remote Procedure Call (RPC) framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking, and authentication. It is also applicable" />
+    <meta name="twitter:url" content="https://bitmaskers.in/introduction-to-grpc-using-java/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Tirthankar Kundu" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1333" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Bitmaskers",
+        "url": "https://bitmaskers.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2022/06/Logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tirthankar Kundu",
+        "url": "https://bitmaskers.in/author/tirthankar/",
+        "sameAs": []
+    },
+    "headline": "gRPC using Java",
+    "url": "https://bitmaskers.in/introduction-to-grpc-using-java/",
+    "datePublished": "2022-08-21T12:00:28.000Z",
+    "dateModified": "2022-08-21T12:08:04.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&ixlib=rb-1.2.1&q=80&w=2000",
+        "width": 2000,
+        "height": 1333
+    },
+    "description": "&gt; What is gRPC\nAs per the official site [https://grpc.io/]- \n\ngRPC is a modern open-source high-performance Remote Procedure Call (RPC)\nframework that can run in any environment. It can efficiently connect services\nin and across data centers with pluggable support for load balancing, tracing,\nhealth checking, and authentication. It is also applicable in the last mile of\ndistributed computing to connect devices, mobile applications, and browsers to\nbackend services.\n\nSome salient features - \n\n * ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://bitmaskers.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.48" />
+    <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.22.0/umd/portal.min.js" data-ghost="https://bitmaskers.in/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="/public/cards.min.js?v=89304d157a"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=89304d157a">
+    <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DFHKPW99Q');
+</script>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+    function updateCoverImage(){
+        console.log('Updating');
+        let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
+        for(let image of images){
+            if(!image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+        }
+
+        let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
+        if(image != null && !image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+	}
+    addEventListener('load', updateCoverImage, false);
+
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2022/06/Logo.png" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+</ul>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">gRPC using Java</h1>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2022-08-21">
+                            Aug 21, 2022
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+            </div>
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/introduction-to-grpc-using-java/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI3fHxjb21wdXRlcnxlbnwwfHx8fDE2NjEwODMxNDc&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="gRPC using Java">
+            </a>
+        </div>
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <blockquote>What is gRPC</blockquote><p>As per the official <a href="https://grpc.io/">site </a>- </p><p>gRPC is a modern open-source high-performance Remote Procedure Call (RPC) framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking, and authentication. It is also applicable in the last mile of distributed computing to connect devices, mobile applications, and browsers to backend services.</p><p>Some salient features - </p><ul><li>Simple service definition using Protocol Buffers</li><li>Easily scalable</li><li>Works across languages and platforms</li><li>Supports Bidirectional streaming with HTTP/2-based transport</li></ul><hr><blockquote>gRPC Architecture</blockquote><p>gRPC is based on the idea of defining a service, specifying the methods that can be called remotely with their parameters and return types. On the server side, the server implements this interface and runs a gRPC server to handle client requests. On the client side, the client has a stub that provides the same methods as the server.</p><p></p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/architecture.svg" class="kg-image" alt loading="lazy" width="552" height="327"></figure><p></p><hr><blockquote>Protocol Buffers</blockquote><p>Protobuf is the most commonly used IDL (Interface Definition Language) for gRPC. It's where you store your data and function contracts in the form of a proto file.</p><p>Both Client and Server need to have the same proto file which acts as a contract between them.</p><p>Protobuf is popular since it sends over JSON strings as bytes, making it much smaller and enabling faster performance. </p><p>Learn more about it <a href="https://developers.google.com/protocol-buffers/">here</a>.</p><hr><p>Now that we know some theory, let's get our hands dirty! We will use Java to create a gRPC server and call it using postman.</p><blockquote>Code Setup</blockquote><ul><li>Let's create a new maven project in Inteiij/Eclipse</li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/project-setup1.png" class="kg-image" alt loading="lazy" width="862" height="623" srcset="https://bitmaskers.in/content/images/size/w600/2022/08/project-setup1.png 600w, https://bitmaskers.in/content/images/2022/08/project-setup1.png 862w" sizes="(min-width: 720px) 720px"></figure><ul><li>Now let's add a few required dependencies</li></ul><p>See the detailed pom file <a href="https://gist.github.com/tirthankarkundu17/ee54a30e4646f6a68d09a5db9a696978">here</a></p><ul><li>Now we will create the proto file as below -</li></ul><!--kg-card-begin: markdown--><pre><code>syntax = &quot;proto3&quot;;
+
+option java_package = &quot;in.bitmaskers.grpc&quot;;
+option java_outer_classname = &quot;Todos&quot;;
+
+service TodoStore {
+  rpc add (Todo) returns (APIResponse);
+  rpc listTodos(Empty) returns (TodoList);
+  rpc listStreamingTodos(Empty) returns (stream TodoList);
+}
+
+message Todo {
+  string name = 1;
+}
+
+message TodoList {
+  repeated Todo todos = 1;
+}
+
+message Empty {
+}
+
+message APIResponse{
+  string responseMessage = 1;
+  int32 responseCode = 2;
+}
+</code></pre>
+<!--kg-card-end: markdown--><ul><li>Now let's run 'mvn clean install' from the location of the app and we can see the appropriate java files will be created </li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/proto-java-files.png" class="kg-image" alt loading="lazy" width="408" height="176"></figure><ul><li>Now we will create TodosStoreService which will extend TodoStoreGrpc.TodoStoreImplBase and override the methods.</li></ul><p></p><blockquote>Creating the Server</blockquote><p>Now let's implement the methods created in the previous steps</p><ul><li>First, we create a transient In memory Todo List to save the todos. We can always hook it to a database but let's keep it in memory for this article</li><li>Method to add Todos</li></ul><!--kg-card-begin: markdown--><pre><code>@Override
+    public void add(Todos.Todo request, StreamObserver&lt;Todos.APIResponse&gt; responseObserver) {
+        String name = request.getName();
+        Todos.Todo todo = Todos.Todo.newBuilder().setName(name).buildPartial();
+        todoList.add(todo);
+        Todos.APIResponse.Builder apiResponse = Todos.APIResponse.newBuilder();
+        apiResponse.setResponseCode(0);
+        apiResponse.setResponseMessage(&quot;Todo added successfully&quot;);
+        responseObserver.onNext(apiResponse.build());
+        responseObserver.onCompleted();
+    }
+</code></pre>
+<!--kg-card-end: markdown--><p>Here, we take the input name from the request, create a new Todo using the Builder pattern and then add it to in memory TodoList.</p><p>Additionally, we also create an apiResponse which is sent back using responseObserver. </p><ul><li>Method to searchTodo</li></ul><!--kg-card-begin: markdown--><pre><code>@Override
+    public void searchTodo(Todos.TodoSearch request, StreamObserver&lt;Todos.Todo&gt; responseObserver) {
+        String name = request.getName();
+        Optional&lt;Todos.Todo&gt; optionalTodo = todoList.stream().filter(todo -&gt; todo.getName().equals(name)).findFirst();
+        if (optionalTodo.isPresent()) {
+            responseObserver.onNext(optionalTodo.get());
+        } else {
+            responseObserver.onNext(Todos.Todo.newBuilder().buildPartial());
+        }
+        responseObserver.onCompleted();
+    }
+</code></pre>
+<!--kg-card-end: markdown--><p>Here we use streams API to search for the todo with the name passed and return it if found else return empty</p><ul><li>Method to  stream a list of Todos</li></ul><p>This is an interesting one. We are not sending the entire Todo List in one go but streaming it using Server Streaming capability. </p><!--kg-card-begin: markdown--><pre><code>@Override
+    public void listTodos(Todos.Empty request, StreamObserver&lt;Todos.Todo&gt; responseObserver) {
+        for (Todos.Todo todo : todoList) {
+            responseObserver.onNext(todo);
+            try {
+                // Replicate time-consuming IO Calls
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        responseObserver.onCompleted();
+    }
+</code></pre>
+<!--kg-card-end: markdown--><p>Here we are using Thread sleep of 5000ms to replicate some time-consuming IO calls.</p><ul><li>The Server</li></ul><p>Easiest one of all. We create a main method that can be used to run the code.</p><!--kg-card-begin: markdown--><pre><code>public class GRPCServer {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Server server = ServerBuilder.forPort(9090).addService(new TodosStoreService()).build();
+        server.start();
+        System.out.println(&quot;Server started at &quot; + server.getPort());
+        server.awaitTermination();
+    }
+}
+</code></pre>
+<!--kg-card-end: markdown--><hr><p>All right our server is ready. Now let's run it and use postman to perform some calls.</p><blockquote>Setting postman</blockquote><ul><li>Create a new gRPC request</li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/postman-1.png" class="kg-image" alt loading="lazy" width="1247" height="827" srcset="https://bitmaskers.in/content/images/size/w600/2022/08/postman-1.png 600w, https://bitmaskers.in/content/images/size/w1000/2022/08/postman-1.png 1000w, https://bitmaskers.in/content/images/2022/08/postman-1.png 1247w" sizes="(min-width: 720px) 720px"></figure><ul><li>Import the proto file created before</li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/postman-2.png" class="kg-image" alt loading="lazy" width="887" height="740" srcset="https://bitmaskers.in/content/images/size/w600/2022/08/postman-2.png 600w, https://bitmaskers.in/content/images/2022/08/postman-2.png 887w" sizes="(min-width: 720px) 720px"></figure><p>Import is as an API</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/postman-4.png" class="kg-image" alt loading="lazy" width="816" height="631" srcset="https://bitmaskers.in/content/images/size/w600/2022/08/postman-4.png 600w, https://bitmaskers.in/content/images/2022/08/postman-4.png 816w" sizes="(min-width: 720px) 720px"></figure><ul><li>We should now see the URL and methods appearing</li></ul><p>Let's now run all the methods and see them in action</p><ul><li> Add Todo</li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/postman-5.png" class="kg-image" alt loading="lazy" width="1767" height="642" srcset="https://bitmaskers.in/content/images/size/w600/2022/08/postman-5.png 600w, https://bitmaskers.in/content/images/size/w1000/2022/08/postman-5.png 1000w, https://bitmaskers.in/content/images/size/w1600/2022/08/postman-5.png 1600w, https://bitmaskers.in/content/images/2022/08/postman-5.png 1767w" sizes="(min-width: 720px) 720px"></figure><ul><li>Search Todo</li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/postman-6.png" class="kg-image" alt loading="lazy" width="1795" height="451" srcset="https://bitmaskers.in/content/images/size/w600/2022/08/postman-6.png 600w, https://bitmaskers.in/content/images/size/w1000/2022/08/postman-6.png 1000w, https://bitmaskers.in/content/images/size/w1600/2022/08/postman-6.png 1600w, https://bitmaskers.in/content/images/2022/08/postman-6.png 1795w" sizes="(min-width: 720px) 720px"></figure><ul><li>List Todos</li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/postman-7.png" class="kg-image" alt loading="lazy" width="1817" height="807" srcset="https://bitmaskers.in/content/images/size/w600/2022/08/postman-7.png 600w, https://bitmaskers.in/content/images/size/w1000/2022/08/postman-7.png 1000w, https://bitmaskers.in/content/images/size/w1600/2022/08/postman-7.png 1600w, https://bitmaskers.in/content/images/2022/08/postman-7.png 1817w" sizes="(min-width: 720px) 720px"></figure><p>See the response is a streaming one with some gap in between!</p><hr><p>All right folks! This was a long one but enjoyed learning something new.</p><p>Hope you like it. Cheers 🍻 </p>
+            </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/introduction-to-grpc-using-java/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/introduction-to-grpc-using-java/&text=gRPC%20using%20Java" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/introduction-to-grpc-using-java/&media=&description=gRPC%20using%20Java"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/introduction-to-grpc-using-java/&title=gRPC%20using%20Java"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/introduction-to-grpc-using-java/&title=gRPC%20using%20Java" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/introduction-to-grpc-using-java/&title=gRPC%20using%20Java"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/introduction-to-grpc-using-java/&title=gRPC%20using%20Java" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/introduction-to-grpc-using-java/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/introduction-to-grpc-using-java/&text=gRPC%20using%20Java" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
+        <div class="author-image-placeholder u-placeholder">
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
+        </div>
+        <div class="author-wrapper">
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
+                    </div>
+                </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
+            </div>
+        </article>
+
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/serverless-upload-api/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
+
+</div>                    </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2021 |
+    </div>
+
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2022/06/Logo.png" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-facebook"
+            href="https://www.instagram.com/bitmaskers/" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <i class="icon icon-instagram"></i>
+        </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=89304d157a"></script>
+
+    
+
+    
+</body>
+
+</html>
