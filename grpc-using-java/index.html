@@ -241,16 +241,16 @@ option java_outer_classname = &quot;Todos&quot;;
 
 service TodoStore {
   rpc add (Todo) returns (APIResponse);
-  rpc listTodos(Empty) returns (TodoList);
-  rpc listStreamingTodos(Empty) returns (stream TodoList);
+  rpc searchTodo(TodoSearch) returns (Todo);
+  rpc listTodos(Empty) returns (stream Todo);
 }
 
 message Todo {
   string name = 1;
 }
 
-message TodoList {
-  repeated Todo todos = 1;
+message TodoSearch {
+  string name = 1;
 }
 
 message Empty {
@@ -259,7 +259,6 @@ message Empty {
 message APIResponse{
   string responseMessage = 1;
   int32 responseCode = 2;
-}
 </code></pre>
 <!--kg-card-end: markdown--><ul><li>Now let's run 'mvn clean install' from the location of the app and we can see the appropriate java files will be created </li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2022/08/proto-java-files.png" class="kg-image" alt loading="lazy" width="408" height="176"></figure><ul><li>Now we will create TodosStoreService which will extend TodoStoreGrpc.TodoStoreImplBase and override the methods.</li></ul><p></p><blockquote>Creating the Server</blockquote><p>Now let's implement the methods created in the previous steps</p><ul><li>First, we create a transient In memory Todo List to save the todos. We can always hook it to a database but let's keep it in memory for this article</li><li>Method to add Todos</li></ul><!--kg-card-begin: markdown--><pre><code>@Override
     public void add(Todos.Todo request, StreamObserver&lt;Todos.APIResponse&gt; responseObserver) {

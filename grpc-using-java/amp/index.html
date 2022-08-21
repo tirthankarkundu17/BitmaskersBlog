@@ -742,16 +742,16 @@ option java_outer_classname = "Todos";
 
 service TodoStore {
   rpc add (Todo) returns (APIResponse);
-  rpc listTodos(Empty) returns (TodoList);
-  rpc listStreamingTodos(Empty) returns (stream TodoList);
+  rpc searchTodo(TodoSearch) returns (Todo);
+  rpc listTodos(Empty) returns (stream Todo);
 }
 
 message Todo {
   string name = 1;
 }
 
-message TodoList {
-  repeated Todo todos = 1;
+message TodoSearch {
+  string name = 1;
 }
 
 message Empty {
