@@ -18,30 +18,26 @@
     <link rel="canonical" href="https://bitmaskers.in/serverless-chat-gpt-api-in-go/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="amphtml" href="https://bitmaskers.in/serverless-chat-gpt-api-in-go/amp/" />
-
+    
     <meta property="og:site_name" content="The Bitmaskers" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Serverless Chat GPT API in Go" />
-    <meta property="og:description"
-        content="This blog shares how to create your own serverless ChatGPT API in Go. What is Chat GPT ?A natural language processing (NLP) model called GPT-3, also known as the &quot;Generative Pre-training Transformer 3,&quot; was developed using text that humans produced. It can create its own human-like text using a range" />
+    <meta property="og:description" content="This blog shares how to create your own serverless ChatGPT API in Go. What is Chat GPT ?A natural language processing (NLP) model called GPT-3, also known as the &quot;Generative Pre-training Transformer 3,&quot; was developed using text that humans produced. It can create its own human-like text using a range" />
     <meta property="og:url" content="https://bitmaskers.in/serverless-chat-gpt-api-in-go/" />
-    <meta property="og:image"
-        content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" />
     <meta property="article:published_time" content="2023-01-13T21:45:12.000Z" />
-    <meta property="article:modified_time" content="2023-01-13T21:45:12.000Z" />
+    <meta property="article:modified_time" content="2023-01-13T22:04:41.000Z" />
     <meta property="article:publisher" content="https://www.facebook.com/bitmaskers" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Serverless Chat GPT API in Go" />
-    <meta name="twitter:description"
-        content="This blog shares how to create your own serverless ChatGPT API in Go. What is Chat GPT ?A natural language processing (NLP) model called GPT-3, also known as the &quot;Generative Pre-training Transformer 3,&quot; was developed using text that humans produced. It can create its own human-like text using a range" />
+    <meta name="twitter:description" content="This blog shares how to create your own serverless ChatGPT API in Go. What is Chat GPT ?A natural language processing (NLP) model called GPT-3, also known as the &quot;Generative Pre-training Transformer 3,&quot; was developed using text that humans produced. It can create its own human-like text using a range" />
     <meta name="twitter:url" content="https://bitmaskers.in/serverless-chat-gpt-api-in-go/" />
-    <meta name="twitter:image"
-        content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Tirthankar Kundu" />
     <meta property="og:image:width" content="2000" />
     <meta property="og:image:height" content="1333" />
-
+    
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -64,7 +60,7 @@
     "headline": "Serverless Chat GPT API in Go",
     "url": "https://bitmaskers.in/serverless-chat-gpt-api-in-go/",
     "datePublished": "2023-01-13T21:45:12.000Z",
-    "dateModified": "2023-01-13T21:45:12.000Z",
+    "dateModified": "2023-01-13T22:04:41.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&ixlib=rb-4.0.3&q=80&w=2000",
@@ -81,215 +77,164 @@
 
     <meta name="generator" content="Ghost 4.48" />
     <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/" />
-    <script defer src="https://unpkg.com/@tryghost/portal@~1.22.0/umd/portal.min.js" data-ghost="https://bitmaskers.in/"
-        crossorigin="anonymous"></script>
-    <style id="gh-members-styles">
-        .gh-post-upgrade-cta-content,
-        .gh-post-upgrade-cta {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            text-align: center;
-            width: 100%;
-            color: #ffffff;
-            font-size: 16px;
-        }
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.22.0/umd/portal.min.js" data-ghost="https://bitmaskers.in/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
 
-        .gh-post-upgrade-cta-content {
-            border-radius: 8px;
-            padding: 40px 4vw;
-        }
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
 
-        .gh-post-upgrade-cta h2 {
-            color: #ffffff;
-            font-size: 28px;
-            letter-spacing: -0.2px;
-            margin: 0;
-            padding: 0;
-        }
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
 
-        .gh-post-upgrade-cta p {
-            margin: 20px 0 0;
-            padding: 0;
-        }
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
 
-        .gh-post-upgrade-cta small {
-            font-size: 16px;
-            letter-spacing: -0.2px;
-        }
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
 
-        .gh-post-upgrade-cta a {
-            color: #ffffff;
-            cursor: pointer;
-            font-weight: 500;
-            box-shadow: none;
-            text-decoration: underline;
-        }
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
 
-        .gh-post-upgrade-cta a:hover {
-            color: #ffffff;
-            opacity: 0.8;
-            box-shadow: none;
-            text-decoration: underline;
-        }
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
 
-        .gh-post-upgrade-cta a.gh-btn {
-            display: block;
-            background: #ffffff;
-            text-decoration: none;
-            margin: 28px 0 0;
-            padding: 8px 18px;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-        }
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
 
-        .gh-post-upgrade-cta a.gh-btn:hover {
-            opacity: 0.92;
-        }
-    </style>
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
     <script defer src="/public/cards.min.js?v=fa850b49a8"></script>
     <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=fa850b49a8">
-    <script data-ad-client="ca-pub-7990894864273181" async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        gtag('config', 'G-6DFHKPW99Q');
-    </script>
+  gtag('config', 'G-6DFHKPW99Q');
+</script>
 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        function updateCoverImage() {
-            console.log('Updating');
-            let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
-            for (let image of images) {
-                if (!image.srcset.includes("images.unsplash.com"))
-                    image.srcset = ''
-            }
-
-            let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
-            if (image != null && !image.srcset.includes("images.unsplash.com"))
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+    function updateCoverImage(){
+        console.log('Updating');
+        let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
+        for(let image of images){
+            if(!image.srcset.includes("images.unsplash.com"))
                 image.srcset = ''
         }
-        addEventListener('load', updateCoverImage, false);
 
-    </script>
-    <style>
-        :root {
-            --ghost-accent-color: #15171A;
-        }
-    </style>
+        let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
+        if(image != null && !image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+	}
+    addEventListener('load', updateCoverImage, false);
+
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 
 <body class="post-template">
     <div class="site">
         <header class="site-header container">
-            <div class="navbar">
-                <div class="navbar-left">
-                    <div class="burger hidden-lg hidden-xl"></div>
-                    <a class="logo" href="http://localhost:2368">
-                        <img class="logo-image" style="opacity: 1;"
-                            src="https://bitmaskers.in/content/images/2022/06/Logo.png" alt="The Bitmaskers">
-                    </a>
-                    <div class="sep hidden-xs hidden-sm hidden-sm"></div>
-                    <nav class="main-menu hidden-xs hidden-sm hidden-md">
-                        <ul class="nav-list u-plain-list">
-                            <li class="menu-item menu-item-home"><a class="menu-item-link"
-                                    href="https://bitmaskers.in/">Home</a></li>
-                            <li class="menu-item menu-item-aws"><a class="menu-item-link"
-                                    href="https://bitmaskers.in/tag/aws/">AWS</a></li>
-                            <li class="menu-item menu-item-mule"><a class="menu-item-link"
-                                    href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
-                            <li class="menu-item menu-item-algo"><a class="menu-item-link"
-                                    href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
-                            <li class="menu-item menu-item-author"><a class="menu-item-link"
-                                    href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="navbar-right">
-                    <div class="toggle-track">
-                        <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
-                        <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
-                        <div class="toggle-thumb"></div>
-                    </div>
-                </div>
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="http://localhost:2368">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2022/06/Logo.png" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+</ul>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
             </div>
-        </header>
-        <div class="site-content">
-            <div class="content-area">
-                <main class="site-main">
-                    <article class="post single-post">
-                        <header class="post-header big-title container medium">
-                            <h1 class="post-title">Serverless Chat GPT API in Go</h1>
-                            <div class="post-meta">
-                                <span class="post-meta-item post-meta-date">
-                                    <time datetime="2023-01-13">
-                                        Jan 13, 2023
-                                    </time>
-                                </span>
-                                <span class="post-meta-item post-meta-length">
-                                    2 min read
-                                </span>
-                            </div>
-                        </header>
-                        <div class="post-media container large">
-                            <div class="u-placeholder horizontal">
-                                <a class="post-image-link" href="/serverless-chat-gpt-api-in-go/">
-                                    <img class="post-image lazyload u-object-fit"
-                                        data-srcset="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
-                                        data-sizes="auto"
-                                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
-                                        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        alt="Serverless Chat GPT API in Go">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="post-content kg-canvas u-text-format">
-                            <p>This blog shares how to create your own serverless ChatGPT API in Go.</p>
-                            <blockquote>What is Chat GPT ?</blockquote>
-                            <p>A natural language processing (NLP) model called GPT-3, also known as the "Generative
-                                Pre-training Transformer 3," was developed using text that humans produced. It can
-                                create its own human-like text using a range of languages and writing styles given some
-                                text input.</p>
-                            <p>More details on Chat GPT and the excellent work can be found <a
-                                    href="https://openai.com/blog/chatgpt/">here</a>.</p>
-                            <blockquote>What is Go?</blockquote>
-                            <p>Go, also referred to as Golang, is an open-source, statically typed, compiled computer
-                                language created by Google. It is designed to be straightforward, powerful, readable,
-                                and effective.</p>
-                            <blockquote>Prerequisites</blockquote>
-                            <p>The following prerequisites are needed -</p>
-                            <ul>
-                                <li>OpenAI Account - can be created <a href="https://openai.com/api/">here</a></li>
-                                <li>SAM CLI Installed - can be found <a
-                                        href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html">here</a>
-                                </li>
-                                <li>AWS Account(if you plan on deploying it to AWS)</li>
-                            </ul>
-                            <blockquote>Create Serverless API</blockquote>
-                            <ul>
-                                <li>Run sam init</li>
-                                <li>Select AWS Quick Start Templates below</li>
-                            </ul>
-                            <figure class="kg-card kg-image-card"><img
-                                    src="https://bitmaskers.in/content/images/2023/01/sam-init.png" class="kg-image" alt
-                                    loading="lazy" width="1242" height="1783"
-                                    srcset="https://bitmaskers.in/content/images/size/w600/2023/01/sam-init.png 600w, https://bitmaskers.in/content/images/size/w1000/2023/01/sam-init.png 1000w, https://bitmaskers.in/content/images/2023/01/sam-init.png 1242w"
-                                    sizes="(min-width: 720px) 720px"></figure>
-                            <ul>
-                                <li>Edit the structure to create a folder called pkg and add a main.go</li>
-                                <li>Create the functionality to call the Chat GPT API and return the response</li>
-                                <li>Create a struct TextCompletionRequest like the below which matches the format, Chat
-                                    GPT API accepts</li>
-                            </ul><!--kg-card-begin: markdown-->
-                            <pre><code>type TextCompletionRequest struct {
+        </div>
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">Serverless Chat GPT API in Go</h1>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2023-01-13">
+                            Jan 13, 2023
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+            </div>
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/serverless-chat-gpt-api-in-go/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 400w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 750w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 960w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 1140w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Serverless Chat GPT API in Go">
+            </a>
+        </div>
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <p>This blog shares how to create your own serverless ChatGPT API in Go.</p><blockquote>What is Chat GPT ?</blockquote><p>A natural language processing (NLP) model called GPT-3, also known as the "Generative Pre-training Transformer 3," was developed using text that humans produced. It can create its own human-like text using a range of languages and writing styles given some text input.</p><p>More details on Chat GPT and the excellent work can be found <a href="https://openai.com/blog/chatgpt/">here</a>.</p><blockquote>What is Go?</blockquote><p>Go, also referred to as Golang, is an open-source, statically typed, compiled computer language created by Google. It is designed to be straightforward, powerful, readable, and effective.</p><blockquote>Prerequisites</blockquote><p>The following prerequisites are needed -</p><ul><li>OpenAI Account - can be created <a href="https://openai.com/api/">here</a></li><li>SAM CLI Installed - can be found <a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html">here</a></li><li>AWS Account(if you plan on deploying it to AWS)</li></ul><blockquote>Create Serverless API</blockquote><ul><li>Run sam init</li><li>Select AWS Quick Start Templates below</li></ul><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/01/sam-init.png" class="kg-image" alt loading="lazy" width="1242" height="1783" srcset="https://bitmaskers.in/content/images/size/w600/2023/01/sam-init.png 600w, https://bitmaskers.in/content/images/size/w1000/2023/01/sam-init.png 1000w, https://bitmaskers.in/content/images/2023/01/sam-init.png 1242w" sizes="(min-width: 720px) 720px"></figure><ul><li>Edit the structure to create a folder called pkg and add a main.go</li><li>Create the functionality to call the Chat GPT API and return the response</li><li>Create a struct TextCompletionRequest like the below which matches the format, Chat GPT API accepts</li></ul><!--kg-card-begin: markdown--><pre><code>type TextCompletionRequest struct {
 	Model            string  `json:&quot;model&quot;`
 	Prompt           string  `json:&quot;prompt&quot;`
 	Temperature      float64 `json:&quot;temperature&quot;`
@@ -299,12 +244,7 @@
 	PresencePenalty  float64 `json:&quot;presence_penalty&quot;`
 }
 </code></pre>
-                            <!--kg-card-end: markdown-->
-                            <ul>
-                                <li>Create a struct TextCompletionResponse like the below which matches the format, Chat
-                                    GPT API accepts</li>
-                            </ul><!--kg-card-begin: markdown-->
-                            <pre><code>type Choice struct {
+<!--kg-card-end: markdown--><ul><li>Create a struct TextCompletionResponse like the below which matches the format, Chat GPT API accepts</li></ul><!--kg-card-begin: markdown--><pre><code>type Choice struct {
 	Text         string      `json:&quot;text&quot;`
 	Index        int         `json:&quot;index&quot;`
 	Logprobs     interface{} `json:&quot;logprobs&quot;`
@@ -324,11 +264,7 @@ type TextCompletionResponse struct {
 	} `json:&quot;usage&quot;`
 }
 </code></pre>
-                            <!--kg-card-end: markdown-->
-                            <ul>
-                                <li>Create function ConverseWithGPT function below</li>
-                            </ul><!--kg-card-begin: markdown-->
-                            <pre><code>func ConverseWithGPT(prompt string) (TextCompletionResponse, error) {
+<!--kg-card-end: markdown--><ul><li>Create function ConverseWithGPT function below</li></ul><!--kg-card-begin: markdown--><pre><code>func ConverseWithGPT(prompt string) (TextCompletionResponse, error) {
 	httpReq := TextCompletionRequest{
 		Model:            &quot;text-davinci-003&quot;,
 		Prompt:           prompt,
@@ -370,126 +306,105 @@ type TextCompletionResponse struct {
 	return textCompletionResponse, nil
 }
 </code></pre>
-                            <!--kg-card-end: markdown-->
-                            <p>To checkout, the code, check this <a
-                                    href"https://github.com/tirthankarkundu17/chat-gpt-api" target="_blank">repo.</a>
-                            </p>
-                            <blockquote>Let's see it in action</blockquote>
-                            <p>Let's now run this locally.</p>
-                            <p>Run the below command -</p><!--kg-card-begin: markdown-->
-                            <pre><code>sam build
+<!--kg-card-end: markdown--><p>To checkout, the code, check this <a href="https://github.com/tirthankarkundu17/chat-gpt-api">repo</a>.</p><blockquote>Let's see it in action</blockquote><p>Let's now run this locally.</p><p>Run the below command -</p><!--kg-card-begin: markdown--><pre><code>sam build
 sam local start-api
 </code></pre>
-                            <!--kg-card-end: markdown-->
-                            <p>Now, we can run this using postman</p>
-                            <figure class="kg-card kg-image-card"><img
-                                    src="https://bitmaskers.in/content/images/2023/01/postman.png" class="kg-image" alt
-                                    loading="lazy" width="1552" height="921"
-                                    srcset="https://bitmaskers.in/content/images/size/w600/2023/01/postman.png 600w, https://bitmaskers.in/content/images/size/w1000/2023/01/postman.png 1000w, https://bitmaskers.in/content/images/2023/01/postman.png 1552w"
-                                    sizes="(min-width: 720px) 720px"></figure>
-                            <p>All right, Chat GPT suggested me some Netflix series to watch. Let me go watch them while
-                                you try running this yourself.</p>
-                            <p>Cheers 🍻</p>
-                        </div>
-                        <div class="container medium">
-                            <div class="share u-hover-wrapper">
-                                <a class="share-item share-facebook u-hover-item"
-                                    href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/serverless-chat-gpt-api-in-go/"
-                                    target="_blank" rel="noopener"><i class="icon icon-facebook"></i></a>
-                                <a class="share-item share-twitter u-hover-item"
-                                    href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&text=Serverless%20Chat%20GPT%20API%20in%20Go"
-                                    target="_blank" rel="noopener"><i class="icon icon-twitter"></i></a>
-                                <a class="share-item share-pinterest u-hover-item"
-                                    href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&media=&description=Serverless%20Chat%20GPT%20API%20in%20Go"
-                                    target="_blank" rel="noopener" data-pin-do="none"><i
-                                        class="icon icon-pinterest"></i></a>
-                                <a class="share-item share-linkedin u-hover-item"
-                                    href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go"
-                                    target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
-                                <a class="share-item share-reddit u-hover-item"
-                                    href="https://reddit.com/submit?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go"
-                                    target="_blank" rel="noopener"><i class="icon icon-reddit"></i></a>
-                                <a class="share-item share-tumblr u-hover-item"
-                                    href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go"
-                                    target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
-                                <a class="share-item share-vk u-hover-item"
-                                    href="http://vk.com/share.php?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go"
-                                    target="_blank" rel="noopener"><i class="icon icon-vk"></i></a>
-                                <a class="share-item share-pocket u-hover-item"
-                                    href="https://getpocket.com/edit?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/"
-                                    target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
-                                <a class="share-item share-telegram u-hover-item"
-                                    href="https://t.me/share/url?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&text=Serverless%20Chat%20GPT%20API%20in%20Go"
-                                    target="_blank" rel="noopener"><i class="icon icon-telegram"></i></a>
-                            </div>
-                            <section class="ads-banner">
-                                <!-- DisplayAdd1 -->
-                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181"
-                                    data-ad-slot="1002749738" data-ad-format="auto"
-                                    data-full-width-responsive="true"></ins>
-                                <script>
-                                    (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
-                            </section>
-                            <section class="author">
-                                <div class="author-image-placeholder u-placeholder">
-                                    <img class="author-image lazyload u-object-fit" data-srcset="" src=""
-                                        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                        alt="Tirthankar Kundu">
-                                </div>
-                                <div class="author-wrapper">
-                                    <header class="author-header">
-                                        <div class="author-header-wrapper">
-                                            <h4 class="author-name">Tirthankar Kundu</h4>
-                                            <div class="author-social">
-                                                <a class="author-social-item author-more" href=/author/tirthankar />More
-                                                posts</a>
-                                            </div>
-                                        </div>
-                                    </header>
-                                    <div class="author-bio"></div>
-                                </div>
-                            </section>
-                        </div>
-                    </article>
-
-                    <div class="navigation container medium">
-                        <div class="navigation-item navigation-previous">
-                            <a class="navigation-item-link button-arrow button-arrow-left" href="/grpc-using-java/">
-                                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
-                            </a>
-                        </div>
-
-                    </div>
-                </main>
+<!--kg-card-end: markdown--><p>Now, we can run this using postman</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/01/postman.png" class="kg-image" alt loading="lazy" width="1552" height="921" srcset="https://bitmaskers.in/content/images/size/w600/2023/01/postman.png 600w, https://bitmaskers.in/content/images/size/w1000/2023/01/postman.png 1000w, https://bitmaskers.in/content/images/2023/01/postman.png 1552w" sizes="(min-width: 720px) 720px"></figure><p>All right, Chat GPT suggested me some Netflix series to watch. Let me go watch them while you try running this yourself.</p><p>Cheers 🍻</p>
             </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/serverless-chat-gpt-api-in-go/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&text=Serverless%20Chat%20GPT%20API%20in%20Go" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&media=&description=Serverless%20Chat%20GPT%20API%20in%20Go"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&title=Serverless%20Chat%20GPT%20API%20in%20Go" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/serverless-chat-gpt-api-in-go/&text=Serverless%20Chat%20GPT%20API%20in%20Go" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
+        <div class="author-image-placeholder u-placeholder">
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
+        </div>
+        <div class="author-wrapper">
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
+                    </div>
+                </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
+            </div>
+        </article>
+
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/grpc-using-java/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
+
+</div>                    </main>
+    </div>
         </div>
         <footer class="site-footer container large">
-            <div class="copyright">
-                © 2021 |
-            </div>
-
-            <a class="logo" href="http://localhost:2368">
-                <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2022/06/Logo.png"
-                    alt="The Bitmaskers">
-            </a>
-            <div class="footer-social">
-                <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
-                    target="_blank" rel="noopener" aria-label="Facebook">
-                    <i class="icon icon-facebook"></i>
-                </a>
-                <a class="footer-social-item footer-social-item-facebook" href="https://www.instagram.com/bitmaskers/"
-                    target="_blank" rel="noopener" aria-label="Instagram">
-                    <i class="icon icon-instagram"></i>
-                </a>
-                <a class="footer-social-item footer-social-item-rss"
-                    href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank"
-                    rel="noopener" aria-label="RSS">
-                    <i class="icon icon-rss"></i>
-                </a>
-            </div>
-        </footer>
+    <div class="copyright">
+        © 2021 |
     </div>
+
+    <a class="logo" href="http://localhost:2368">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2022/06/Logo.png" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-facebook"
+            href="https://www.instagram.com/bitmaskers/" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <i class="icon icon-instagram"></i>
+        </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
 
     <div class="dimmer"></div>
 
@@ -500,14 +415,16 @@ sam local start-api
         <div class="mobile-menu"></div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous">
-        </script>
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
     <script src="/assets/built/main.min.js?v=fa850b49a8"></script>
 
+    
 
-
-
+    
 </body>
 
 </html>
