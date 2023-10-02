@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://bitmaskers.in/docker-cheat-sheet/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1605745341112-85968b19335b?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fGRvY2tlcnxlbnwwfHx8fDE2MzA2MDAyOTY&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta property="article:published_time" content="2021-09-02T16:39:53.000Z">
-    <meta property="article:modified_time" content="2021-09-02T16:39:53.000Z">
+    <meta property="article:modified_time" content="2023-10-02T06:27:17.000Z">
     <meta property="article:tag" content="docker">
     <meta property="article:tag" content="containers">
     
@@ -45,7 +45,7 @@
         "url": "https://bitmaskers.in/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://bitmaskers.in/content/images/2023/10/Logo.png"
+            "url": "https://bitmaskers.in/content/images/2023/10/b_logo.png"
         }
     },
     "author": {
@@ -57,7 +57,7 @@
     "headline": "Docker Cheat Sheet",
     "url": "https://bitmaskers.in/docker-cheat-sheet/",
     "datePublished": "2021-09-02T16:39:53.000Z",
-    "dateModified": "2021-09-02T16:39:53.000Z",
+    "dateModified": "2023-10-02T06:27:17.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1605745341112-85968b19335b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fGRvY2tlcnxlbnwwfHx8fDE2MzA2MDAyOTY&ixlib=rb-1.2.1&q=80&w=2000",
@@ -1080,7 +1080,7 @@
             </figure>
             <section class="post-content">
 
-                <p>Docker is a revolution in the IT landscape and has made things easy.</p><p>It disallows developers to claim : "It works on my machine 😄"</p><p>Here, I created a cheat sheet I use to work with Docker</p><p>Frequently used commands</p><ul><li>docker --<strong>version</strong></li></ul><p>It shows the docker version installed.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>pull </strong>&lt;image_name&gt; </li></ul><p>It allows you to pull images from repository.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>images</strong></li></ul><p>To get all the pulled images which is available locally.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>ps</strong></li></ul><p>It allows you to see all the containers which are up and running.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>ps -a</strong></li></ul><p>It allows you to see all the containers which are available as well up and running.<br />The difference between docker ps and ps -a is that ps -a allows you see containers which are down as well.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>run -it -d</strong> &lt;image_name&gt;</li></ul><p>To Create Docker Container from Docker Image in a detached mode.</p><ul><li>docker <strong>exec -it &lt;container_id&gt; bash</strong></li></ul><p>To run container in interactive mode using bash shell.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>start &lt;container_id&gt;</strong></li></ul><p>To start a container with mentioned &lt;container_id&gt;.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>restart &lt;container_id&gt;</strong></li></ul><p>To restart a container with mentioned &lt;container_id&gt;.</p><ul><li>docker <strong>stop &lt;container_id&gt;</strong></li></ul><p>To stop a container with mentioned &lt;container_id&gt;.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>rm &lt;container_id&gt;</strong></li></ul><p>To delete a container with mentioned &lt;container_id&gt;.</p><ul><li>docker <strong>rmi &lt;image_id&gt;</strong></li></ul><p>To delete a docker image with mentioned &lt;image_id&gt;</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>inspect &lt;container_id&gt;</strong></li></ul><p>To give details on the container id. It is a JSON data with all details of the container</p><hr></hr><p>Hope you liked this cheat sheet. 🍻</p>
+                <p>Docker is a revolution in the IT landscape and has made things easy.</p><p>It disallows developers to claim: "It works on my machine 😄"</p><p>Here, I created a cheat sheet I use to work with Docker</p><p>Frequently used commands</p><ul><li>docker --<strong>version</strong></li></ul><p>It shows the docker version installed.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>pull </strong>&lt;image_name&gt; </li></ul><p>It allows you to pull images from the repository.</p><ul><li>docker <strong>images</strong></li></ul><p>To get all the pulled images that are available locally.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>ps</strong></li></ul><p>It allows you to see all the containers which are up and running.</p><figure class="kg-card kg-image-card"></figure><ul><li>docker <strong>ps -a</strong></li></ul><p>It allows you to see all the containers that are available as well up and running.<br />The difference between docker ps and ps -a is that ps -a allows you to see containers that are down as well.</p><ul><li>docker <strong>run -it -d</strong> &lt;image_name&gt;</li></ul><p>To Create a Docker Container from Docker Image in a detached mode.</p><ul><li>docker <strong>exec -it &lt;container_id&gt; bash</strong></li></ul><p>To run the container in interactive mode using bash shell.</p><figure class="kg-card kg-image-card"></figure><p>Tip: you can use part of the container_id too</p><ul><li>docker <strong>start &lt;container_id&gt;</strong></li></ul><p>To start a container with mentioned &lt;container_id&gt;.</p><ul><li>docker <strong>restart &lt;container_id&gt;</strong></li></ul><p>To restart a container with mentioned &lt;container_id&gt;.</p><ul><li>docker <strong>stop &lt;container_id&gt;</strong></li></ul><p>To stop a container with mentioned &lt;container_id&gt;.</p><ul><li>docker <strong>rm &lt;container_id&gt;</strong></li></ul><p>To delete a container with mentioned &lt;container_id&gt;.</p><ul><li>docker <strong>rmi &lt;image_id&gt;</strong></li></ul><p>To delete a docker image with the mentioned &lt;image_id&gt;</p><ul><li>docker <strong>inspect &lt;container_id&gt;</strong></li></ul><p>To give details on the container id. It is JSON data with all the details of the container</p><hr></hr><p>Hope you liked this cheat sheet. 🍻</p>
 
             </section>
 
