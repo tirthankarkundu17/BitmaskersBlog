@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Serverless Fast API</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=ee37fcaf73">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=8a1765d3be">
 
     <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
     <link rel="canonical" href="https://bitmaskers.in/creating-your-first-fast-api/">
@@ -15,16 +15,17 @@
     <meta property="og:site_name" content="The Bitmaskers">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Serverless Fast API">
-    <meta property="og:description" content="Fast API
+    <meta property="og:description" content="This is the first part of a two-part series on creating a serverless API using Fast API
+
+Fast API
 
 FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:
 
- * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)
- * Fast to Code - Increases developer productivity to ship">
+ * Fast - Very high performance, on par with">
     <meta property="og:url" content="https://bitmaskers.in/creating-your-first-fast-api/">
     <meta property="og:image" content="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta property="article:published_time" content="2023-10-02T09:56:18.000Z">
-    <meta property="article:modified_time" content="2023-10-02T09:56:18.000Z">
+    <meta property="article:modified_time" content="2023-10-02T10:07:19.000Z">
     <meta property="article:tag" content="serverless">
     <meta property="article:tag" content="api">
     <meta property="article:tag" content="python">
@@ -32,12 +33,13 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
     <meta property="article:publisher" content="https://www.facebook.com/bitmaskers">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Serverless Fast API">
-    <meta name="twitter:description" content="Fast API
+    <meta name="twitter:description" content="This is the first part of a two-part series on creating a serverless API using Fast API
+
+Fast API
 
 FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:
 
- * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)
- * Fast to Code - Increases developer productivity to ship">
+ * Fast - Very high performance, on par with">
     <meta name="twitter:url" content="https://bitmaskers.in/creating-your-first-fast-api/">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta name="twitter:label1" content="Written by">
@@ -69,7 +71,7 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
     "headline": "Serverless Fast API",
     "url": "https://bitmaskers.in/creating-your-first-fast-api/",
     "datePublished": "2023-10-02T09:56:18.000Z",
-    "dateModified": "2023-10-02T09:56:18.000Z",
+    "dateModified": "2023-10-02T10:07:19.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&ixlib=rb-4.0.3&q=80&w=2000",
@@ -77,7 +79,7 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
         "height": 1333
     },
     "keywords": "serverless, api, python",
-    "description": "Fast API\n\nFastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:\n\n * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)\n * Fast to Code - Increases developer productivity to ship code faster\n * Fewer Bugs - Reduces human-induced errors\n * Intuitive - Great editor support\n * East - Designed to be easy to learn and code\n * Short - Minimize code duplication\n * Robust -",
+    "description": "This is the first part of a two-part series on creating a serverless API using Fast API\n\nFast API\n\nFastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:\n\n * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)\n * Fast to Code - Increases developer productivity to ship code faster\n * Fewer Bugs - Reduces human-induced errors\n * Intuitive - Great editor support\n * East",
     "mainEntityOfPage": "https://bitmaskers.in/creating-your-first-fast-api/"
 }
     </script>
@@ -88,8 +90,8 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="b9caab9ce32eedb73920df5550" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
     
     <link href="https://bitmaskers.in/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=ee37fcaf73"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=ee37fcaf73">
+    <script defer src="/public/cards.min.js?v=8a1765d3be"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=8a1765d3be">
     <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
@@ -188,7 +190,7 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
         </header>
 
         <div class="gh-content gh-canvas">
-            <blockquote>Fast API</blockquote><p>FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:</p><ul><li>Fast - Very high performance, on par with <strong>NodeJS</strong> and <strong>Go</strong> (thanks to Starlette and Pydantic)</li><li>Fast to Code - Increases developer productivity to ship code faster</li><li>Fewer Bugs - Reduces human-induced errors</li><li>Intuitive - Great editor support</li><li>East - Designed to be easy to learn and code</li><li>Short - Minimize code duplication</li><li>Robust - It provides production-ready code with automatic interactive documentation.</li><li>Standards-based - It’s based on the open standards for APIs, Open API, and JSON Schema.</li></ul><hr><p>Let's create a small to-do app that uses an in-memory data store.</p><blockquote>Structuring the codebase</blockquote><p>Let's structure the app like below</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/image-1.png" class="kg-image" alt loading="lazy" width="346" height="388"></figure><ol><li>The <strong>app </strong>folder contains everything related to the app</li><li>The <strong>model </strong>contains all the models</li><li>The <strong>router </strong>contains a route for each use case</li><li>The <strong>service contains the</strong> business logic</li></ol><hr><blockquote>The Model</blockquote><p>For the model we use below code -</p><!--kg-card-begin: markdown--><pre><code>from pydantic import BaseModel
+            <p>This is the first part of a two-part series on creating a serverless API using <a href="https://fastapi.tiangolo.com/?ref=localhost">Fast API</a></p><blockquote>Fast API</blockquote><p>FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:</p><ul><li>Fast - Very high performance, on par with <strong>NodeJS</strong> and <strong>Go</strong> (thanks to Starlette and Pydantic)</li><li>Fast to Code - Increases developer productivity to ship code faster</li><li>Fewer Bugs - Reduces human-induced errors</li><li>Intuitive - Great editor support</li><li>East - Designed to be easy to learn and code</li><li>Short - Minimize code duplication</li><li>Robust - It provides production-ready code with automatic interactive documentation.</li><li>Standards-based - It’s based on the open standards for APIs, Open API, and JSON Schema.</li></ul><hr><p>Let's create a small to-do app that uses an in-memory data store.</p><blockquote>Structuring the codebase</blockquote><p>Let's structure the app like below</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/image-1.png" class="kg-image" alt loading="lazy" width="346" height="388"></figure><ol><li>The <strong>app </strong>folder contains everything related to the app</li><li>The <strong>model </strong>contains all the models</li><li>The <strong>router </strong>contains a route for each use case</li><li>The <strong>service contains the</strong> business logic</li></ol><hr><blockquote>The Model</blockquote><p>For the model we use below code -</p><!--kg-card-begin: markdown--><pre><code>from pydantic import BaseModel
 from typing import Union
 
 
@@ -403,9 +405,6 @@ if __name__ == '__main__':
             <div class="gh-copyright">
                 The Bitmaskers © 2023
             </div>
-            <div class="gh-powered-by">
-                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
-            </div>
         </div>
     </footer>
 
@@ -457,7 +456,7 @@ if __name__ == '__main__':
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="/assets/built/main.min.js?v=ee37fcaf73"></script>
+<script src="/assets/built/main.min.js?v=8a1765d3be"></script>
 
 
 
