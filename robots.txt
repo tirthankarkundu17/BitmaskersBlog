@@ -3,3 +3,4 @@ Sitemap: https://bitmaskers.in/sitemap.xml
 Disallow: /ghost/
 Disallow: /p/
 Disallow: /email/
+Disallow: /r/
