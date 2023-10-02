@@ -4,42 +4,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
-    <title>Serverless Chat GPT API in Go</title>
+    <title>Serverless Fast API</title>
 
     <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
-    <link rel="canonical" href="https://bitmaskers.in/serverless-chat-gpt-api-in-go/">
+    <link rel="canonical" href="https://bitmaskers.in/creating-your-first-fast-api/">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="The Bitmaskers">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Serverless Chat GPT API in Go">
-    <meta property="og:description" content="This blog shares how to create your own serverless ChatGPT API in Go.
+    <meta property="og:title" content="Serverless Fast API">
+    <meta property="og:description" content="Fast API
 
-What is Chat GPT ?
+FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:
 
-A natural language processing (NLP) model called GPT-3, also known as the &quot;Generative Pre-training Transformer 3,&quot; was developed using text that humans produced. It can create its own human-like text using a range">
-    <meta property="og:url" content="https://bitmaskers.in/serverless-chat-gpt-api-in-go/">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
-    <meta property="article:published_time" content="2023-01-13T21:45:12.000Z">
-    <meta property="article:modified_time" content="2023-10-02T04:47:04.000Z">
-    <meta property="article:tag" content="go">
+ * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)
+ * Fast to Code - Increases developer productivity to ship">
+    <meta property="og:url" content="https://bitmaskers.in/creating-your-first-fast-api/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2023-10-02T09:56:18.000Z">
+    <meta property="article:modified_time" content="2023-10-02T09:56:18.000Z">
     <meta property="article:tag" content="serverless">
     <meta property="article:tag" content="api">
+    <meta property="article:tag" content="python">
     
     <meta property="article:publisher" content="https://www.facebook.com/bitmaskers">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Serverless Chat GPT API in Go">
-    <meta name="twitter:description" content="This blog shares how to create your own serverless ChatGPT API in Go.
+    <meta name="twitter:title" content="Serverless Fast API">
+    <meta name="twitter:description" content="Fast API
 
-What is Chat GPT ?
+FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:
 
-A natural language processing (NLP) model called GPT-3, also known as the &quot;Generative Pre-training Transformer 3,&quot; was developed using text that humans produced. It can create its own human-like text using a range">
-    <meta name="twitter:url" content="https://bitmaskers.in/serverless-chat-gpt-api-in-go/">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+ * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)
+ * Fast to Code - Increases developer productivity to ship">
+    <meta name="twitter:url" content="https://bitmaskers.in/creating-your-first-fast-api/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Tirthankar Kundu">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="go, serverless, api">
+    <meta name="twitter:data2" content="serverless, api, python">
     <meta property="og:image:width" content="2000">
     <meta property="og:image:height" content="1333">
     
@@ -62,19 +64,19 @@ A natural language processing (NLP) model called GPT-3, also known as the &quot;
         "url": "https://bitmaskers.in/author/tirthankar/",
         "sameAs": []
     },
-    "headline": "Serverless Chat GPT API in Go",
-    "url": "https://bitmaskers.in/serverless-chat-gpt-api-in-go/",
-    "datePublished": "2023-01-13T21:45:12.000Z",
-    "dateModified": "2023-10-02T04:47:04.000Z",
+    "headline": "Serverless Fast API",
+    "url": "https://bitmaskers.in/creating-your-first-fast-api/",
+    "datePublished": "2023-10-02T09:56:18.000Z",
+    "dateModified": "2023-10-02T09:56:18.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&ixlib=rb-4.0.3&q=80&w=2000",
+        "url": "https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&ixlib=rb-4.0.3&q=80&w=2000",
         "width": 2000,
         "height": 1333
     },
-    "keywords": "go, serverless, api",
-    "description": "This blog shares how to create your own serverless ChatGPT API in Go.\n\nWhat is Chat GPT ?\n\nA natural language processing (NLP) model called GPT-3, also known as the &quot;Generative Pre-training Transformer 3,&quot; was developed using text that humans produced. It can create its own human-like text using a range of languages and writing styles given some text input.\n\nMore details on Chat GPT and the excellent work can be found here.\n\nWhat is Go?\n\nGo, also referred to as Golang, is an open-source, statica",
-    "mainEntityOfPage": "https://bitmaskers.in/serverless-chat-gpt-api-in-go/"
+    "keywords": "serverless, api, python",
+    "description": "Fast API\n\nFastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:\n\n * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)\n * Fast to Code - Increases developer productivity to ship code faster\n * Fewer Bugs - Reduces human-induced errors\n * Intuitive - Great editor support\n * East - Designed to be easy to learn and code\n * Short - Minimize code duplication\n * Robust -",
+    "mainEntityOfPage": "https://bitmaskers.in/creating-your-first-fast-api/"
 }
     </script>
 
@@ -1075,95 +1077,134 @@ A natural language processing (NLP) model called GPT-3, also known as the &quot;
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Serverless Chat GPT API in Go</h1>
+                <h1 class="post-title">Serverless Fast API</h1>
                 <section class="post-meta">
                     Tirthankar Kundu -
-                    <time class="post-date" datetime="2023-01-13">13 Jan 2023</time>
+                    <time class="post-date" datetime="2023-10-02">02 Oct 2023</time>
                 </section>
             </header>
             <figure class="post-image">
-                <amp-img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" width="600" height="340" layout="responsive" 
-                alt="Serverless Chat GPT API in Go"
+                <amp-img src="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000" width="600" height="340" layout="responsive" 
+                alt="Serverless Fast API"
                 ></amp-img>
             </figure>
             <section class="post-content">
 
-                <p>This blog shares how to create your own serverless ChatGPT API in Go.</p><blockquote>What is Chat GPT ?</blockquote><p>A natural language processing (NLP) model called GPT-3, also known as the "Generative Pre-training Transformer 3," was developed using text that humans produced. It can create its own human-like text using a range of languages and writing styles given some text input.</p><p>More details on Chat GPT and the excellent work can be found <a href="https://openai.com/blog/chatgpt/?ref=localhost">here</a>.</p><blockquote>What is Go?</blockquote><p>Go, also referred to as Golang, is an open-source, statically typed, compiled computer language created by Google. It is designed to be straightforward, powerful, readable, and effective.</p><blockquote>Prerequisites</blockquote><p>The following prerequisites are needed -</p><ul><li>OpenAI Account - can be created <a href="https://openai.com/api/?ref=localhost">here</a></li><li>SAM CLI Installed - can be found <a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html?ref=localhost">here</a></li><li>AWS Account(if you plan on deploying it to AWS)</li></ul><blockquote>Create Serverless API</blockquote><ul><li>Run sam init</li><li>Select AWS Quick Start Templates below</li></ul><figure class="kg-card kg-image-card"></figure><ul><li>Edit the structure to create a folder called pkg and add a main.go</li><li>Create the functionality to call the Chat GPT API and return the response</li><li>Create a struct TextCompletionRequest like the below which matches the format, Chat GPT API accepts</li></ul><pre><code>type TextCompletionRequest struct {
-	Model            string  `json:"model"`
-	Prompt           string  `json:"prompt"`
-	Temperature      float64 `json:"temperature"`
-	MaxTokens        int     `json:"max_tokens"`
-	TopP             float64 `json:"top_p"`
-	FrequencyPenalty float64 `json:"frequency_penalty"`
-	PresencePenalty  float64 `json:"presence_penalty"`
-}
+                <blockquote>Fast API</blockquote><p>FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:</p><ul><li>Fast - Very high performance, on par with <strong>NodeJS</strong> and <strong>Go</strong> (thanks to Starlette and Pydantic)</li><li>Fast to Code - Increases developer productivity to ship code faster</li><li>Fewer Bugs - Reduces human-induced errors</li><li>Intuitive - Great editor support</li><li>East - Designed to be easy to learn and code</li><li>Short - Minimize code duplication</li><li>Robust - It provides production-ready code with automatic interactive documentation.</li><li>Standards-based - It’s based on the open standards for APIs, Open API, and JSON Schema.</li></ul><hr></hr><p>Let's create a small to-do app that uses an in-memory data store.</p><blockquote>Structuring the codebase</blockquote><p>Let's structure the app like below</p><figure class="kg-card kg-image-card"></figure><ol><li>The <strong>app </strong>folder contains everything related to the app</li><li>The <strong>model </strong>contains all the models</li><li>The <strong>router </strong>contains a route for each use case</li><li>The <strong>service contains the</strong> business logic</li></ol><hr></hr><blockquote>The Model</blockquote><p>For the model we use below code -</p><pre><code>from pydantic import BaseModel
+from typing import Union
+
+
+class Todo(BaseModel):
+    id: Union[str, None] = None
+    todo: str
+
 </code></pre>
-<ul><li>Create a struct TextCompletionResponse like the below which matches the format, Chat GPT API accepts</li></ul><pre><code>type Choice struct {
-	Text         string      `json:"text"`
-	Index        int         `json:"index"`
-	Logprobs     interface{} `json:"logprobs"`
-	FinishReason string      `json:"finish_reason"`
-}
+<hr></hr><blockquote>The Router</blockquote><p>The router has the below routes -</p><pre><code>from fastapi import APIRouter, HTTPException
 
-type TextCompletionResponse struct {
-	ID      string   `json:"id"`
-	Object  string   `json:"object"`
-	Created int      `json:"created"`
-	Model   string   `json:"model"`
-	Choices []Choice `json:"choices"`
-	Usage   struct {
-		PromptTokens     int `json:"prompt_tokens"`
-		CompletionTokens int `json:"completion_tokens"`
-		TotalTokens      int `json:"total_tokens"`
-	} `json:"usage"`
-}
+import app.service.todo as todo_service
+from app.model.todo import Todo
+
+router = APIRouter(
+    prefix="/todos",
+    tags=["todos"],
+    responses={404: {"description": "Not found"}},
+)
+
+
+@router.get("/")
+async def read_todos():
+    return await todo_service.read_todos()
+
+
+@router.post("/")
+async def create_todo(todo: Todo):
+    return await todo_service.create_todo(todo)
+
+
+@router.get("/{todo_id}")
+async def read_todo(todo_id: str):
+    todo = await todo_service.read_todo(todo_id)
+    if todo is None:
+        raise HTTPException(status_code=404, detail="Todo not found")
+    return todo
+
+
+@router.delete("/{todo_id}")
+async def delete_todo(todo_id: str):
+    todo = await todo_service.read_todo(todo_id)
+    if todo is None:
+        raise HTTPException(status_code=404, detail="Todo not found")
+
+    return await todo_service.delete_todo(todo_id)
+
 </code></pre>
-<ul><li>Create function ConverseWithGPT function below</li></ul><pre><code>func ConverseWithGPT(prompt string) (TextCompletionResponse, error) {
-	httpReq := TextCompletionRequest{
-		Model:            "text-davinci-003",
-		Prompt:           prompt,
-		Temperature:      0.7,
-		MaxTokens:        100,
-		TopP:             1.0,
-		FrequencyPenalty: 0.0,
-		PresencePenalty:  0.0,
-	}
-	jsonValue, _ := json.Marshal(httpReq)
+<p>We use the @router annotation for various HTTP verbs</p><p>The router calls the service which has the business logic</p><hr></hr><blockquote>The Service</blockquote><p>Service details - </p><pre><code>import uuid
+from typing import List
 
-	bearer := "Bearer " + BearerToken
+from app.model.todo import Todo
 
-	req, _ := http.NewRequest("POST", ChatGPTHTTPAddress, bytes.NewBuffer(jsonValue))
-	req.Header.Set("Authorization", bearer)
-	req.Header.Add("Content-Type", "application/json")
+todos_db: List[Todo] = []
 
-	client := &amp;http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		return TextCompletionResponse{}, err
-	}
-	defer resp.Body.Close()
 
-	if resp.StatusCode != 200 {
-		return TextCompletionResponse{}, ErrNon200Response
-	}
+async def read_todos():
+    return todos_db
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return TextCompletionResponse{}, err
-	}
 
-	var textCompletionResponse TextCompletionResponse
-	if err := json.Unmarshal(body, &amp;textCompletionResponse); err != nil {
-		fmt.Println("Can not unmarshal JSON")
-	}
+async def create_todo(todo: Todo):
+    todo.id = str(uuid.uuid4())
+    todos_db.append(todo)
+    return todo
 
-	return textCompletionResponse, nil
-}
+
+async def read_todo(todo_id: str):
+    for todo in todos_db:
+        if todo.id == todo_id:
+            return todo
+    return None
+
+
+async def delete_todo(todo_id: str):
+    t = None
+    for todo in todos_db:
+        if todo.id == todo_id:
+            t = todo
+    if t is not None:
+        todos_db.remove(t)
+    else:
+        return None
+
 </code></pre>
-<p>To check, the code, checkout this <a href="https://github.com/tirthankarkundu17/chat-gpt-api?ref=localhost">repo</a>.</p><blockquote>Let's see it in action</blockquote><p>Let's now run this locally.</p><p>Run the below command -</p><pre><code>sam build
-sam local start-api
+<p>Service handles the generic CRUD operation with an in-memory data store called todos_db.</p><hr></hr><blockquote>Putting it all together</blockquote><p>The main app needs to be configured this way - </p><pre><code>from fastapi import FastAPI
+
+from .router import todo
+
+app = FastAPI(
+    title="Todos API",
+    description="Todos API with in memory Database",
+)
+
+app.include_router(todo.router)
+
+
+@app.get("/", tags=["health"])
+async def root():
+    return {"status": "Success", "message": "App is running!"}
+
 </code></pre>
-<p>Now, we can run this using Postman</p><figure class="kg-card kg-image-card"></figure><p>All right, Chat GPT suggested some Netflix series to watch. Let me go watch them while you try running this yourself.</p><p>Cheers 🍻</p>
+<p>The title and description will be used for the out-of-box Open API specification.</p><hr></hr><blockquote>Final Step</blockquote><p>Fast API can be run with uvicorn server. Let's run it with the below configuration</p><pre><code>import uvicorn
+
+
+host="0.0.0.0"
+port=8002
+app_name="app.main:app"
+
+
+if __name__ == '__main__':
+    uvicorn.run(app_name, host=host, port=port)
+</code></pre>
+<p>Okay, now let's run the code.</p><pre><code>python .\main.py
+</code></pre>
+<p>We get amazing open API specs out of the box 😍</p><p>Go to http//:localhost:8002/docs and we get the open API specs</p><figure class="kg-card kg-image-card"></figure><p>We can now run the API using the docs or any REST API client</p><hr></hr><p>Hope you like it! Do give it a try.</p><p>Oh! Here's the <a href="https://github.com/tirthankarkundu17/todo-fast-api?ref=localhost">GitHub repository</a> to play with the code </p>
 
             </section>
 
