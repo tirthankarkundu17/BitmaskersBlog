@@ -5,7 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kafka vs RabbitMQ</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=9635e4d108">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=e8649a3fcd">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
 
     <meta name="description" content="What are the use cases related to Kafka and RabbitMQ?">
     <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
@@ -35,8 +42,8 @@
     <meta name="twitter:data1" content="Tirthankar Kundu">
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="messaging-queue, rabbitmq, kafka">
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1333">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
     
     <script type="application/ld+json">
 {
@@ -64,8 +71,8 @@
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1550439062-609e1531270e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&ixlib=rb-1.2.1&q=80&w=2000",
-        "width": 2000,
-        "height": 1333
+        "width": 1200,
+        "height": 800
     },
     "keywords": "messaging-queue, rabbitmq, kafka",
     "description": "What are the use cases related to Kafka and RabbitMQ?",
@@ -73,14 +80,14 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.66">
+    <meta name="generator" content="Ghost 5.82">
     <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/">
     
-    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="b9caab9ce32eedb73920df5550" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="8bb36d3c0e68a366dc85d5bd84" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
     
     <link href="https://bitmaskers.in/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=9635e4d108"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=9635e4d108">
+    <script defer src="/public/cards.min.js?v=e8649a3fcd"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=e8649a3fcd">
     <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
@@ -111,229 +118,303 @@
 </script><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 
-<body class="post-template tag-messaging-queue tag-rabbitmq tag-kafka tag-hash-import-2023-10-02-04-41 is-head-left-logo">
-<div class="site">
-
-    <header id="gh-head" class="gh-head gh-outer">
-        <div class="gh-head-inner">
-            <div class="gh-head-brand">
-                <div class="gh-head-brand-wrapper">
-                    <a class="gh-head-logo" href="https://bitmaskers.in">
-                            <img src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
-                    </a>
-                </div>
-                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                <button class="gh-burger"></button>
-            </div>
-
-            <nav class="gh-head-menu">
-                <ul class="nav">
-    <li class="nav-home"><a href="https://bitmaskers.in/">Home</a></li>
-    <li class="nav-aws"><a href="https://bitmaskers.in/tag/aws/">AWS</a></li>
-    <li class="nav-mule"><a href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
-    <li class="nav-algo"><a href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
-    <li class="nav-author"><a href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+<body class="post-template tag-messaging-queue tag-rabbitmq tag-kafka tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
 </ul>
-
-            </nav>
-
-            <div class="gh-head-actions">
-                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
             </div>
         </div>
-    </header>
-
-
-    <div class="site-content">
-        
-<div class="content-area">
-<main class="site-main">
-
-
-    <article class="post tag-messaging-queue tag-rabbitmq tag-kafka tag-hash-import-2023-10-02-04-41 single-post">
-
-        <header class="article-header gh-canvas">
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post tag-messaging-queue tag-rabbitmq tag-kafka tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02 single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">Kafka vs RabbitMQ</h1>
             <div class="post-meta">
                 <span class="post-meta-item post-meta-date">
-                    <time datetime="2021-03-31">Mar 31, 2021</time>
+                    <time datetime="2021-03-31">
+                            Mar 31, 2021
+                    </time>
                 </span>
-                    <span class="post-meta-item post-meta-length">4 min read</span>
-                    <span class="post-meta-item post-meta-tags"><a class="post-tag post-tag-messaging-queue" href="/tag/messaging-queue/" title="messaging-queue">messaging-queue</a></span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/tag/messaging-queue/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-rabbitmq" href="/tag/rabbitmq/"
+                                title="rabbitmq">rabbitmq</a><a class="post-tag post-tag-kafka" href="/tag/kafka/"
+                                title="kafka">kafka</a>
+                    </span>
             </div>
-            <h1 class="post-title">Kafka vs RabbitMQ</h1>
-                <figure class="post-media kg-width-wide">
-        <img
-            class="post-image"
-            srcset="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;400 400w,
-                    https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;750 750w,
-                    https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
-                    https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
-            sizes="(min-width: 960px) 960px, 92vw"
-            src="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960"
-            alt="Kafka vs RabbitMQ"
-            loading="lazy"
-        >
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/kafka-vs-rabbitmq-3/">
+                <img class="post-image lazyload u-object-fit"
 
-    </figure>
-        </header>
-
-        <div class="gh-content gh-canvas">
-            <p>This is third part to the already published Part I  and II which can be found below</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/kafka-vs-rabbitmq/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Kafka vs RabbitMQ</div><div class="kg-bookmark-description">Are RabbitMQ and Kafka same ?</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://bitmaskers.in/favicon.png" alt><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" alt></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/kafka-vs-rabbitmq-2/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Kafka vs RabbitMQ</div><div class="kg-bookmark-description">What is the difference between Kafka and RabbitMQ?</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://bitmaskers.in/favicon.png" alt><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" alt></div></a></figure><hr><p>We have seen how RabbitMQ and Kafka are two different things which are often confused.</p><p>Now let us see the common use cases associated with them.</p><blockquote>RabbitMQ</blockquote><p>RabbitMQ can be used when web servers need to quickly respond to requests. This eliminates the need to perform resource-intensive activities while the user waits for a result. RabbitMQ is also used to convey a message to various recipients for consumption or to share loads between workers under high load (20K+ messages/second).</p><p>Scenarios that RabbitMQ can be used for:</p><ul><li>Applications that need to support legacy protocols, such as STOMP, MQTT, AMQP, 0-9-1.</li><li>Granular control over consistency/set of guarantees on a per-message basis</li><li>Complex routing to consumers</li><li>Applications that need a variety of publish/subscribe, point-to-point request/reply messaging capabilities.</li></ul><p>RabbitMQ is the obvious option if you want a simple/traditional pub-sub message broker. If my requirements were easy enough to deal with device communication across channels/queues and retention and streaming were not a requirement, I would have preferred RabbitMQ.</p><p>There are two main situations where we would choose RabbitMQ; For long-running tasks, when we need to run reliable background jobs. And for communication and integration between microservices/applications, where a system simply needs to notify another part of the system to start to work on a task, like ordering handling in a e-commerce (order placed, update order status, send order, payment, etc.).</p><h4 id="long-running-tasks"><strong>LONG-RUNNING TASKS</strong></h4><p>Message queues enable asynchronous processing, meaning that they allow you to put a message in a queue without processing it immediately. RabbitMQ is ideal for long-running tasks.</p><p>An example can be where users upload details and the application generates PDF and sends email. This can be resource intensive and time consuming. So we can use the asynchronous processing using RabbitMQ.</p><p>Many a times RabbitMQ queues serve as event buses allowing web servers to respond quickly to requests instead of being forced to perform computationally intensive tasks on the spot.</p><h4 id="middleman-in-a-microservice-architectures"><strong>MIDDLEMAN IN A MICROSERVICE ARCHITECTURES</strong></h4><p>RabbitMQ is also used for microservice architecture, where it serves as a means of communicating between applications, avoiding bottlenecks passing messages.</p><p>An example can be e-commerce apps where different microservices are orchestrated using queues likes RabbitMQ.</p><hr><blockquote>Apache Kafka</blockquote><p>Supports use cases such as metrics, activity tracking, log aggregation, stream processing, commit logs and event sourcing.</p><p>The following messaging scenarios are especially suited for Kafka:</p><ul><li>Streams with complex routing, throughput of 100K/sec events or more, with <strong>at least once</strong> partitioned ordering</li><li>Applications requiring a stream history, delivered in <strong>at least once</strong> partitioned ordering. Clients can see a <strong>replay</strong> of the event stream.</li><li>Event sourcing, modeling changes to a system as a sequence of events.</li><li>Stream processing data in multi-stage pipelines. The pipelines generate graphs of real-time data flows</li></ul><p>In general, if you want a framework for storing, reading (re-reading), and analyzing streaming data, use Apache Kafka. It's perfect for audited systems or those who need to keep messages for a long time. This can also be divided into two categories: data analysis (tracking, ingestion, logging, security, and so on) and real-time processing.</p><h4 id="data-analysis-tracking-ingestion-logging-security"><strong>DATA ANALYSIS: TRACKING, INGESTION, LOGGING, SECURITY</strong></h4><p>In all these cases, large amounts of data need to be collected, stored, and handled. Companies that need to gain insights into data, provide search features, auditing or analysis of tons of data justify the use of Kafka.</p><p>According to the creators of Apache Kafka, the original use case for Kafka was to track website activity including page views, searches, uploads or other actions users may take. This kind of activity tracking often requires a very high volume of throughput, since messages are generated for each action and for each user. Many of these activities - in fact, all of the system activities - can be stored in Kafka and handled as needed.</p><p>Producers of data only need to send their data to a single place while a host of backend services can consume the data as required. Major analytics, search and storage systems have integrations with Kafka.</p><h4 id="real-time-processing"><strong>REAL-TIME PROCESSING</strong></h4><p>Kafka acts as a high-throughput distributed system; source services push streams of data into the target services that pull them in real-time.</p><p>Kafka could be used in systems handling many producers in real-time with a small number of consumers; i.e. financial IT systems monitoring stock data.</p><p>Streaming services like Spotify publish information in real-time over Kafka. The ability to handle high-throughput in real-time empowers applications., making these applications more powerful than ever before.</p><hr><p>Hope you liked this series on RabbitMQ vs Kafka.</p>
+                    data-srcset="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1550439062-609e1531270e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDE5fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE2MTcyMTU5NTU&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Kafka vs RabbitMQ">
+            </a>
         </div>
-
-            <div class="gh-canvas">
-
-    <section class="author">
-
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <p>This is third part to the already published Part I  and II which can be found below</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/kafka-vs-rabbitmq/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Kafka vs RabbitMQ</div><div class="kg-bookmark-description">Are RabbitMQ and Kafka same ?</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://bitmaskers.in/favicon.png" alt=""><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" alt=""></div></a></figure><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://bitmaskers.in/kafka-vs-rabbitmq-2/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Kafka vs RabbitMQ</div><div class="kg-bookmark-description">What is the difference between Kafka and RabbitMQ?</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://bitmaskers.in/favicon.png" alt=""><span class="kg-bookmark-author">The Bitmaskers</span><span class="kg-bookmark-publisher">Tirthankar Kundu</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;2000" alt=""></div></a></figure><hr><p>We have seen how RabbitMQ and Kafka are two different things which are often confused.</p><p>Now let us see the common use cases associated with them.</p><blockquote>RabbitMQ</blockquote><p>RabbitMQ can be used when web servers need to quickly respond to requests. This eliminates the need to perform resource-intensive activities while the user waits for a result. RabbitMQ is also used to convey a message to various recipients for consumption or to share loads between workers under high load (20K+ messages/second).</p><p>Scenarios that RabbitMQ can be used for:</p><ul><li>Applications that need to support legacy protocols, such as STOMP, MQTT, AMQP, 0-9-1.</li><li>Granular control over consistency/set of guarantees on a per-message basis</li><li>Complex routing to consumers</li><li>Applications that need a variety of publish/subscribe, point-to-point request/reply messaging capabilities.</li></ul><p>RabbitMQ is the obvious option if you want a simple/traditional pub-sub message broker. If my requirements were easy enough to deal with device communication across channels/queues and retention and streaming were not a requirement, I would have preferred RabbitMQ.</p><p>There are two main situations where we would choose RabbitMQ; For long-running tasks, when we need to run reliable background jobs. And for communication and integration between microservices/applications, where a system simply needs to notify another part of the system to start to work on a task, like ordering handling in a e-commerce (order placed, update order status, send order, payment, etc.).</p><h4 id="long-running-tasks"><strong>LONG-RUNNING TASKS</strong></h4><p>Message queues enable asynchronous processing, meaning that they allow you to put a message in a queue without processing it immediately. RabbitMQ is ideal for long-running tasks.</p><p>An example can be where users upload details and the application generates PDF and sends email. This can be resource intensive and time consuming. So we can use the asynchronous processing using RabbitMQ.</p><p>Many a times RabbitMQ queues serve as event buses allowing web servers to respond quickly to requests instead of being forced to perform computationally intensive tasks on the spot.</p><h4 id="middleman-in-a-microservice-architectures"><strong>MIDDLEMAN IN A MICROSERVICE ARCHITECTURES</strong></h4><p>RabbitMQ is also used for microservice architecture, where it serves as a means of communicating between applications, avoiding bottlenecks passing messages.</p><p>An example can be e-commerce apps where different microservices are orchestrated using queues likes RabbitMQ.</p><hr><blockquote>Apache Kafka</blockquote><p>Supports use cases such as metrics, activity tracking, log aggregation, stream processing, commit logs and event sourcing.</p><p>The following messaging scenarios are especially suited for Kafka:</p><ul><li>Streams with complex routing, throughput of 100K/sec events or more, with <strong>at least once</strong> partitioned ordering</li><li>Applications requiring a stream history, delivered in <strong>at least once</strong> partitioned ordering. Clients can see a <strong>replay</strong> of the event stream.</li><li>Event sourcing, modeling changes to a system as a sequence of events.</li><li>Stream processing data in multi-stage pipelines. The pipelines generate graphs of real-time data flows</li></ul><p>In general, if you want a framework for storing, reading (re-reading), and analyzing streaming data, use Apache Kafka. It's perfect for audited systems or those who need to keep messages for a long time. This can also be divided into two categories: data analysis (tracking, ingestion, logging, security, and so on) and real-time processing.</p><h4 id="data-analysis-tracking-ingestion-logging-security"><strong>DATA ANALYSIS: TRACKING, INGESTION, LOGGING, SECURITY</strong></h4><p>In all these cases, large amounts of data need to be collected, stored, and handled. Companies that need to gain insights into data, provide search features, auditing or analysis of tons of data justify the use of Kafka.</p><p>According to the creators of Apache Kafka, the original use case for Kafka was to track website activity including page views, searches, uploads or other actions users may take. This kind of activity tracking often requires a very high volume of throughput, since messages are generated for each action and for each user. Many of these activities - in fact, all of the system activities - can be stored in Kafka and handled as needed.</p><p>Producers of data only need to send their data to a single place while a host of backend services can consume the data as required. Major analytics, search and storage systems have integrations with Kafka.</p><h4 id="real-time-processing"><strong>REAL-TIME PROCESSING</strong></h4><p>Kafka acts as a high-throughput distributed system; source services push streams of data into the target services that pull them in real-time.</p><p>Kafka could be used in systems handling many producers in real-time with a small number of consumers; i.e. financial IT systems monitoring stock data.</p><p>Streaming services like Spotify publish information in real-time over Kafka. The ability to handle high-throughput in real-time empowers applications., making these applications more powerful than ever before.</p><hr><p>Hope you liked this series on RabbitMQ vs Kafka.</p>
+            </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/kafka-vs-rabbitmq-3/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/kafka-vs-rabbitmq-3/&text=Kafka%20vs%20RabbitMQ" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/kafka-vs-rabbitmq-3/&media=&description=Kafka%20vs%20RabbitMQ"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/kafka-vs-rabbitmq-3/&title=Kafka%20vs%20RabbitMQ"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/kafka-vs-rabbitmq-3/&title=Kafka%20vs%20RabbitMQ" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/kafka-vs-rabbitmq-3/&title=Kafka%20vs%20RabbitMQ"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/kafka-vs-rabbitmq-3/&title=Kafka%20vs%20RabbitMQ" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/kafka-vs-rabbitmq-3/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/kafka-vs-rabbitmq-3/&text=Kafka%20vs%20RabbitMQ" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
         <div class="author-image-placeholder u-placeholder">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
         </div>
-
         <div class="author-wrapper">
-            <h4 class="author-name"><a href="/author/tirthankar/">Tirthankar Kundu</a></h4>
-        </div>
-
-    </section>
-
-</div>
-    </article>
-
-
-        
-<section class="related-posts gh-canvas">
-
-    <h3 class="related-title">You might also like...</h3>
-
-    <div class="related-feed">
-
-        <article class="post tag-messaging-queue tag-aws tag-gcp tag-hash-import-2023-10-02-04-41">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/amq-vs-sqs-vs-sns/">
-                        <img class="post-image u-object-fit" src="/content/images/size/w750/2023/10/background.png" alt="AMQ vs SQS vs SNS vs Google Pub-Sub" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/amq-vs-sqs-vs-sns/">AMQ vs SQS vs SNS vs Google Pub-Sub</a>
-                </h2>
-                <time class="post-meta" datetime="2021-08-21">Aug 21, 2021</time>
-            </header>
-
-        </article>
-
-
-        <article class="post tag-messaging-queue tag-rabbitmq tag-kafka tag-hash-import-2023-10-02-04-41 featured">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/kafka-vs-rabbitmq-2/">
-                        <img class="post-image u-object-fit" src="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;750" alt="Kafka vs RabbitMQ" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/kafka-vs-rabbitmq-2/">Kafka vs RabbitMQ</a>
-                </h2>
-                <time class="post-meta" datetime="2021-03-27">Mar 27, 2021</time>
-            </header>
-
-        </article>
-
-
-        <article class="post tag-messaging-queue tag-kafka tag-rabbitmq tag-architecture tag-hash-import-2023-10-02-04-41">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/kafka-vs-rabbitmq/">
-                        <img class="post-image u-object-fit" src="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;750" alt="Kafka vs RabbitMQ" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/kafka-vs-rabbitmq/">Kafka vs RabbitMQ</a>
-                </h2>
-                <time class="post-meta" datetime="2021-03-21">Mar 21, 2021</time>
-            </header>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-</main>
-</div>
-    </div>
-
-    <footer class="gh-foot no-menu gh-outer">
-        <div class="gh-foot-inner gh-inner">
-            <div class="gh-copyright">
-                The Bitmaskers © 2023
-            </div>
-        </div>
-    </footer>
-
-</div>
-
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="pswp__bg"></div>
-
-    <div class="pswp__scroll-wrap">
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
                     </div>
                 </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
             </div>
+        </article>
 
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/kafka-vs-rabbitmq-2/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
 
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+        <div class="navigation-item navigation-next">
+            <a class="navigation-item-link button-arrow button-arrow-right" href="/aws-services/">
+                Next Post <i class="button-arrow-icon icon icon-arrow-right"></i>
+            </a>
+        </div>
+</div>                <section class="related-posts container medium">
+            <h3 class="related-title"><span class="text">You might also like...</span></h3>
+            <div class="row">
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-messaging-queue tag-aws tag-gcp tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/amq-vs-sqs-vs-sns/">
+                <img class="post-image lazyload u-object-fit"
 
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
+                    data-srcset="/content/images/size/w400/2023/10/background.png 400w, /content/images/size/w750/2023/10/background.png 750w, /content/images/size/w960/2023/10/background.png 960w, /content/images/size/w1140/2023/10/background.png 1140w, /content/images/size/w1920/2023/10/background.png 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2023/10/background.png"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="AMQ vs SQS vs SNS vs Google Pub-Sub">
+            </a>
         </div>
     </div>
-</div>
-<script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous">
-</script>
-<script src="/assets/built/main.min.js?v=9635e4d108"></script>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/amq-vs-sqs-vs-sns/">AMQ vs SQS vs SNS vs Google Pub-Sub</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-08-21">
+                            Aug 21, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/tag/messaging-queue/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-aws" href="/tag/aws/"
+                                title="aws">aws</a><a class="post-tag post-tag-gcp" href="/tag/gcp/"
+                                title="gcp">gcp</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-messaging-queue tag-rabbitmq tag-kafka tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02 featured">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/kafka-vs-rabbitmq-2/">
+                <img class="post-image lazyload u-object-fit"
 
+                    data-srcset="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1554895108-c7489915cac1?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDI0fHxtZXNzYWdlJTIwZW52ZWxvcGV8ZW58MHx8fHwxNjE2ODYzMjc5&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Kafka vs RabbitMQ">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/kafka-vs-rabbitmq-2/">Kafka vs RabbitMQ</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-03-27">
+                            Mar 27, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/tag/messaging-queue/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-rabbitmq" href="/tag/rabbitmq/"
+                                title="rabbitmq">rabbitmq</a><a class="post-tag post-tag-kafka" href="/tag/kafka/"
+                                title="kafka">kafka</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-messaging-queue tag-kafka tag-rabbitmq tag-architecture tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/kafka-vs-rabbitmq/">
+                <img class="post-image lazyload u-object-fit"
 
+                    data-srcset="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1586979816990-1819efcad0de?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDF8fHF1ZXVlfGVufDB8fHx8MTYxNjMxMDU4OA&amp;ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Kafka vs RabbitMQ">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/kafka-vs-rabbitmq/">Kafka vs RabbitMQ</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-03-21">
+                            Mar 21, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/tag/messaging-queue/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-kafka" href="/tag/kafka/"
+                                title="kafka">kafka</a><a class="post-tag post-tag-rabbitmq" href="/tag/rabbitmq/"
+                                title="rabbitmq">rabbitmq</a><a class="post-tag post-tag-architecture" href="/tag/architecture/"
+                                title="architecture">architecture</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+            </div>
+        </section>
+            </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2021 |
+    </div>
 
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=e8649a3fcd"></script>
+
+    
+
+    
 </body>
+
 </html>

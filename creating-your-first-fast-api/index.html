@@ -5,7 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fast API</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=9635e4d108">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=e8649a3fcd">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
 
     <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
     <link rel="canonical" href="https://bitmaskers.in/creating-your-first-fast-api/">
@@ -46,8 +53,8 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
     <meta name="twitter:data1" content="Tirthankar Kundu">
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="serverless, api, python">
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1333">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
     
     <script type="application/ld+json">
 {
@@ -75,8 +82,8 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
     "image": {
         "@type": "ImageObject",
         "url": "https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&ixlib=rb-4.0.3&q=80&w=2000",
-        "width": 2000,
-        "height": 1333
+        "width": 1200,
+        "height": 800
     },
     "keywords": "serverless, api, python",
     "description": "This is the first part of a two-part series on creating a serverless API using Fast API\n\nFast API\n\nFastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:\n\n * Fast - Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic)\n * Fast to Code - Increases developer productivity to ship code faster\n * Fewer Bugs - Reduces human-induced errors\n * Intuitive - Great editor support\n * East",
@@ -84,14 +91,14 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.66">
+    <meta name="generator" content="Ghost 5.82">
     <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/">
     
-    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="b9caab9ce32eedb73920df5550" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="8bb36d3c0e68a366dc85d5bd84" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
     
     <link href="https://bitmaskers.in/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=9635e4d108"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=9635e4d108">
+    <script defer src="/public/cards.min.js?v=e8649a3fcd"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=e8649a3fcd">
     <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
@@ -122,75 +129,74 @@ FastAPI is a modern, high-performance web framework for building APIs with Pytho
 </script><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 
-<body class="post-template tag-serverless tag-api tag-python is-head-left-logo">
-<div class="site">
-
-    <header id="gh-head" class="gh-head gh-outer">
-        <div class="gh-head-inner">
-            <div class="gh-head-brand">
-                <div class="gh-head-brand-wrapper">
-                    <a class="gh-head-logo" href="https://bitmaskers.in">
-                            <img src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
-                    </a>
-                </div>
-                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                <button class="gh-burger"></button>
-            </div>
-
-            <nav class="gh-head-menu">
-                <ul class="nav">
-    <li class="nav-home"><a href="https://bitmaskers.in/">Home</a></li>
-    <li class="nav-aws"><a href="https://bitmaskers.in/tag/aws/">AWS</a></li>
-    <li class="nav-mule"><a href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
-    <li class="nav-algo"><a href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
-    <li class="nav-author"><a href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+<body class="post-template tag-serverless tag-api tag-python tag-hash-import-2024-04-24-07-02">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
 </ul>
-
-            </nav>
-
-            <div class="gh-head-actions">
-                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
             </div>
         </div>
-    </header>
-
-
-    <div class="site-content">
-        
-<div class="content-area">
-<main class="site-main">
-
-
-    <article class="post tag-serverless tag-api tag-python single-post">
-
-        <header class="article-header gh-canvas">
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post tag-serverless tag-api tag-python tag-hash-import-2024-04-24-07-02 single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">Fast API</h1>
             <div class="post-meta">
                 <span class="post-meta-item post-meta-date">
-                    <time datetime="2023-10-02">Oct 2, 2023</time>
+                    <time datetime="2023-10-02">
+                            Oct 2, 2023
+                    </time>
                 </span>
-                    <span class="post-meta-item post-meta-length">3 min read</span>
-                    <span class="post-meta-item post-meta-tags"><a class="post-tag post-tag-serverless" href="/tag/serverless/" title="serverless">serverless</a></span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-serverless" href="/tag/serverless/"
+                                title="serverless">serverless</a><a class="post-tag post-tag-api" href="/tag/api/"
+                                title="api">api</a><a class="post-tag post-tag-python" href="/tag/python/"
+                                title="python">python</a>
+                    </span>
             </div>
-            <h1 class="post-title">Fast API</h1>
-                <figure class="post-media kg-width-wide">
-        <img
-            class="post-image"
-            srcset="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
-                    https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
-                    https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
-                    https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w,
-                    https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
-            sizes="(min-width: 960px) 960px, 92vw"
-            src="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
-            alt="Fast API"
-            loading="lazy"
-        >
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/creating-your-first-fast-api/">
+                <img class="post-image lazyload u-object-fit"
 
-    </figure>
-        </header>
-
-        <div class="gh-content gh-canvas">
-            <p>This is the first part of a two-part series on creating a serverless API using <a href="https://fastapi.tiangolo.com/?ref=localhost">Fast API</a></p><blockquote>Fast API</blockquote><p>FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:</p><ul><li>Fast - Very high performance, on par with <strong>NodeJS</strong> and <strong>Go</strong> (thanks to Starlette and Pydantic)</li><li>Fast to Code - Increases developer productivity to ship code faster</li><li>Fewer Bugs - Reduces human-induced errors</li><li>Intuitive - Great editor support</li><li>East - Designed to be easy to learn and code</li><li>Short - Minimize code duplication</li><li>Robust - It provides production-ready code with automatic interactive documentation.</li><li>Standards-based - It’s based on the open standards for APIs, Open API, and JSON Schema.</li></ul><hr><p>Let's create a small to-do app that uses an in-memory data store.</p><blockquote>Structuring the codebase</blockquote><p>Let's structure the app like below</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/image-1.png" class="kg-image" alt loading="lazy" width="346" height="388"></figure><ol><li>The <strong>app </strong>folder contains everything related to the app</li><li>The <strong>model </strong>contains all the models</li><li>The <strong>router </strong>contains a route for each use case</li><li>The <strong>service contains the</strong> business logic</li></ol><hr><blockquote>The Model</blockquote><p>For the model we use below code -</p><!--kg-card-begin: markdown--><pre><code>from pydantic import BaseModel
+                    data-srcset="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1696110774237-96ea0301473c?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8YWxsfDUzfHx8fHx8Mnx8MTY5NjI0MDU1Mnw&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Fast API">
+            </a>
+        </div>
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <p>This is the first part of a two-part series on creating a serverless API using <a href="https://fastapi.tiangolo.com/?ref=localhost">Fast API</a></p><blockquote>Fast API</blockquote><p>FastAPI is a modern, high-performance web framework for building APIs with Python based on standard type hints. It has the following key features:</p><ul><li>Fast - Very high performance, on par with <strong>NodeJS</strong> and <strong>Go</strong> (thanks to Starlette and Pydantic)</li><li>Fast to Code - Increases developer productivity to ship code faster</li><li>Fewer Bugs - Reduces human-induced errors</li><li>Intuitive - Great editor support</li><li>East - Designed to be easy to learn and code</li><li>Short - Minimize code duplication</li><li>Robust - It provides production-ready code with automatic interactive documentation.</li><li>Standards-based - It’s based on the open standards for APIs, Open API, and JSON Schema.</li></ul><hr><p>Let's create a small to-do app that uses an in-memory data store.</p><blockquote>Structuring the codebase</blockquote><p>Let's structure the app like below</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/image-1.png" class="kg-image" alt loading="lazy" width="346" height="388"></figure><ol><li>The <strong>app </strong>folder contains everything related to the app</li><li>The <strong>model </strong>contains all the models</li><li>The <strong>router </strong>contains a route for each use case</li><li>The <strong>service contains the</strong> business logic</li></ol><hr><blockquote>The Model</blockquote><p>For the model we use below code -</p><!--kg-card-begin: markdown--><pre><code>from pydantic import BaseModel
 from typing import Union
 
 
@@ -305,160 +311,232 @@ if __name__ == '__main__':
 <!--kg-card-end: markdown--><p>Okay, now let's run the code.</p><!--kg-card-begin: markdown--><pre><code>python .\main.py
 </code></pre>
 <!--kg-card-end: markdown--><p>We get amazing open API specs out of the box 😍</p><p>Go to http//:localhost:8002/docs and we get the open API specs</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/image-2.png" class="kg-image" alt loading="lazy" width="1908" height="1062" srcset="https://bitmaskers.in/content/images/size/w600/2023/10/image-2.png 600w, https://bitmaskers.in/content/images/size/w1000/2023/10/image-2.png 1000w, https://bitmaskers.in/content/images/size/w1600/2023/10/image-2.png 1600w, https://bitmaskers.in/content/images/2023/10/image-2.png 1908w" sizes="(min-width: 720px) 720px"></figure><p>We can now run the API using the docs or any REST API client</p><hr><p>Hope you like it! Do give it a try.</p><p>Oh! Here's the <a href="https://github.com/tirthankarkundu17/todo-fast-api?ref=localhost">GitHub repository</a> to play with the code </p>
-        </div>
-
-            <div class="gh-canvas">
-
-    <section class="author">
-
-        <div class="author-image-placeholder u-placeholder">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
-        </div>
-
-        <div class="author-wrapper">
-            <h4 class="author-name"><a href="/author/tirthankar/">Tirthankar Kundu</a></h4>
-        </div>
-
-    </section>
-
-</div>
-    </article>
-
-
-        
-<section class="related-posts gh-canvas">
-
-    <h3 class="related-title">You might also like...</h3>
-
-    <div class="related-feed">
-
-        <article class="post tag-serverless tag-python featured">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/serverless-fast-api/">
-                        <img class="post-image u-object-fit" src="https://images.unsplash.com/photo-1506719040632-7d586470c936?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxmYXN0fGVufDB8fHx8MTY5Njc3NzY0NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750" alt="Serverless Fast API" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/serverless-fast-api/">Serverless Fast API</a>
-                </h2>
-                <time class="post-meta" datetime="2023-10-08">Oct 8, 2023</time>
-            </header>
-
-        </article>
-
-
-        <article class="post tag-go tag-serverless tag-api">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/serverless-chat-gpt-api-in-go/">
-                        <img class="post-image u-object-fit" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750" alt="Serverless Chat GPT API in Go" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/serverless-chat-gpt-api-in-go/">Serverless Chat GPT API in Go</a>
-                </h2>
-                <time class="post-meta" datetime="2023-01-13">Jan 13, 2023</time>
-            </header>
-
-        </article>
-
-
-        <article class="post tag-aws tag-serverless tag-hash-import-2023-10-02-04-41">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/aws-lambda-cold-start/">
-                        <img class="post-image u-object-fit" src="/content/images/size/w750/2023/10/AWS-Cold-Start.png" alt="AWS Lambda Cold Start" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/aws-lambda-cold-start/">AWS Lambda Cold Start</a>
-                </h2>
-                <time class="post-meta" datetime="2021-07-23">Jul 23, 2021</time>
-            </header>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-</main>
-</div>
-    </div>
-
-    <footer class="gh-foot no-menu gh-outer">
-        <div class="gh-foot-inner gh-inner">
-            <div class="gh-copyright">
-                The Bitmaskers © 2023
             </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/creating-your-first-fast-api/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/creating-your-first-fast-api/&text=Fast%20API" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/creating-your-first-fast-api/&media=&description=Fast%20API"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/creating-your-first-fast-api/&title=Fast%20API"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/creating-your-first-fast-api/&title=Fast%20API" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/creating-your-first-fast-api/&title=Fast%20API"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/creating-your-first-fast-api/&title=Fast%20API" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/creating-your-first-fast-api/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/creating-your-first-fast-api/&text=Fast%20API" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
+        <div class="author-image-placeholder u-placeholder">
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
         </div>
-    </footer>
-
-</div>
-
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="pswp__bg"></div>
-
-    <div class="pswp__scroll-wrap">
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
+        <div class="author-wrapper">
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
                     </div>
                 </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
             </div>
+        </article>
 
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/serverless-chat-gpt-api-in-go/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
 
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+        <div class="navigation-item navigation-next">
+            <a class="navigation-item-link button-arrow button-arrow-right" href="/serverless-fast-api/">
+                Next Post <i class="button-arrow-icon icon icon-arrow-right"></i>
+            </a>
+        </div>
+</div>                <section class="related-posts container medium">
+            <h3 class="related-title"><span class="text">You might also like...</span></h3>
+            <div class="row">
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-serverless tag-python tag-hash-import-2024-04-24-07-02 featured">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/serverless-fast-api/">
+                <img class="post-image lazyload u-object-fit"
 
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
+                    data-srcset="https://images.unsplash.com/photo-1506719040632-7d586470c936?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxmYXN0fGVufDB8fHx8MTY5Njc3NzY0NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1506719040632-7d586470c936?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxmYXN0fGVufDB8fHx8MTY5Njc3NzY0NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1506719040632-7d586470c936?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxmYXN0fGVufDB8fHx8MTY5Njc3NzY0NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1506719040632-7d586470c936?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxmYXN0fGVufDB8fHx8MTY5Njc3NzY0NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1506719040632-7d586470c936?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxmYXN0fGVufDB8fHx8MTY5Njc3NzY0NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1506719040632-7d586470c936?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxmYXN0fGVufDB8fHx8MTY5Njc3NzY0NHww&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Serverless Fast API">
+            </a>
         </div>
     </div>
-</div>
-<script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous">
-</script>
-<script src="/assets/built/main.min.js?v=9635e4d108"></script>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/serverless-fast-api/">Serverless Fast API</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2023-10-08">
+                            Oct 8, 2023
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-serverless" href="/tag/serverless/"
+                                title="serverless">serverless</a><a class="post-tag post-tag-python" href="/tag/python/"
+                                title="python">python</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-go tag-serverless tag-api tag-hash-import-2024-04-24-07-02">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/serverless-chat-gpt-api-in-go/">
+                <img class="post-image lazyload u-object-fit"
 
+                    data-srcset="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;MnwxMTc3M3wwfDF8c2VhcmNofDM1fHxDaGF0fGVufDB8fHx8MTY3MzY0NjI2Ng&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Serverless Chat GPT API in Go">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/serverless-chat-gpt-api-in-go/">Serverless Chat GPT API in Go</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2023-01-13">
+                            Jan 13, 2023
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-go" href="/tag/go/"
+                                title="go">go</a><a class="post-tag post-tag-serverless" href="/tag/serverless/"
+                                title="serverless">serverless</a><a class="post-tag post-tag-api" href="/tag/api/"
+                                title="api">api</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-aws tag-serverless tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/aws-lambda-cold-start/">
+                <img class="post-image lazyload u-object-fit"
 
+                    data-srcset="/content/images/size/w400/2023/10/AWS-Cold-Start.png 400w, /content/images/size/w750/2023/10/AWS-Cold-Start.png 750w, /content/images/size/w960/2023/10/AWS-Cold-Start.png 960w, /content/images/size/w1140/2023/10/AWS-Cold-Start.png 1140w, /content/images/size/w1920/2023/10/AWS-Cold-Start.png 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2023/10/AWS-Cold-Start.png"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="AWS Lambda Cold Start">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/aws-lambda-cold-start/">AWS Lambda Cold Start</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-07-23">
+                            Jul 23, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-aws" href="/tag/aws/"
+                                title="aws">aws</a><a class="post-tag post-tag-serverless" href="/tag/serverless/"
+                                title="serverless">serverless</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+            </div>
+        </section>
+            </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2021 |
+    </div>
 
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=e8649a3fcd"></script>
+
+    
+
+    
 </body>
+
 </html>
