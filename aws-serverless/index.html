@@ -5,7 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AWS Serverless</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=9635e4d108">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=e8649a3fcd">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
 
     <meta name="description" content="Let&#x27;s see what does Serverless means!">
     <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
@@ -34,8 +41,6 @@
     <meta name="twitter:data1" content="Tirthankar Kundu">
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="aws, serverless">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="675">
     
     <script type="application/ld+json">
 {
@@ -62,9 +67,7 @@
     "dateModified": "2023-10-02T05:40:51.000Z",
     "image": {
         "@type": "ImageObject",
-        "url": "https://bitmaskers.in/content/images/2023/10/Serverless-bg.png",
-        "width": 1200,
-        "height": 675
+        "url": "https://bitmaskers.in/content/images/2023/10/Serverless-bg.png"
     },
     "keywords": "aws, serverless",
     "description": "Let&#x27;s see what does Serverless means!",
@@ -72,14 +75,14 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.66">
+    <meta name="generator" content="Ghost 5.82">
     <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/">
     
-    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="b9caab9ce32eedb73920df5550" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="8bb36d3c0e68a366dc85d5bd84" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
     
     <link href="https://bitmaskers.in/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=9635e4d108"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=9635e4d108">
+    <script defer src="/public/cards.min.js?v=e8649a3fcd"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=e8649a3fcd">
     <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
@@ -110,229 +113,299 @@
 </script><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 
-<body class="post-template tag-aws tag-serverless tag-hash-import-2023-10-02-04-41 is-head-left-logo">
-<div class="site">
-
-    <header id="gh-head" class="gh-head gh-outer">
-        <div class="gh-head-inner">
-            <div class="gh-head-brand">
-                <div class="gh-head-brand-wrapper">
-                    <a class="gh-head-logo" href="https://bitmaskers.in">
-                            <img src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
-                    </a>
-                </div>
-                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                <button class="gh-burger"></button>
-            </div>
-
-            <nav class="gh-head-menu">
-                <ul class="nav">
-    <li class="nav-home"><a href="https://bitmaskers.in/">Home</a></li>
-    <li class="nav-aws"><a href="https://bitmaskers.in/tag/aws/">AWS</a></li>
-    <li class="nav-mule"><a href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
-    <li class="nav-algo"><a href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
-    <li class="nav-author"><a href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+<body class="post-template tag-aws tag-serverless tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
 </ul>
-
-            </nav>
-
-            <div class="gh-head-actions">
-                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
             </div>
         </div>
-    </header>
-
-
-    <div class="site-content">
-        
-<div class="content-area">
-<main class="site-main">
-
-
-    <article class="post tag-aws tag-serverless tag-hash-import-2023-10-02-04-41 featured single-post">
-
-        <header class="article-header gh-canvas">
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post tag-aws tag-serverless tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02 featured single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">AWS Serverless</h1>
             <div class="post-meta">
                 <span class="post-meta-item post-meta-date">
-                    <time datetime="2021-06-15">Jun 15, 2021</time>
+                    <time datetime="2021-06-15">
+                            Jun 15, 2021
+                    </time>
                 </span>
-                    <span class="post-meta-item post-meta-length">2 min read</span>
-                    <span class="post-meta-item post-meta-tags"><a class="post-tag post-tag-aws" href="/tag/aws/" title="aws">aws</a></span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-aws" href="/tag/aws/"
+                                title="aws">aws</a><a class="post-tag post-tag-serverless" href="/tag/serverless/"
+                                title="serverless">serverless</a>
+                    </span>
             </div>
-            <h1 class="post-title">AWS Serverless</h1>
-                <figure class="post-media kg-width-wide">
-        <img
-            class="post-image"
-            srcset="/content/images/size/w400/2023/10/Serverless-bg.png 400w,
-                    /content/images/size/w750/2023/10/Serverless-bg.png 750w,
-                    /content/images/size/w960/2023/10/Serverless-bg.png 960w,
-                    /content/images/size/w1140/2023/10/Serverless-bg.png 1140w,
-                    /content/images/size/w1920/2023/10/Serverless-bg.png 1920w"
-            sizes="(min-width: 960px) 960px, 92vw"
-            src="/content/images/size/w960/2023/10/Serverless-bg.png"
-            alt="AWS Serverless"
-            loading="lazy"
-        >
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/aws-serverless/">
+                <img class="post-image lazyload u-object-fit"
 
-    </figure>
-        </header>
-
-        <div class="gh-content gh-canvas">
-            <p>Serverless has two terms: Server and less, i.e. it essentially means there is no server involved!</p><p>Serverless most often refers to applications that don't require you to provision or manage any servers. You can focus on your core product and business logic instead of responsibilities like operating system (OS) access control, OS patching, provisioning, right-sizing, scaling, and availability.</p><p>All the infrastructure is fully managed and it allows you to focus on what makes your business!</p><hr><blockquote>The revolution of IT Delivery</blockquote><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png" class="kg-image" alt loading="lazy" width="1186" height="676" srcset="https://bitmaskers.in/content/images/size/w600/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png 600w, https://bitmaskers.in/content/images/size/w1000/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png 1000w, https://bitmaskers.in/content/images/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png 1186w" sizes="(min-width: 720px) 720px"></figure><p>IT has evolved a lot from Bare metal on-prem servers to fully managed serverless functions.</p><hr><p>The Serverless Stack</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/Serverless.png" class="kg-image" alt loading="lazy" width="541" height="451"></figure><p>We started with Bare Metals, then came Infrastructure as Service(IAAS) like AWS which gave us fully managed servers, and gone were the days to patch servers, provision them, etc. PAAS made it, even more, easier to use a platform to deploy like AWS Beanstalk, Heroku, etc.</p><p>Finally enters serverless which is the easiest and tension-free mode of deployment of apps. It manages everything for you and you just focus on code(functions).</p><hr><blockquote>Benefits of Serverless</blockquote><ol><li>Easy Deployment<br>Serverless makes deployment faster. You can get an app deployed within minutes.</li><li>Low Cost<br>There is no provisioning cost. You pay only for the time period when your code is executed. So it makes them cheaper.</li><li>Better Scalability<br>Serverless auto-scales your app based on load and you remain worry-free from writing scalability rules.</li><li>Improved latency<br>Serverless architectures usually have access points on a global scale. That means that it’ll be easier to handle users from every corner of the world.</li><li>Fault-tolerant and high-availability<br>Serverless comes built-in with Fault-Tolerant and High availability which makes sure your app is always there to serve your customers.</li></ol><hr><blockquote>When to use Serverless ?</blockquote><p>Serverless has so many benefits so all projects should use it. </p><p>The answer is NO! Here are a few scenarios:</p><p>Serverless is good for the following:</p><ol><li>Short-running event-driven stateless functions</li><li>Service Integrations</li><li>Microservices</li><li>Mobile Backends</li></ol><p>Serverless is not good for the following:</p><ol><li>Long-running stateful operations</li><li>Deep Learning Trainings</li><li>Video Streaming</li><li>Stream Analytics</li></ol><hr><blockquote>Available platforms for Serverless:</blockquote><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/platforms.png" class="kg-image" alt loading="lazy" width="811" height="707" srcset="https://bitmaskers.in/content/images/size/w600/2023/10/platforms.png 600w, https://bitmaskers.in/content/images/2023/10/platforms.png 811w" sizes="(min-width: 720px) 720px"></figure><p>A lot of platforms are available but AWS Lambda is among the popular ones.</p><hr><p>Hope you like it. Cheers 🍻</p>
+                    data-srcset="/content/images/size/w400/2023/10/Serverless-bg.png 400w, /content/images/size/w750/2023/10/Serverless-bg.png 750w, /content/images/size/w960/2023/10/Serverless-bg.png 960w, /content/images/size/w1140/2023/10/Serverless-bg.png 1140w, /content/images/size/w1920/2023/10/Serverless-bg.png 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2023/10/Serverless-bg.png"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="AWS Serverless">
+            </a>
         </div>
-
-            <div class="gh-canvas">
-
-    <section class="author">
-
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <p>Serverless has two terms: Server and less, i.e. it essentially means there is no server involved!</p><p>Serverless most often refers to applications that don't require you to provision or manage any servers. You can focus on your core product and business logic instead of responsibilities like operating system (OS) access control, OS patching, provisioning, right-sizing, scaling, and availability.</p><p>All the infrastructure is fully managed and it allows you to focus on what makes your business!</p><hr><blockquote>The revolution of IT Delivery</blockquote><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png" class="kg-image" alt loading="lazy" width="1186" height="676" srcset="https://bitmaskers.in/content/images/size/w600/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png 600w, https://bitmaskers.in/content/images/size/w1000/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png 1000w, https://bitmaskers.in/content/images/2023/10/54100c64923a815a9076f6246f7a9ca554525eda.png 1186w" sizes="(min-width: 720px) 720px"></figure><p>IT has evolved a lot from Bare metal on-prem servers to fully managed serverless functions.</p><hr><p>The Serverless Stack</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/Serverless.png" class="kg-image" alt loading="lazy" width="541" height="451"></figure><p>We started with Bare Metals, then came Infrastructure as Service(IAAS) like AWS which gave us fully managed servers, and gone were the days to patch servers, provision them, etc. PAAS made it, even more, easier to use a platform to deploy like AWS Beanstalk, Heroku, etc.</p><p>Finally enters serverless which is the easiest and tension-free mode of deployment of apps. It manages everything for you and you just focus on code(functions).</p><hr><blockquote>Benefits of Serverless</blockquote><ol><li>Easy Deployment<br>Serverless makes deployment faster. You can get an app deployed within minutes.</li><li>Low Cost<br>There is no provisioning cost. You pay only for the time period when your code is executed. So it makes them cheaper.</li><li>Better Scalability<br>Serverless auto-scales your app based on load and you remain worry-free from writing scalability rules.</li><li>Improved latency<br>Serverless architectures usually have access points on a global scale. That means that it’ll be easier to handle users from every corner of the world.</li><li>Fault-tolerant and high-availability<br>Serverless comes built-in with Fault-Tolerant and High availability which makes sure your app is always there to serve your customers.</li></ol><hr><blockquote>When to use Serverless ?</blockquote><p>Serverless has so many benefits so all projects should use it. </p><p>The answer is NO! Here are a few scenarios:</p><p>Serverless is good for the following:</p><ol><li>Short-running event-driven stateless functions</li><li>Service Integrations</li><li>Microservices</li><li>Mobile Backends</li></ol><p>Serverless is not good for the following:</p><ol><li>Long-running stateful operations</li><li>Deep Learning Trainings</li><li>Video Streaming</li><li>Stream Analytics</li></ol><hr><blockquote>Available platforms for Serverless:</blockquote><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2023/10/platforms.png" class="kg-image" alt loading="lazy" width="811" height="707" srcset="https://bitmaskers.in/content/images/size/w600/2023/10/platforms.png 600w, https://bitmaskers.in/content/images/2023/10/platforms.png 811w" sizes="(min-width: 720px) 720px"></figure><p>A lot of platforms are available but AWS Lambda is among the popular ones.</p><hr><p>Hope you like it. Cheers 🍻</p>
+            </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/aws-serverless/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/aws-serverless/&text=AWS%20Serverless" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/aws-serverless/&media=&description=AWS%20Serverless"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/aws-serverless/&title=AWS%20Serverless"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/aws-serverless/&title=AWS%20Serverless" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/aws-serverless/&title=AWS%20Serverless"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/aws-serverless/&title=AWS%20Serverless" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/aws-serverless/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/aws-serverless/&text=AWS%20Serverless" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
         <div class="author-image-placeholder u-placeholder">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M3.513 18.998C4.749 15.504 8.082 13 12 13s7.251 2.504 8.487 5.998C18.47 21.442 15.417 23 12 23s-6.47-1.558-8.487-4.002zM12 12c2.21 0 4-2.79 4-5s-1.79-4-4-4-4 1.79-4 4 1.79 5 4 5z" fill="#FFF"/></g></svg>
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
         </div>
-
         <div class="author-wrapper">
-            <h4 class="author-name"><a href="/author/tirthankar/">Tirthankar Kundu</a></h4>
-        </div>
-
-    </section>
-
-</div>
-    </article>
-
-
-        
-<section class="related-posts gh-canvas">
-
-    <h3 class="related-title">You might also like...</h3>
-
-    <div class="related-feed">
-
-        <article class="post tag-messaging-queue tag-aws tag-gcp tag-hash-import-2023-10-02-04-41">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/amq-vs-sqs-vs-sns/">
-                        <img class="post-image u-object-fit" src="/content/images/size/w750/2023/10/background.png" alt="AMQ vs SQS vs SNS vs Google Pub-Sub" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/amq-vs-sqs-vs-sns/">AMQ vs SQS vs SNS vs Google Pub-Sub</a>
-                </h2>
-                <time class="post-meta" datetime="2021-08-21">Aug 21, 2021</time>
-            </header>
-
-        </article>
-
-
-        <article class="post tag-aws tag-serverless tag-hash-import-2023-10-02-04-41">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/aws-lambda-cold-start/">
-                        <img class="post-image u-object-fit" src="/content/images/size/w750/2023/10/AWS-Cold-Start.png" alt="AWS Lambda Cold Start" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/aws-lambda-cold-start/">AWS Lambda Cold Start</a>
-                </h2>
-                <time class="post-meta" datetime="2021-07-23">Jul 23, 2021</time>
-            </header>
-
-        </article>
-
-
-        <article class="post tag-mulesoft tag-aws tag-hash-import-2023-10-02-04-41">
-
-            <figure class="post-media">
-                <div class="u-placeholder rectangle">
-                    <a class="post-image-link" href="/integrating-mulesoft-with-aws-dynamo-db/">
-                        <img class="post-image u-object-fit" src="/content/images/size/w750/2023/10/AWS-DynamoDB-Integration.png" alt="Integrating MuleSoft with AWS Dynamo DB" loading="lazy">
-                    </a>
-                </div>
-            </figure>
-
-            <header class="post-header">
-                <h2 class="post-title">
-                    <a class="post-title-link" href="/integrating-mulesoft-with-aws-dynamo-db/">Integrating MuleSoft with AWS Dynamo DB</a>
-                </h2>
-                <time class="post-meta" datetime="2021-05-22">May 22, 2021</time>
-            </header>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-</main>
-</div>
-    </div>
-
-    <footer class="gh-foot no-menu gh-outer">
-        <div class="gh-foot-inner gh-inner">
-            <div class="gh-copyright">
-                The Bitmaskers © 2023
-            </div>
-        </div>
-    </footer>
-
-</div>
-
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="pswp__bg"></div>
-
-    <div class="pswp__scroll-wrap">
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
                     </div>
                 </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
             </div>
+        </article>
 
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/integrating-mulesoft-with-aws-dynamo-db/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
 
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+        <div class="navigation-item navigation-next">
+            <a class="navigation-item-link button-arrow button-arrow-right" href="/software-testing/">
+                Next Post <i class="button-arrow-icon icon icon-arrow-right"></i>
+            </a>
+        </div>
+</div>                <section class="related-posts container medium">
+            <h3 class="related-title"><span class="text">You might also like...</span></h3>
+            <div class="row">
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-messaging-queue tag-aws tag-gcp tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/amq-vs-sqs-vs-sns/">
+                <img class="post-image lazyload u-object-fit"
 
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
+                    data-srcset="/content/images/size/w400/2023/10/background.png 400w, /content/images/size/w750/2023/10/background.png 750w, /content/images/size/w960/2023/10/background.png 960w, /content/images/size/w1140/2023/10/background.png 1140w, /content/images/size/w1920/2023/10/background.png 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2023/10/background.png"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="AMQ vs SQS vs SNS vs Google Pub-Sub">
+            </a>
         </div>
     </div>
-</div>
-<script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous">
-</script>
-<script src="/assets/built/main.min.js?v=9635e4d108"></script>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/amq-vs-sqs-vs-sns/">AMQ vs SQS vs SNS vs Google Pub-Sub</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-08-21">
+                            Aug 21, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-messaging-queue" href="/tag/messaging-queue/"
+                                title="messaging-queue">messaging-queue</a><a class="post-tag post-tag-aws" href="/tag/aws/"
+                                title="aws">aws</a><a class="post-tag post-tag-gcp" href="/tag/gcp/"
+                                title="gcp">gcp</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-aws tag-serverless tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/aws-lambda-cold-start/">
+                <img class="post-image lazyload u-object-fit"
 
+                    data-srcset="/content/images/size/w400/2023/10/AWS-Cold-Start.png 400w, /content/images/size/w750/2023/10/AWS-Cold-Start.png 750w, /content/images/size/w960/2023/10/AWS-Cold-Start.png 960w, /content/images/size/w1140/2023/10/AWS-Cold-Start.png 1140w, /content/images/size/w1920/2023/10/AWS-Cold-Start.png 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2023/10/AWS-Cold-Start.png"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="AWS Lambda Cold Start">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/aws-lambda-cold-start/">AWS Lambda Cold Start</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-07-23">
+                            Jul 23, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-aws" href="/tag/aws/"
+                                title="aws">aws</a><a class="post-tag post-tag-serverless" href="/tag/serverless/"
+                                title="serverless">serverless</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-mulesoft tag-aws tag-hash-import-2023-10-02-04-41 tag-hash-import-2024-04-24-07-02">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/integrating-mulesoft-with-aws-dynamo-db/">
+                <img class="post-image lazyload u-object-fit"
 
+                    data-srcset="/content/images/size/w400/2023/10/AWS-DynamoDB-Integration.png 400w, /content/images/size/w750/2023/10/AWS-DynamoDB-Integration.png 750w, /content/images/size/w960/2023/10/AWS-DynamoDB-Integration.png 960w, /content/images/size/w1140/2023/10/AWS-DynamoDB-Integration.png 1140w, /content/images/size/w1920/2023/10/AWS-DynamoDB-Integration.png 1920w"
+                    data-sizes="auto" src="/content/images/size/w960/2023/10/AWS-DynamoDB-Integration.png"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Integrating MuleSoft with AWS Dynamo DB">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/integrating-mulesoft-with-aws-dynamo-db/">Integrating MuleSoft with AWS Dynamo DB</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2021-05-22">
+                            May 22, 2021
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-mulesoft" href="/tag/mulesoft/"
+                                title="mulesoft">mulesoft</a><a class="post-tag post-tag-aws" href="/tag/aws/"
+                                title="aws">aws</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+            </div>
+        </section>
+            </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2021 |
+    </div>
 
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=e8649a3fcd"></script>
+
+    
+
+    
 </body>
+
 </html>
