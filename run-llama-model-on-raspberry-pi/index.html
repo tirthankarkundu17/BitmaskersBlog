@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Run Llama model on Raspberry Pi !</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=158cd1afea">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <meta name="description" content="Run Llama LLM on Raspberry Pi with minimal setup">
+    <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
+    <link rel="canonical" href="https://bitmaskers.in/run-llama-model-on-raspberry-pi/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://bitmaskers.in/run-llama-model-on-raspberry-pi/amp/">
+    
+    <meta property="og:site_name" content="The Bitmaskers">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Run Llama model on Raspberry Pi !">
+    <meta property="og:description" content="Run Llama LLM on Raspberry Pi with minimal setup">
+    <meta property="og:url" content="https://bitmaskers.in/run-llama-model-on-raspberry-pi/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2024-04-26T19:25:44.000Z">
+    <meta property="article:modified_time" content="2024-04-26T19:25:44.000Z">
+    <meta property="article:tag" content="llm">
+    <meta property="article:tag" content="generative-ai">
+    <meta property="article:tag" content="ai">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/bitmaskers">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Run Llama model on Raspberry Pi !">
+    <meta name="twitter:description" content="Run Llama LLM on Raspberry Pi with minimal setup">
+    <meta name="twitter:url" content="https://bitmaskers.in/run-llama-model-on-raspberry-pi/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Tirthankar Kundu">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="llm, generative-ai, ai">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Bitmaskers",
+        "url": "https://bitmaskers.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2023/10/b_logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tirthankar Kundu",
+        "url": "https://bitmaskers.in/author/tirthankar/",
+        "sameAs": []
+    },
+    "headline": "Run Llama model on Raspberry Pi !",
+    "url": "https://bitmaskers.in/run-llama-model-on-raspberry-pi/",
+    "datePublished": "2024-04-26T19:25:44.000Z",
+    "dateModified": "2024-04-26T19:25:44.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 1200,
+        "height": 800
+    },
+    "keywords": "llm, generative-ai, ai",
+    "description": "Run Llama LLM on Raspberry Pi with minimal setup",
+    "mainEntityOfPage": "https://bitmaskers.in/run-llama-model-on-raspberry-pi/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.82">
+    <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="8bb36d3c0e68a366dc85d5bd84" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
+    
+    <link href="https://bitmaskers.in/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=158cd1afea"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=158cd1afea">
+    <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DFHKPW99Q');
+</script>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+    function updateCoverImage(){
+        console.log('Updating');
+        let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
+        for(let image of images){
+            if(!image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+        }
+
+        let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
+        if(image != null && !image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+	}
+    addEventListener('load', updateCoverImage, false);
+
+</script><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template tag-llm tag-generative-ai tag-ai">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+</ul>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post tag-llm tag-generative-ai tag-ai featured single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">Run Llama model on Raspberry Pi !</h1>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2024-04-26">
+                            Apr 26, 2024
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    2 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-llm" href="/tag/llm/"
+                                title="llm">llm</a><a class="post-tag post-tag-generative-ai" href="/tag/generative-ai/"
+                                title="generative-ai">generative-ai</a><a class="post-tag post-tag-ai" href="/tag/ai/"
+                                title="ai">ai</a>
+                    </span>
+            </div>
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/run-llama-model-on-raspberry-pi/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1545623919-b12dbee1330f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDI4fHxsbGFtYXxlbnwwfHx8fDE3MTQxNTk0MzZ8MA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Run Llama model on Raspberry Pi !">
+            </a>
+        </div>
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <p>The Raspberry&nbsp;Pi, a small yet&nbsp;powerful device, has become increasingly&nbsp;popular for various&nbsp;computing projects, including running&nbsp;large language&nbsp;models (LLMs) like&nbsp;Llama. This blog&nbsp;post provides&nbsp;a detailed guide&nbsp;on setting up&nbsp;your Raspberry&nbsp;Pi, installing&nbsp;Llama, configuring&nbsp;it, and troubleshooting&nbsp;common issues.</p><blockquote>Setting&nbsp;Up Your Raspberry&nbsp;Pi</blockquote><ol><li><strong>Flashing the&nbsp;OS</strong>: Begin by&nbsp;downloading the&nbsp;Raspberry Pi&nbsp;Imager from the&nbsp;official Raspberry&nbsp;Pi <a href="https://www.raspberrypi.com/software/?ref=localhost" rel="noreferrer">website</a>. Select&nbsp;the appropriate&nbsp;OS. I used Raspbian OS since it's pretty tiny and neat. Flash the OS to a micro SD card.</li><li><strong>Initial Configuration</strong>: Insert the&nbsp;microSD card&nbsp;into your Raspberry&nbsp;Pi  and boot up the device. You might want to use an external monitor and devices to be able to do the initial setup.</li></ol><hr><blockquote>Brining LLama to your Pi</blockquote><p><strong>Llama</strong>&nbsp;(<strong>Large Language Model Meta AI</strong>) is a family of autoregressive&nbsp;<a href="https://en.wikipedia.org/wiki/Large_language_model?ref=localhost">large language models</a>&nbsp;(LLMs), released by&nbsp;<a href="https://en.wikipedia.org/wiki/Meta_AI?ref=localhost">Meta AI</a>&nbsp;starting in February 2023.</p><p><strong>Install Git</strong>: Open a terminal and ensure that git is installed:</p><pre><code>sudo apt update &amp;&amp; sudo apt install git
+
+</code></pre>
+<p>Install Python modules that will work with the model to create a chatbot:</p><pre><code>pip install torch numpy sentencepiece
+</code></pre>
+<p>Ensure that you have g++ and build-essential installed, as these are needed to build C applications:</p><pre><code>sudo apt install g++ build-essential
+</code></pre>
+<p>Cloning the Repository -<a href="https://github.com/ggerganov/llama.cpp?ref=localhost" rel="noreferrer"> LLama.cpp</a></p><p>The main goal of&nbsp;<code>llama.cpp</code>&nbsp;is to enable LLM inference with minimal setup and state-of-the-art performance on a wide variety of hardware - locally and in the cloud.</p><pre><code>git clone https://github.com/ggerganov/llama.cpp
+
+</code></pre>
+<p>Build the project</p><pre><code>cd llama.cpp
+make
+</code></pre>
+<p>Wait for the build to complete while you can get a model downloaded </p><p>Since Raspberry Pi is a small device, it's wise to get a tiny model and hence we will go with Tiny LLM.</p><p>Download any one of the version from <a href="https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/tree/main?ref=localhost" rel="noreferrer">here</a></p><p>I used tinyllama-1.1b-chat-v1.0.Q6_K.gguf</p><p>Go to /models folder inside llama.cpp and run below command in terminal to download the model</p><pre><code>wget https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q6_K.gguf
+</code></pre>
+<hr><blockquote>Running your model</blockquote><p>Hopefully, the make command would have your app setup. Now all you need to do is run the server - </p><pre><code>./server -m models/tinyllama-1.1b-chat-v1.0.Q6_K.gguf -t 3
+</code></pre>
+<p>You should now see the llama.cpp server up - </p><p>Go to localhost:8080, you should see the below UI</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2024/04/image.png" class="kg-image" alt="" loading="lazy" width="995" height="895" srcset="https://bitmaskers.in/content/images/size/w600/2024/04/image.png 600w, https://bitmaskers.in/content/images/2024/04/image.png 995w" sizes="(min-width: 720px) 720px"></figure><p>Let's try playing with the model now.</p><p>Ask a quick question and see it respond 😃</p><figure class="kg-card kg-image-card"><img src="https://bitmaskers.in/content/images/2024/04/image-1.png" class="kg-image" alt="" loading="lazy" width="893" height="697" srcset="https://bitmaskers.in/content/images/size/w600/2024/04/image-1.png 600w, https://bitmaskers.in/content/images/2024/04/image-1.png 893w" sizes="(min-width: 720px) 720px"></figure><p>Hey! It just suggested some great places to visit in India!</p><p>Do give it a try. It's amazing !! 🥂</p>
+            </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/run-llama-model-on-raspberry-pi/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/run-llama-model-on-raspberry-pi/&text=Run%20Llama%20model%20on%20Raspberry%20Pi%20!" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/run-llama-model-on-raspberry-pi/&media=&description=Run%20Llama%20model%20on%20Raspberry%20Pi%20!"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/run-llama-model-on-raspberry-pi/&title=Run%20Llama%20model%20on%20Raspberry%20Pi%20!"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/run-llama-model-on-raspberry-pi/&title=Run%20Llama%20model%20on%20Raspberry%20Pi%20!" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/run-llama-model-on-raspberry-pi/&title=Run%20Llama%20model%20on%20Raspberry%20Pi%20!"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/run-llama-model-on-raspberry-pi/&title=Run%20Llama%20model%20on%20Raspberry%20Pi%20!" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/run-llama-model-on-raspberry-pi/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/run-llama-model-on-raspberry-pi/&text=Run%20Llama%20model%20on%20Raspberry%20Pi%20!" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
+        <div class="author-image-placeholder u-placeholder">
+            <img class="author-image lazyload u-object-fit"
+                data-srcset=""
+                src=""
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
+        </div>
+        <div class="author-wrapper">
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
+                    </div>
+                </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
+            </div>
+        </article>
+
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/serverless-fast-api/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
+
+</div>                    </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2021 |
+    </div>
+
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=158cd1afea"></script>
+
+    
+
+    
+</body>
+
+</html>
