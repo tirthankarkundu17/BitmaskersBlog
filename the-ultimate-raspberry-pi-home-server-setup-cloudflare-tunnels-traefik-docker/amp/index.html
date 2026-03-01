@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html ⚡>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+
+    </script>
+    <title>The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker</title>
+
+    <meta name="description" content="Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.">
+    <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
+    <link rel="canonical" href="https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="The Bitmaskers">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker">
+    <meta property="og:description" content="Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.">
+    <meta property="og:url" content="https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2026-03-01T04:35:07.000Z">
+    <meta property="article:modified_time" content="2026-03-01T04:35:07.000Z">
+    <meta property="article:tag" content="raspberrypi">
+    <meta property="article:tag" content="networking">
+    <meta property="article:tag" content="cloudflare">
+    <meta property="article:tag" content="docker">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/bitmaskers">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker">
+    <meta name="twitter:description" content="Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.">
+    <meta name="twitter:url" content="https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Tirthankar Kundu">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="raspberrypi, networking, cloudflare, docker">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="900">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Bitmaskers",
+        "url": "https://bitmaskers.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2023/10/b_logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tirthankar Kundu",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2025/01/photo.png",
+            "width": 401,
+            "height": 586
+        },
+        "url": "https://bitmaskers.in/author/tirthankar/",
+        "sameAs": []
+    },
+    "headline": "The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker",
+    "url": "https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/",
+    "datePublished": "2026-03-01T04:35:07.000Z",
+    "dateModified": "2026-03-01T04:35:07.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&ixlib=rb-4.1.0&q=80&w=2000",
+        "width": 1200,
+        "height": 900
+    },
+    "keywords": "raspberrypi, networking, cloudflare, docker",
+    "description": "Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.",
+    "mainEntityOfPage": "https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.82">
+    <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/">
+
+    <style amp-custom>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            font-size: 62.5%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #3a4145;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+            font-size: 1.7rem;
+            line-height: 1.55em;
+            font-weight: 400;
+            font-style: normal;
+            background: #fff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        p,
+        ul,
+        ol,
+        li,
+        dl,
+        dd,
+        hr,
+        pre,
+        form,
+        table,
+        video,
+        figure,
+        figcaption,
+        blockquote {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul[class],
+        ol[class] {
+            padding: 0;
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        input,
+        button,
+        select,
+        textarea {
+            font: inherit;
+            -webkit-appearance: none;
+        }
+
+        fieldset {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        hr {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid currentcolor;
+            opacity: 0.1;
+        }
+
+        ::selection {
+            text-shadow: none;
+            background: #cbeafb;
+        }
+
+        mark {
+            background-color: #fdffb6;
+        }
+
+        small {
+            font-size: 80%;
+        }
+
+        sub,
+        sup {
+            position: relative;
+            font-size: 75%;
+            line-height: 0;
+            vertical-align: baseline;
+        }
+
+        sup {
+            top: -0.5em;
+        }
+
+        sub {
+            bottom: -0.25em;
+        }
+
+        ul li+li {
+            margin-top: 0.6em;
+        }
+
+        a {
+            color: #1292EE;
+            text-decoration-skip-ink: auto;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+            font-weight: 700;
+            color: #121212;
+            line-height: 1.4em;
+        }
+
+        h1 {
+            font-size: 3.4rem;
+            line-height: 1.1em;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            line-height: 1.2em;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        h4 {
+            font-size: 1.7rem;
+        }
+
+        h5 {
+            font-size: 1.6rem;
+        }
+
+        h6 {
+            font-size: 1.6rem;
+        }
+
+        amp-img {
+            height: 100%;
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        amp-img img {
+            object-fit: cover;
+        }
+
+        .page-header {
+            padding: 50px 5vmin 30px;
+            text-align: center;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .page-header a {
+            color: #121212;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.6rem;
+            letter-spacing: -0.1px;
+        }
+
+        .post {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .post-header {
+            margin: 0 5vmin 5vmin;
+            text-align: center;
+        }
+
+        .post-meta {
+            margin: 1rem 0 0 0;
+            text-transform: uppercase;
+            color: #738a94;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+
+        .post-image {
+            margin: 0 0 5vmin;
+        }
+
+        .post-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .post-content {
+            padding: 0 5vmin;
+        }
+
+        .post-content>*+* {
+            margin-top: 1.5em;
+        }
+
+        .post-content [id]:not(:first-child) {
+            margin: 2em 0 0;
+        }
+
+        .post-content>[id]+* {
+            margin-top: 1rem;
+        }
+
+        .post-content [id]+.kg-card,
+        .post-content blockquote+.kg-card {
+            margin-top: 40px;
+        }
+
+        .post-content>ul,
+        .post-content>ol,
+        .post-content>dl {
+            padding-left: 1.9em;
+        }
+
+        .post-content hr {
+            margin-top: 40px;
+        }
+
+        .post .post-content hr+* {
+            margin-top: 40px;
+        }
+
+        .post-content amp-img {
+            background-color: #f8f8f8;
+        }
+
+        .post-content blockquote {
+            position: relative;
+            font-style: italic;
+        }
+
+        .post-content blockquote::before {
+            content: "";
+            position: absolute;
+            left: -1.5em;
+            top: 0;
+            bottom: 0;
+            width: 0.3rem;
+            background: #000;
+        }
+
+        .post-content :not(.kg-card):not([id])+.kg-card {
+            margin-top: 40px;
+        }
+
+        .post-content .kg-card+ :not(.kg-card) {
+            margin-top: 40px;
+        }
+
+        .kg-card figcaption {
+            padding: 1.5rem 1.5rem 0;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.3rem;
+            line-height: 1.4em;
+            opacity: 0.6;
+        }
+
+        .kg-card figcaption strong {
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .post-content :not(pre) code {
+            vertical-align: middle;
+            padding: 0.15em 0.4em 0.15em;
+            border: #e1eaef 1px solid;
+            font-weight: 400;
+            font-size: 0.9em;
+            line-height: 1em;
+            color: #dc0050;
+            background: #f0f6f9;
+            border-radius: 0.25em;
+        }
+
+        .post-content>pre {
+            overflow: scroll;
+            padding: 16px 20px;
+            color: #fff;
+            background: #1F2428;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px -2px rgba(0, 0, 0, .1), 0 0 1px rgba(0, 0, 0, .4);
+        }
+
+        .kg-embed-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .kg-image-card img {
+            margin: auto;
+        }
+
+        .kg-gallery-card+.kg-gallery-card {
+            margin-top: 0.75em;
+        }
+
+        .kg-gallery-container {
+            position: relative;
+        }
+
+        .kg-gallery-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .kg-gallery-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .kg-gallery-row:not(:first-of-type) {
+            margin: 0.75em 0 0 0;
+        }
+
+        .kg-gallery-image:not(:first-of-type) {
+            margin: 0 0 0 0.75em;
+        }
+
+        .kg-bookmark-card,
+        .kg-bookmark-publisher {
+            position: relative;
+        }
+
+        .kg-bookmark-container,
+        .kg-bookmark-container:hover {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row-reverse;
+            color: currentColor;
+            background: rgba(255, 255, 255, 0.6);
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        .kg-bookmark-content {
+            flex-basis: 0;
+            flex-grow: 999;
+            padding: 20px;
+            order: 1;
+        }
+
+        .kg-bookmark-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+            line-height: 1.3em;
+        }
+
+        .kg-bookmark-description {
+            display: -webkit-box;
+            max-height: 45px;
+            margin: 0.5em 0 0 0;
+            font-size: 1.4rem;
+            line-height: 1.55em;
+            overflow: hidden;
+            opacity: 0.8;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .kg-bookmark-metadata {
+            margin-top: 20px;
+        }
+
+        .kg-bookmark-metadata {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.3rem;
+            line-height: 1.3em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .kg-bookmark-description {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .kg-bookmark-metadata amp-img {
+            width: 18px;
+            height: 18px;
+            max-width: 18px;
+            max-height: 18px;
+            margin-right: 10px;
+        }
+
+        .kg-bookmark-thumbnail {
+            display: flex;
+            flex-basis: 20rem;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+
+        .kg-bookmark-thumbnail amp-img {
+            max-height: 200px;
+        }
+
+        .kg-bookmark-author {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .kg-bookmark-publisher::before {
+            content: "•";
+            margin: 0 .5em;
+        }
+
+        .kg-width-full.kg-card-hascaption {
+            display: grid;
+            grid-template-columns: inherit;
+        }
+
+        .post-content table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .post-content th {
+            padding: 0.5em 0.8em;
+            text-align: left;
+            font-size: .75em;
+            text-transform: uppercase;
+        }
+
+        .post-content td {
+            padding: 0.4em 0.7em;
+        }
+
+        .post-content tbody tr:nth-child(2n + 1) {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 1px;
+        }
+
+        .post-content tbody tr:nth-child(2n + 2) td:last-child {
+            box-shadow:
+                inset 1px 0 rgba(0, 0, 0, 0.1),
+                inset -1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content tbody tr:nth-child(2n + 2) td {
+            box-shadow: inset 1px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .post-content tbody tr:last-child {
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+        }
+
+        .page-footer {
+            padding: 60px 5vmin;
+            margin: 60px auto 0;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+
+        .page-footer h3 {
+            margin: 0.5rem 0 0 0;
+        }
+
+        .page-footer p {
+            max-width: 500px;
+            margin: 1rem auto 1.5rem;
+            font-size: 1.7rem;
+            line-height: 1.5em;
+            color: rgba(0, 0, 0, 0.6)
+        }
+
+        .powered {
+            display: inline-flex;
+            align-items: center;
+            margin: 30px 0 0;
+            padding: 6px 9px 6px 6px;
+            border: rgba(0, 0, 0, 0.1) 1px solid;
+            font-size: 12px;
+            line-height: 12px;
+            letter-spacing: -0.2px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            font-weight: 500;
+            color: #222;
+            text-decoration: none;
+            background: #fff;
+            border-radius: 6px;
+        }
+
+        .powered svg {
+            height: 16px;
+            width: 16px;
+            margin: 0 6px 0 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 1.6rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 2.6rem;
+                line-height: 1.15em;
+            }
+
+            h2 {
+                font-size: 2rem;
+                line-height: 1.2em;
+            }
+
+            h3 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style><noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-7990894864273181">
+    </amp-auto-ads>
+    <header class="page-header">
+        <a href="https://bitmaskers.in">
+            <amp-img class="site-icon" src="https://bitmaskers.in/content/images/2023/10/logo-bitmaskers.png" width="50" height="50"
+                layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker</h1>
+                <section class="post-meta">
+                    Tirthankar Kundu -
+                    <time class="post-date" datetime=" 2026-03-01">01 Mar                        2026</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000" width="600" height="340" layout="responsive">
+                </amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>If you've ever tried to host a web application from your home network on a Raspberry Pi, you know the struggle. You have to mess with your router's port forwarding, configure Dynamic DNS (DDNS) because your ISP keeps changing your IP address, and desperately hope you haven’t accidentally exposed your entire home network to hackers on the internet.</p><p>What if I told you there's a better way? A way that requires <strong>zero open router ports</strong>, automatically handles <strong>free SSL certificates</strong>, and lets you effortlessly add new apps to your server in seconds?</p><p>In this post, I'll walk you through setting up a bulletproof, highly-extensible Raspberry Pi hosting environment. We'll be using <strong>Cloudflare Tunnels</strong> running on bare-metal and <strong>Traefik</strong> running in Docker to securely expose a sample full-stack app (my very own URL unshortener, <a href="https://github.com/tirthankarkundu17/unshorten-it?ref=localhost">Unshorten-It</a>).</p><p>Let's dive in.</p><hr></hr><blockquote>The Architecture: How It Works</blockquote><p>Here is a bird's-eye view of what we are building:</p><ol><li><strong>Cloudflared (Bare Metal):</strong> The Cloudflare daemon connects your Pi securely to the Cloudflare Edge network. No inbound ports open!</li><li><strong>Docker Network:</strong> We create a single, unified Docker network called <code>proxy</code>.</li><li><strong>Traefik (Docker):</strong> Traefik listens to requests passing through the Cloudflare tunnel and dynamically routes them to the correct Docker container.</li><li><strong>Your Apps (Docker):</strong> Any app you spin up on the <code>proxy</code> network with the right Docker labels gets securely routed to the internet automatically.</li></ol><blockquote>Prerequisites</blockquote><ul><li>A Raspberry Pi (or any Linux machine) with <a href="https://docs.docker.com/engine/install/?ref=localhost">Docker and Docker Compose installed</a>.</li><li>A free <a href="https://dash.cloudflare.com/?ref=localhost">Cloudflare</a> account.</li><li>A domain name with its DNS managed by Cloudflare.</li></ul><hr></hr><blockquote>Step 1: Install Cloudflared (Bare Metal)</blockquote><p>Instead of running Cloudflare inside Docker, we are going to run it directly on the Raspberry Pi OS. This keeps the secure tunnel stable at the OS-level and ensures your server connects to Cloudflare as soon as it boots up, independently of the Docker daemon.</p><p>Run the following commands on your Pi to install it:</p><pre><code># Download the ARM64 package (Assuming Pi 4 or Pi 5 on 64-bit OS)
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb
+
+# Install the package
+sudo dpkg -i cloudflared-linux-arm64.deb
+
+# Authenticate with Cloudflare
+cloudflared tunnel login
+
+</code></pre>
+<p><em>(This will provide a URL for you to log into Cloudflare and authorize your domain).</em></p><p>Next, create a tunnel:</p><pre><code>cloudflared tunnel create my-pi-tunnel
+</code></pre>
+<p><strong>Important:</strong> Note the <code>Tunnel ID</code>. You'll need it for the next steps!</p><p>Finally, route your domain to the tunnel:</p><pre><code>cloudflared tunnel route dns my-pi-tunnel subdomain.yourdomain.com
+</code></pre>
+<hr></hr><blockquote>Step 2: Configure the Cloudflare Ingress Rules</blockquote><p>Now, we need to tell <code>cloudflared</code> what to do when traffic hits <code>unshorten.yourdomain.com</code>.</p><p>Create a configuration file at <code>~/.cloudflared/config.yml</code> (or <code>/etc/cloudflared/config.yml</code>):</p><pre><code>tunnel: &lt;YOUR-TUNNEL-ID&gt;
+credentials-file: /root/.cloudflared/&lt;YOUR-TUNNEL-ID&gt;.json
+
+ingress:
+  # Route traffic for this app into Traefik's port 80
+  - hostname: subdomain.yourdomain.com
+    service: http://localhost:80
+  
+  # (Optional) Wildcard route to send ALL subdomains into Traefik automatically!
+  # - hostname: *.yourdomain.com
+  #   service: http://localhost:80
+    
+  # Fallback rule
+  - service: http_status:404
+
+</code></pre>
+<p>To make sure your tunnel runs in the background even if you restart your Pi:</p><pre><code>sudo cloudflared service install
+sudo systemctl start cloudflared
+</code></pre>
+<hr></hr><blockquote>Step 3: Create the Unified Docker Network</blockquote><p>We need a dedicated network so that Traefik can communicate with all the apps you eventually want to host. Let's call it <code>proxy</code>.</p><pre><code>docker network create proxy
+</code></pre>
+<hr></hr><blockquote>Step 4: The Magic docker-compose.yml</blockquote><p>This is where it all comes together. We will deploy Traefik alongside our app (Unshorten-It, which has a FastAPI backend and a React frontend). Traefik will listen on port <code>80</code>, intercept the traffic dumped by Cloudflare, and route it to the frontend or backend based on the URL path.</p><p>Create a  docker-compose.yml file:</p><pre><code>networks:
+  proxy:
+    external: true
+
+services:
+  # 1. Traefik Reverse Proxy
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"  # Exposed to the host so bare-metal cloudflared can push traffic here
+    networks:
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.enable=true"
+    restart: unless-stopped
+
+  # 2. FastAPI Backend
+  backend:
+    image: your_docker_username/unshorten-it-backend:latest
+    container_name: unshorten-it-backend
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      # Route all /api paths to backend
+      - "traefik.http.routers.unshorten-api.rule=Host(`subdomain1.yourdomain.com`) &amp;&amp; PathPrefix(`/api`)"
+      - "traefik.http.routers.unshorten-api.entrypoints=web"
+
+  # 3. React Frontend
+  frontend:
+    image: your_docker_username/unshorten-it-frontend:latest
+    container_name: unshorten-it-frontend
+    restart: unless-stopped
+    environment:
+      - API_BASE_URL=https://unshorten.yourdomain.com
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      # Route the root paths to the frontend
+      - "traefik.http.routers.unshorten-ui.rule=Host(`subdomain1.yourdomain.com`)"
+      - "traefik.http.routers.unshorten-ui.entrypoints=web"
+
+</code></pre>
+<p>Start up your cluster:</p><pre><code>docker-compose up -d
+</code></pre>
+<hr></hr><blockquote>The Result: Why This Setup is Unbeatable</blockquote><p>If you navigate to <code>https://subdomain.yourdomain.com</code>, you'll see the app live, wrapped in a beautiful, free SSL certificate provided by Cloudflare.</p><p>But why go through the effort of combining Traefik <em>and</em> Cloudflare?</p><ol><li><strong>Ultimate Extensibility:</strong> The single <code>proxy</code> network means whenever you want to self-host something new (like Nextcloud, a Postgres database, or an uptime monitor), you don't even need to touch Cloudflare configurations. Just spin up the new container in the <code>proxy</code> network and add Traefik labels. Traefik will dynamically pick it up!</li><li><strong>Absolute Security:</strong> No open ports on your router. Your Raspberry Pi forms an outbound connection to Cloudflare. If anyone tries to DDoS your home IP, they can't reach it.</li><li><strong>Modularity:</strong> Keeping <code>cloudflared</code> managed on the OS level (via systemd) allows your Pi to regain tunnel connectivity reliably during sudden reboots, even before the Docker daemon spins up.</li></ol><p>Welcome to the future of self-hosting at home! 🏠🥂</p>
+
+            </section>
+
+            <section class="ads-banner">
+    <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-auto-format="rspv" data-full-width="">
+        <div overflow=""></div>
+    </amp-ad>
+</section>        </article>
+    </main>
+    <footer class="page-footer">
+        <amp-img class="site-icon" src="https://bitmaskers.in/content/images/2023/10/logo-bitmaskers.png" width="50" height="50" layout="fixed">
+        </amp-img>
+        <h3>The Bitmaskers</h3>
+        <p>One stop shelter for Software Development Tools, News and Business!</p>
+        <p><a href="https://bitmaskers.in">Read more posts →</a></p>
+    </footer>
+    
+</body>
+
+</html>

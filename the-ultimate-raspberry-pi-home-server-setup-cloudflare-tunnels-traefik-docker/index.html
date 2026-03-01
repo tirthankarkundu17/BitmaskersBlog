@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=d571382ca2">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i,800">
+
+    <script>
+        if (localStorage.getItem('alto_dark') == 'true') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <meta name="description" content="Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.">
+    <link rel="icon" href="https://bitmaskers.in/content/images/size/w256h256/2023/10/logo-bitmaskers.png" type="image/png">
+    <link rel="canonical" href="https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/amp/">
+    
+    <meta property="og:site_name" content="The Bitmaskers">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker">
+    <meta property="og:description" content="Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.">
+    <meta property="og:url" content="https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2026-03-01T04:35:07.000Z">
+    <meta property="article:modified_time" content="2026-03-01T04:35:07.000Z">
+    <meta property="article:tag" content="raspberrypi">
+    <meta property="article:tag" content="networking">
+    <meta property="article:tag" content="cloudflare">
+    <meta property="article:tag" content="docker">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/bitmaskers">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker">
+    <meta name="twitter:description" content="Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.">
+    <meta name="twitter:url" content="https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Tirthankar Kundu">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="raspberrypi, networking, cloudflare, docker">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="900">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "The Bitmaskers",
+        "url": "https://bitmaskers.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2023/10/b_logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Tirthankar Kundu",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://bitmaskers.in/content/images/2025/01/photo.png",
+            "width": 401,
+            "height": 586
+        },
+        "url": "https://bitmaskers.in/author/tirthankar/",
+        "sameAs": []
+    },
+    "headline": "The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker",
+    "url": "https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/",
+    "datePublished": "2026-03-01T04:35:07.000Z",
+    "dateModified": "2026-03-01T04:35:07.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&ixlib=rb-4.1.0&q=80&w=2000",
+        "width": 1200,
+        "height": 900
+    },
+    "keywords": "raspberrypi, networking, cloudflare, docker",
+    "description": "Ditch port forwarding and dynamic DNS. Learn how to securely expose your Raspberry Pi home lab to the world using a powerful hybrid Cloudflare Tunnel and Traefik setup.",
+    "mainEntityOfPage": "https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.82">
+    <link rel="alternate" type="application/rss+xml" title="The Bitmaskers" href="https://bitmaskers.in/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="8bb36d3c0e68a366dc85d5bd84" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://bitmaskers.in/" crossorigin="anonymous"></script>
+    
+    <link href="https://bitmaskers.in/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=d571382ca2"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=d571382ca2">
+    <script data-ad-client="ca-pub-7990894864273181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6DFHKPW99Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6DFHKPW99Q');
+</script>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+    function updateCoverImage(){
+        console.log('Updating');
+        let images = document.querySelectorAll("body > div.site > div.site-content > div > main > div > article > div.post-media.container.large > div > a > img");
+        for(let image of images){
+            if(!image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+        }
+
+        let image = document.querySelector("body > div.site > div > div > main > article > div.post-media.container.large > div > a > img");
+        if(image != null && !image.srcset.includes("images.unsplash.com"))
+                image.srcset = ''
+	}
+    addEventListener('load', updateCoverImage, false);
+
+</script>
+
+<script
+    src="https://topmate-embed.s3.ap-south-1.amazonaws.com/v1/topmate-embed.js"
+    user-profile="https://topmate.io/embed/profile/tirthankar_kundu?theme=D5534D"
+    btn-style='{"backgroundColor":"#000","color":"#fff","border":"1px solid #000"}'
+    embed-version="v1"
+    button-text="Let's Connect"
+    position-right="30px"
+    position-bottom="30px"
+    custom-padding="0px"
+    custom-font-size="16px"
+    custom-font-weight="500"
+    custom-width="200px"
+    async=""
+    defer=""
+  ></script>  
+<style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+
+<body class="post-template tag-raspberrypi tag-networking tag-cloudflare tag-docker">
+    <div class="site">
+        <header class="site-header container">
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+                <nav class="main-menu hidden-xs hidden-sm hidden-md">
+                    <ul class="nav-list u-plain-list">
+        <li class="menu-item menu-item-home"><a class="menu-item-link"
+                href="https://bitmaskers.in/">Home</a></li>
+        <li class="menu-item menu-item-aws"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/aws/">AWS</a></li>
+        <li class="menu-item menu-item-mule"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/mulesoft/">Mule</a></li>
+        <li class="menu-item menu-item-algo"><a class="menu-item-link"
+                href="https://bitmaskers.in/tag/algorithm/">Algo</a></li>
+        <li class="menu-item menu-item-author"><a class="menu-item-link"
+                href="https://bitmaskers.in/author/tirthankar/">Author</a></li>
+</ul>
+                </nav>
+        </div>
+        <div class="navbar-right">
+            <div class="toggle-track">
+                <div class="toggle-moon"><i class="icon icon-brightness-2"></i></div>
+                <div class="toggle-sun"><i class="icon icon-white-balance-sunny"></i></div>
+                <div class="toggle-thumb"></div>
+            </div>
+        </div>
+    </div>
+</header>        <div class="site-content">
+             <div class="content-area">
+    <main class="site-main">
+        <article class="post tag-raspberrypi tag-networking tag-cloudflare tag-docker single-post">
+            <header class="post-header big-title container medium">
+        <h1 class="post-title">The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker</h1>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2026-03-01">
+                            Mar 1, 2026
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-raspberrypi" href="/tag/raspberrypi/"
+                                title="raspberrypi">raspberrypi</a><a class="post-tag post-tag-networking" href="/tag/networking/"
+                                title="networking">networking</a><a class="post-tag post-tag-cloudflare" href="/tag/cloudflare/"
+                                title="cloudflare">cloudflare</a><a class="post-tag post-tag-docker" href="/tag/docker/"
+                                title="docker">docker</a>
+                    </span>
+            </div>
+</header>                <div class="post-media container large">
+        <div class="u-placeholder horizontal">
+            <a class="post-image-link" href="/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1512548019227-8a00107c8e5f?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fHR1bm5lbHN8ZW58MHx8fHwxNzcyMzM5NTI2fDA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="The Ultimate Raspberry Pi Home Server Setup: Cloudflare Tunnels + Traefik + Docker">
+            </a>
+        </div>
+    </div>
+            <div class="post-content kg-canvas u-text-format">
+                <p>If you've ever tried to host a web application from your home network on a Raspberry Pi, you know the struggle. You have to mess with your router's port forwarding, configure Dynamic DNS (DDNS) because your ISP keeps changing your IP address, and desperately hope you haven’t accidentally exposed your entire home network to hackers on the internet.</p><p>What if I told you there's a better way? A way that requires&nbsp;<strong>zero open router ports</strong>, automatically handles&nbsp;<strong>free SSL certificates</strong>, and lets you effortlessly add new apps to your server in seconds?</p><p>In this post, I'll walk you through setting up a bulletproof, highly-extensible Raspberry Pi hosting environment. We'll be using&nbsp;<strong>Cloudflare Tunnels</strong>&nbsp;running on bare-metal and&nbsp;<strong>Traefik</strong>&nbsp;running in Docker to securely expose a sample full-stack app (my very own URL unshortener,&nbsp;<a href="https://github.com/tirthankarkundu17/unshorten-it?ref=localhost">Unshorten-It</a>).</p><p>Let's dive in.</p><hr><blockquote>The Architecture: How It Works</blockquote><p>Here is a bird's-eye view of what we are building:</p><ol><li><strong>Cloudflared (Bare Metal):</strong>&nbsp;The Cloudflare daemon connects your Pi securely to the Cloudflare Edge network. No inbound ports open!</li><li><strong>Docker Network:</strong>&nbsp;We create a single, unified Docker network called&nbsp;<code>proxy</code>.</li><li><strong>Traefik (Docker):</strong>&nbsp;Traefik listens to requests passing through the Cloudflare tunnel and dynamically routes them to the correct Docker container.</li><li><strong>Your Apps (Docker):</strong>&nbsp;Any app you spin up on the&nbsp;<code>proxy</code>&nbsp;network with the right Docker labels gets securely routed to the internet automatically.</li></ol><blockquote>Prerequisites</blockquote><ul><li>A Raspberry Pi (or any Linux machine) with&nbsp;<a href="https://docs.docker.com/engine/install/?ref=localhost">Docker and Docker Compose installed</a>.</li><li>A free&nbsp;<a href="https://dash.cloudflare.com/?ref=localhost">Cloudflare</a>&nbsp;account.</li><li>A domain name with its DNS managed by Cloudflare.</li></ul><hr><blockquote>Step 1: Install Cloudflared (Bare Metal)</blockquote><p>Instead of running Cloudflare inside Docker, we are going to run it directly on the Raspberry Pi OS. This keeps the secure tunnel stable at the OS-level and ensures your server connects to Cloudflare as soon as it boots up, independently of the Docker daemon.</p><p>Run the following commands on your Pi to install it:</p><pre><code># Download the ARM64 package (Assuming Pi 4 or Pi 5 on 64-bit OS)
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb
+
+# Install the package
+sudo dpkg -i cloudflared-linux-arm64.deb
+
+# Authenticate with Cloudflare
+cloudflared tunnel login
+
+</code></pre>
+<p><em>(This will provide a URL for you to log into Cloudflare and authorize your domain).</em></p><p>Next, create a tunnel:</p><pre><code>cloudflared tunnel create my-pi-tunnel
+</code></pre>
+<p><strong>Important:</strong>&nbsp;Note the&nbsp;<code>Tunnel ID</code>. You'll need it for the next steps!</p><p>Finally, route your domain to the tunnel:</p><pre><code>cloudflared tunnel route dns my-pi-tunnel subdomain.yourdomain.com
+</code></pre>
+<hr><blockquote>Step 2: Configure the Cloudflare Ingress Rules</blockquote><p>Now, we need to tell&nbsp;<code>cloudflared</code>&nbsp;what to do when traffic hits&nbsp;<code>unshorten.yourdomain.com</code>.</p><p>Create a configuration file at&nbsp;<code>~/.cloudflared/config.yml</code>&nbsp;(or&nbsp;<code>/etc/cloudflared/config.yml</code>):</p><pre><code>tunnel: &lt;YOUR-TUNNEL-ID&gt;
+credentials-file: /root/.cloudflared/&lt;YOUR-TUNNEL-ID&gt;.json
+
+ingress:
+  # Route traffic for this app into Traefik's port 80
+  - hostname: subdomain.yourdomain.com
+    service: http://localhost:80
+  
+  # (Optional) Wildcard route to send ALL subdomains into Traefik automatically!
+  # - hostname: *.yourdomain.com
+  #   service: http://localhost:80
+    
+  # Fallback rule
+  - service: http_status:404
+
+</code></pre>
+<p>To make sure your tunnel runs in the background even if you restart your Pi:</p><pre><code>sudo cloudflared service install
+sudo systemctl start cloudflared
+</code></pre>
+<hr><blockquote>Step 3: Create the Unified Docker Network</blockquote><p>We need a dedicated network so that Traefik can communicate with all the apps you eventually want to host. Let's call it&nbsp;<code>proxy</code>.</p><pre><code>docker network create proxy
+</code></pre>
+<hr><blockquote>Step 4: The Magic&nbsp;docker-compose.yml</blockquote><p>This is where it all comes together. We will deploy Traefik alongside our app (Unshorten-It, which has a FastAPI backend and a React frontend). Traefik will listen on port&nbsp;<code>80</code>, intercept the traffic dumped by Cloudflare, and route it to the frontend or backend based on the URL path.</p><p>Create a&nbsp; docker-compose.yml&nbsp;file:</p><pre><code>networks:
+  proxy:
+    external: true
+
+services:
+  # 1. Traefik Reverse Proxy
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"  # Exposed to the host so bare-metal cloudflared can push traffic here
+    networks:
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      - "traefik.enable=true"
+    restart: unless-stopped
+
+  # 2. FastAPI Backend
+  backend:
+    image: your_docker_username/unshorten-it-backend:latest
+    container_name: unshorten-it-backend
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      # Route all /api paths to backend
+      - "traefik.http.routers.unshorten-api.rule=Host(`subdomain1.yourdomain.com`) &amp;&amp; PathPrefix(`/api`)"
+      - "traefik.http.routers.unshorten-api.entrypoints=web"
+
+  # 3. React Frontend
+  frontend:
+    image: your_docker_username/unshorten-it-frontend:latest
+    container_name: unshorten-it-frontend
+    restart: unless-stopped
+    environment:
+      - API_BASE_URL=https://unshorten.yourdomain.com
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      # Route the root paths to the frontend
+      - "traefik.http.routers.unshorten-ui.rule=Host(`subdomain1.yourdomain.com`)"
+      - "traefik.http.routers.unshorten-ui.entrypoints=web"
+
+</code></pre>
+<p>Start up your cluster:</p><pre><code>docker-compose up -d
+</code></pre>
+<hr><blockquote>The Result: Why This Setup is Unbeatable</blockquote><p>If you navigate to&nbsp;<code>https://subdomain.yourdomain.com</code>, you'll see the app live, wrapped in a beautiful, free SSL certificate provided by Cloudflare.</p><p>But why go through the effort of combining Traefik&nbsp;<em>and</em>&nbsp;Cloudflare?</p><ol><li><strong>Ultimate Extensibility:</strong>&nbsp;The single&nbsp;<code>proxy</code>&nbsp;network means whenever you want to self-host something new (like Nextcloud, a Postgres database, or an uptime monitor), you don't even need to touch Cloudflare configurations. Just spin up the new container in the&nbsp;<code>proxy</code>&nbsp;network and add Traefik labels. Traefik will dynamically pick it up!</li><li><strong>Absolute Security:</strong>&nbsp;No open ports on your router. Your Raspberry Pi forms an outbound connection to Cloudflare. If anyone tries to DDoS your home IP, they can't reach it.</li><li><strong>Modularity:</strong>&nbsp;Keeping&nbsp;<code>cloudflared</code>&nbsp;managed on the OS level (via systemd) allows your Pi to regain tunnel connectivity reliably during sudden reboots, even before the Docker daemon spins up.</li></ol><p>Welcome to the future of self-hosting at home! 🏠🥂</p>
+            </div>
+            <div class="container medium">
+                <div class="share u-hover-wrapper">
+    <a class="share-item share-facebook u-hover-item"
+        href="https://www.facebook.com/sharer.php?u=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/" target="_blank" rel="noopener"><i
+            class="icon icon-facebook"></i></a>
+    <a class="share-item share-twitter u-hover-item"
+        href="https://twitter.com/intent/tweet?url=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/&text=The%20Ultimate%20Raspberry%20Pi%20Home%20Server%20Setup%3A%20Cloudflare%20Tunnels%20%2B%20Traefik%20%2B%20Docker" target="_blank" rel="noopener"><i
+            class="icon icon-twitter"></i></a>
+    <a class="share-item share-pinterest u-hover-item"
+        href="https://pinterest.com/pin/create/button/?url=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/&media=&description=The%20Ultimate%20Raspberry%20Pi%20Home%20Server%20Setup%3A%20Cloudflare%20Tunnels%20%2B%20Traefik%20%2B%20Docker"
+        target="_blank" rel="noopener" data-pin-do="none"><i class="icon icon-pinterest"></i></a>
+    <a class="share-item share-linkedin u-hover-item"
+        href="https://www.linkedin.com/shareArticle?mini=true&url=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/&title=The%20Ultimate%20Raspberry%20Pi%20Home%20Server%20Setup%3A%20Cloudflare%20Tunnels%20%2B%20Traefik%20%2B%20Docker"
+        target="_blank" rel="noopener"><i class="icon icon-linkedin"></i></a>
+    <a class="share-item share-reddit u-hover-item"
+        href="https://reddit.com/submit?url=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/&title=The%20Ultimate%20Raspberry%20Pi%20Home%20Server%20Setup%3A%20Cloudflare%20Tunnels%20%2B%20Traefik%20%2B%20Docker" target="_blank" rel="noopener"><i
+            class="icon icon-reddit"></i></a>
+    <a class="share-item share-tumblr u-hover-item"
+        href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/&title=The%20Ultimate%20Raspberry%20Pi%20Home%20Server%20Setup%3A%20Cloudflare%20Tunnels%20%2B%20Traefik%20%2B%20Docker"
+        target="_blank" rel="noopener"><i class="icon icon-tumblr"></i></a>
+    <a class="share-item share-vk u-hover-item"
+        href="http://vk.com/share.php?url=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/&title=The%20Ultimate%20Raspberry%20Pi%20Home%20Server%20Setup%3A%20Cloudflare%20Tunnels%20%2B%20Traefik%20%2B%20Docker" target="_blank" rel="noopener"><i
+            class="icon icon-vk"></i></a>
+    <a class="share-item share-pocket u-hover-item" href="https://getpocket.com/edit?url=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/"
+        target="_blank" rel="noopener"><i class="icon icon-pocket"></i></a>
+    <a class="share-item share-telegram u-hover-item"
+        href="https://t.me/share/url?url=https://bitmaskers.in/the-ultimate-raspberry-pi-home-server-setup-cloudflare-tunnels-traefik-docker/&text=The%20Ultimate%20Raspberry%20Pi%20Home%20Server%20Setup%3A%20Cloudflare%20Tunnels%20%2B%20Traefik%20%2B%20Docker" target="_blank" rel="noopener"><i
+            class="icon icon-telegram"></i></a>
+</div>                <section class="ads-banner">
+    <!-- DisplayAdd1 -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7990894864273181" data-ad-slot="1002749738"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>                    <section class="author">
+        <div class="author-image-placeholder u-placeholder">
+            <img class="author-image lazyload u-object-fit"
+                data-srcset="/content/images/size/w150/2025/01/photo.png"
+                src="/content/images/size/w150/2025/01/photo.png"
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="Tirthankar Kundu">
+        </div>
+        <div class="author-wrapper">
+            <header class="author-header">
+                <div class="author-header-wrapper">
+                    <h4 class="author-name">Tirthankar Kundu</h4>
+                    <div class="author-social">
+                        <a class="author-social-item author-more"
+                            href=/author/tirthankar/>More posts</a>
+                    </div>
+                </div>
+            </header>
+            <div class="author-bio"></div>
+        </div>
+    </section>
+            </div>
+        </article>
+
+        <div class="navigation container medium">
+        <div class="navigation-item navigation-previous">
+            <a class="navigation-item-link button-arrow button-arrow-left" href="/automate-everything-how-to-self-host-n8n-on-raspberry-pi-with-docker/">
+                <i class="button-arrow-icon icon icon-arrow-left"></i> Previous Post
+            </a>
+        </div>
+
+</div>                <section class="related-posts container medium">
+            <h3 class="related-title"><span class="text">You might also like...</span></h3>
+            <div class="row">
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-raspberrypi tag-ai tag-automation">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/automate-everything-how-to-self-host-n8n-on-raspberry-pi-with-docker/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1495055154266-57bbdeada43e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDMzfHxhdXRvbWF0aW9ufGVufDB8fHx8MTc2OTg0MDk4MHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1495055154266-57bbdeada43e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDMzfHxhdXRvbWF0aW9ufGVufDB8fHx8MTc2OTg0MDk4MHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1495055154266-57bbdeada43e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDMzfHxhdXRvbWF0aW9ufGVufDB8fHx8MTc2OTg0MDk4MHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1495055154266-57bbdeada43e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDMzfHxhdXRvbWF0aW9ufGVufDB8fHx8MTc2OTg0MDk4MHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1495055154266-57bbdeada43e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDMzfHxhdXRvbWF0aW9ufGVufDB8fHx8MTc2OTg0MDk4MHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1495055154266-57bbdeada43e?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDMzfHxhdXRvbWF0aW9ufGVufDB8fHx8MTc2OTg0MDk4MHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Automate Everything: How to Self-Host n8n on Raspberry Pi with Docker">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/automate-everything-how-to-self-host-n8n-on-raspberry-pi-with-docker/">Automate Everything: How to Self-Host n8n on Raspberry Pi with Docker</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2026-01-31">
+                            Jan 31, 2026
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    3 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-raspberrypi" href="/tag/raspberrypi/"
+                                title="raspberrypi">raspberrypi</a><a class="post-tag post-tag-ai" href="/tag/ai/"
+                                title="ai">ai</a><a class="post-tag post-tag-automation" href="/tag/automation/"
+                                title="automation">automation</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+                    <div class="col-md-4 related-column">
+                        <article class="post tag-raspberrypi">
+                                <div class="post-media">
+        <div class="u-placeholder rectangle">
+            <a class="post-image-link" href="/pihole-on-pi/">
+                <img class="post-image lazyload u-object-fit"
+
+                    data-srcset="https://images.unsplash.com/photo-1592948603976-94743f6923b5?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxhZHMlMjBibG9ja3xlbnwwfHx8fDE3NTIzNTAxNTh8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w, https://images.unsplash.com/photo-1592948603976-94743f6923b5?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxhZHMlMjBibG9ja3xlbnwwfHx8fDE3NTIzNTAxNTh8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w, https://images.unsplash.com/photo-1592948603976-94743f6923b5?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxhZHMlMjBibG9ja3xlbnwwfHx8fDE3NTIzNTAxNTh8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w, https://images.unsplash.com/photo-1592948603976-94743f6923b5?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxhZHMlMjBibG9ja3xlbnwwfHx8fDE3NTIzNTAxNTh8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w, https://images.unsplash.com/photo-1592948603976-94743f6923b5?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxhZHMlMjBibG9ja3xlbnwwfHx8fDE3NTIzNTAxNTh8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1920 1920w"
+                    data-sizes="auto" src="https://images.unsplash.com/photo-1592948603976-94743f6923b5?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDU4fHxhZHMlMjBibG9ja3xlbnwwfHx8fDE3NTIzNTAxNTh8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                     alt="Block Ads Like a Pro: How I Turned My Raspberry Pi into a Pi-hole Ad Blocker">
+            </a>
+        </div>
+    </div>
+                            <header class="post-header">
+        <h2 class="post-title">
+            <a class="post-title-link" href="/pihole-on-pi/">Block Ads Like a Pro: How I Turned My Raspberry Pi into a Pi-hole Ad Blocker</a>
+        </h2>
+            <div class="post-meta">
+                <span class="post-meta-item post-meta-date">
+                    <time datetime="2025-07-12">
+                            Jul 12, 2025
+                    </time>
+                </span>
+                <span class="post-meta-item post-meta-length">
+                    4 min read
+                </span>
+                    <span class="post-meta-item post-meta-tags">
+                        <a class="post-tag post-tag-raspberrypi" href="/tag/raspberrypi/"
+                                title="raspberrypi">raspberrypi</a>
+                    </span>
+            </div>
+</header>                        </article>
+                    </div>
+            </div>
+        </section>
+            </main>
+    </div>
+        </div>
+        <footer class="site-footer container large">
+    <div class="copyright">
+        © 2025 |
+    </div>
+
+    <a class="logo" href="https://bitmaskers.in">
+        <img class="logo-image" style="opacity: 1;" src="https://bitmaskers.in/content/images/2023/10/b_logo.png" alt="The Bitmaskers">
+</a>
+    <div class="footer-social">
+            <a class="footer-social-item footer-social-item-facebook" href="https://www.facebook.com/bitmaskers"
+                target="_blank" rel="noopener" aria-label="Facebook">
+                <i class="icon icon-facebook"></i>
+            </a>
+        <a class="footer-social-item footer-social-item-rss"
+            href="https://feedly.com/i/subscription/feed/https://bitmaskers.in/rss/" target="_blank" rel="noopener"
+            aria-label="RSS">
+            <i class="icon icon-rss"></i>
+        </a>
+    </div>
+</footer>    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+        <div class="canvas-close">
+            <i class="canvas-icon icon icon-window-close"></i>
+        </div>
+        <div class="mobile-menu"></div>
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script src="/assets/built/main.min.js?v=d571382ca2"></script>
+
+    
+
+    
+</body>
+
+</html>
